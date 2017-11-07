@@ -7,11 +7,12 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = "HomePage";
+  rootPage:any = "CafeListPage";
 
   @ViewChild(Nav) nav: Nav;
 
     pages: any[] = [
+        { title: 'Cafe List', component: "CafeListPage" },
         { title: 'Home', component: "HomePage" }
     ]
 
