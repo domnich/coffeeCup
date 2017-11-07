@@ -5,7 +5,8 @@ import {Observable} from "rxjs/Observable";
 import {Post} from "../../models/post.interface"
 
 @IonicPage({
-    segment: 'cafes/:postId'
+    segment: 'cafes/:postId',
+    defaultHistory: ['cafes']
 })
 @Component({
     selector: 'page-cafe-detail',

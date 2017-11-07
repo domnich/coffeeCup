@@ -4,7 +4,10 @@ import {Observable} from "rxjs/Observable";
 import { Post } from "../../models/post.interface";
 import { DataProvider } from "../../providers/data/data";
 
-@IonicPage()
+@IonicPage({
+    name: "cafes",
+    segment: "cafes"
+})
 @Component({
   selector: 'page-cafe-list',
   templateUrl: 'cafe-list.html',
