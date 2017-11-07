@@ -16,4 +16,8 @@ export class DataProvider {
     getPosts() {
         return this.http.get(`${this.rootUrl}/${this.posts}`).map(res => res.json()).take(1);
     }
+
+    getPostById(id: number) {
+        return this.http.get(`${this.rootUrl}/${this.posts}/${id}`).map(res => res.json()).take(1);
+    }
 }

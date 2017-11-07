@@ -1,23 +1,27 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {Component} from '@angular/core';
+import {IonicPage, NavController, NavParams} from 'ionic-angular';
+import {DataProvider} from "../../providers/data/data";
+import {Observable} from "rxjs/Observable";
+import {Post} from "../../models/post.interface"
 
-
-@IonicPage()
+@IonicPage({
+    segment: 'cafes/:postId'
+})
 @Component({
-  selector: 'page-cafe-detail',
-  templateUrl: 'cafe-detail.html',
+    selector: 'page-cafe-detail',
+    templateUrl: 'cafe-detail.html',
 })
 export class CafeDetailPage {
+    post: Observable<Post>;
+    postId: number;
 
-  postId: number;
+    constructor(public navCtrl: NavController, public navParams: NavParams, private data: DataProvider) {
+    }
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad CafeDetailPage');
-    this.postId = this.navParams.get('postId');
-    console.log(this.postId)
-  }
+    ionViewDidLoad() {
+        console.log('ionViewDidLoad CafeDetailPage');
+        this.postId = this.navParams.get('postId');
+        this.post = this.data.getPostById(this.postId);
+    }
 
 }
