@@ -7,7 +7,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = "HomePage";
+  rootPage:any = "TabsPage";
 
   @ViewChild(Nav) nav: Nav;
 

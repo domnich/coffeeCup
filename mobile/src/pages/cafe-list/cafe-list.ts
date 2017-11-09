@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Component, Input } from '@angular/core';
+import { IonicPage, NavController, NavParams, Events } from 'ionic-angular';
 import {Observable} from "rxjs/Observable";
 import { Post } from "../../models/post.interface";
 import { DataProvider } from "../../providers/data/data";
@@ -10,22 +10,26 @@ import { DataProvider } from "../../providers/data/data";
 })
 @Component({
   selector: 'page-cafe-list',
-  templateUrl: 'cafe-list.html',
+  templateUrl: 'cafe-list.html'
 })
 export class CafeListPage {
 
-  posts: Observable<Array<Post>>;
+   private posts: Observable<Array<Post>>;
+  constructor(public navCtrl: NavController, public navParams: NavParams, private data: DataProvider, private event: Events) {
+    //this.getPosts();
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private data: DataProvider) {
-    this.getPosts();
+
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CafeListPage');
+      console.log('Passed params', this.navCtrl['rootParams']);
+    this.posts = this.navCtrl['rootParams'];
+
   }
 
   getPosts() {
-     this.posts = this.data.getPosts();
+
   }
 
   navigateToDetail(postId: number) {

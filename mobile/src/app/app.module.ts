@@ -17,7 +17,9 @@ import {HttpModule} from "@angular/http";
     imports: [
         BrowserModule,
         HttpModule,
-        IonicModule.forRoot(MyApp)
+        IonicModule.forRoot(MyApp, {tabsPlacement: 'top',
+            scrollAssist: false,
+            autoFocusAssist: false})
     ],
     bootstrap: [IonicApp],
     entryComponents: [

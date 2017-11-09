@@ -1,14 +1,6 @@
-<ion-header>
-
-  <ion-navbar color="primary">
-    <ion-title>Cafe List</ion-title>
-  </ion-navbar>
-
-</ion-header>
-
 
 <ion-content padding>
-<ion-card *ngFor="let post of posts | async" (click)="navigateToDetail(post.id)">
+<ion-card *ngFor="let post of posts" (click)="navigateToDetail(post.id)">
   <ion-card-header>{{post.id}}  - {{post.title}}</ion-card-header>
   <ion-card-content>
     <p>{{post.body}}</p>
