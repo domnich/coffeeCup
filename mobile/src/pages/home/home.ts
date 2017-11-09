@@ -17,6 +17,6 @@ export class HomePage {
   }
 
   navigateToAboutPage() {
-      this.navCtrl.push('AboutPage');
+      this.navCtrl.push('MapPage');
   }
 }

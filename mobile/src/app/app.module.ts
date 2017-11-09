@@ -9,6 +9,7 @@ import {DataProvider} from '../providers/data/data';
 import {HttpModule} from "@angular/http";
 
 
+
 @NgModule({
     declarations: [
         MyApp
