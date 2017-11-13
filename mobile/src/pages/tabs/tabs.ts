@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, Events } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import {IonicPage, NavController, NavParams, Events, Tabs} from 'ionic-angular';
 import {  CafeListTab, MapTab } from '../pages';
 import {Observable} from "rxjs/Observable";
 import { Post } from "../../models/post.interface";
@@ -11,6 +11,8 @@ import { DataProvider } from "../../providers/data/data";
   templateUrl: 'tabs.html',
 })
 export class TabsPage   {
+
+    @ViewChild('myTabs') tabRef: Tabs;
     tab1Root: any = CafeListTab;
     tab2Root: any = MapTab;
     tab1Title = "Cafe List";
@@ -23,11 +25,11 @@ text: string;
   }
 
   ionViewDidLoad() {
+      console.log(this.tabRef.select)
 
-
-    console.log('ionViewDidLoad TabsPage');
-      this.event.publish("cafesData", []);
-      this.getPosts();
+   // console.log('ionViewDidLoad TabsPage');
+   //   this.event.publish("cafesData", []);
+    //  this.getPosts();
   }
 
     getPosts() {
@@ -37,6 +39,10 @@ text: string;
             this.posts = response;
             this.event.publish("cafesData", response);
         });
+    }
+
+    goToTab(tabIndex: number) {
+        this.tabRef.select(tabIndex);
     }
 
 }

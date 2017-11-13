@@ -3,13 +3,15 @@
 
   <ion-navbar>
     <ion-title>tabs</ion-title>
+    <button ion-button (click)="goToTab(0)">Cafes List</button>
+    <button ion-button (click)="goToTab(1)">Map</button>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-  <ion-tabs>
+  <ion-tabs #myTabs>
     <ion-tab [root]="tab1Root" [rootParams]="posts" [tabTitle]="tab1Title"></ion-tab>
     <ion-tab [root]="tab2Root" [tabTitle]="tab2Title"></ion-tab>
   </ion-tabs>
