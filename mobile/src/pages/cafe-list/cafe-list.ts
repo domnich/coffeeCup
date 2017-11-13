@@ -23,13 +23,17 @@ export class CafeListPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CafeListPage');
-      console.log('Passed params', this.navCtrl['rootParams']);
-    this.posts = this.navCtrl['rootParams'];
 
+    this.getPostsDataListener();
   }
 
-  getPosts() {
-
+  getPostsDataListener() {
+    this.data.Settings
+        .subscribe(response => {
+          if(response && response.length) {
+            this.posts = response;
+          }
+        });
   }
 
   navigateToDetail(postId: number) {

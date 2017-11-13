@@ -25,20 +25,23 @@ text: string;
   }
 
   ionViewDidLoad() {
-      console.log(this.tabRef.select)
-
+      this.tabRef.select(0);
    // console.log('ionViewDidLoad TabsPage');
    //   this.event.publish("cafesData", []);
-    //  this.getPosts();
+     this.getPosts();
   }
 
     getPosts() {
-        console.log(1)
-        this.data.getPosts().subscribe((response) => {
-            console.log(2)
-            this.posts = response;
-            this.event.publish("cafesData", response);
-        });
+     this.data.getPosts();
+        // console.log(1)
+        // this.data.getPosts().subscribe((response) => {
+        //     console.log(2)
+        //     this.posts = response;
+        //     this.event.publish("cafesData", response);
+        // });
+
+
+
     }
 
     goToTab(tabIndex: number) {
