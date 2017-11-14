@@ -6,7 +6,12 @@
     <button ion-button (click)="goToTab(0)">Cafes List</button>
     <button ion-button (click)="goToTab(1)">Map</button>
   </ion-navbar>
-
+  <ion-searchbar
+          [(ngModel)]="searchValue"
+          [showCancelButton]="true"
+          (ionInput)="onInput($event)"
+          (ionCancel)="onCancel($event)">
+  </ion-searchbar>
 </ion-header>
 
 

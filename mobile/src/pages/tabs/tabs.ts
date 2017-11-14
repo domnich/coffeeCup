@@ -20,6 +20,7 @@ export class TabsPage   {
 
     posts: Observable<Array<Post>>;
 text: string;
+private searchValue: string;
   constructor(public navCtrl: NavController, public navParams: NavParams, private data: DataProvider, private event: Events) {
 
   }
@@ -32,16 +33,25 @@ text: string;
   }
 
     getPosts() {
-     this.data.getPosts();
+
         // console.log(1)
-        // this.data.getPosts().subscribe((response) => {
-        //     console.log(2)
-        //     this.posts = response;
-        //     this.event.publish("cafesData", response);
-        // });
+        this.data.getPosts();
+
+        this.data.Settings
+            .subscribe(response => {
+                if(response && response.length) {
+                    this.posts = response;
+                }
+            });
 
 
+    }
 
+    onInput(event: any) {
+      console.log(  this.posts)
+        this.posts = this.posts.filter((item) => {
+            return (item['title'].toLowerCase().indexOf(this.searchValue.toLowerCase()) > -1);
+        })
     }
 
     goToTab(tabIndex: number) {
