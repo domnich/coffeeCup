@@ -1,2 +1,7 @@
-<ion-input #input type="text"></ion-input>
-<button (click)="focusInput(input)">Focus</button>
+<!--<button (click)="openSearchComponent(input)">Focus</button>-->
+<ion-searchbar
+        [(ngModel)]="searchValue"
+        [showCancelButton]="true"
+        (ionInput)="onInput($event)"
+        (ionCancel)="onCancel($event)">
+</ion-searchbar>

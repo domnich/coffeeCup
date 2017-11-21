@@ -1,26 +1,22 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import {AppEmitterProvider} from "../../providers/app-emitter/app-emitter";
 
-/**
- * Generated class for the SearchBarComponent component.
- *
- * See https://angular.io/api/core/Component for more info on Angular
- * Components.
- */
 @Component({
-  selector: 'search-bar',
-  templateUrl: 'search-bar.html'
+    selector: 'search-bar',
+    templateUrl: 'search-bar.html'
 })
 export class SearchBarComponent {
+    constructor(private appEmitter: AppEmitterProvider) {
+        console.log('Hello SearchBarComponent Component');
+        let self = this;
 
-  text: string;
-
-  constructor() {
-    console.log('Hello SearchBarComponent Component');
-    this.text = 'Hello World';
-  }
-
-    focusInput(input) {
-        input.setFocus();
     }
+
+
+
+    //
+    // focusInput(input) {
+    //     input.setFocus();
+    // }
 
 }
