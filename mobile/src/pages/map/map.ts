@@ -32,7 +32,7 @@ export class MapPage {
                 tilt: 30
             }
         };
-        let map: GoogleMap = this.googleMaps.create(element, mapOptions);
+        let map: GoogleMap = GoogleMaps.create(element, mapOptions);
         map.one(GoogleMapsEvent.MAP_READY).then(() => {
 
 
