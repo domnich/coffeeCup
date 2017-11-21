@@ -38,10 +38,8 @@ export class CafeListPage {
         window.addEventListener('native.keyboardshow', keyboardShowHandler);
         function keyboardShowHandler(e) {
 
-            console.log(e.keyboardHeight)
-
           //  self.calculatePageOffset(e.keyboardHeight);
-            document.getElementById("testId").style.height = document.getElementById("testId").clientHeight - 320;
+            document.getElementById("testId").style.height = document.getElementById("testId").clientHeight - e.keyboardHeight - 20 + "px";
         }
 
 
