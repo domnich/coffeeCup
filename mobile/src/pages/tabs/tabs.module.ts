@@ -1,14 +1,15 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { TabsPage } from './tabs';
-import {SearchBarComponent} from "../../components/search-bar/search-bar";
+import {SearchBarModule} from "../../components/search-bar/search-bar.module";
+
 
 @NgModule({
   declarations: [
-    TabsPage,
-      SearchBarComponent
+    TabsPage
   ],
   imports: [
+      SearchBarModule,
     IonicPageModule.forChild(TabsPage),
   ],
 })

@@ -16,7 +16,11 @@ export class MapPage {
 
     ionViewDidLoad() {
         console.log('ionViewDidLoad MapPage');
-        this.loadMap();
+
+        setTimeout(()=>{
+            this.loadMap();
+            alert(1)
+        }, 500);
     }
 
 
@@ -32,10 +36,8 @@ export class MapPage {
                 tilt: 30
             }
         };
-        let map: GoogleMap = GoogleMaps.create(element, mapOptions);
+        let map: GoogleMap = this.googleMaps.create(element, mapOptions);
         map.one(GoogleMapsEvent.MAP_READY).then(() => {
-
-
 
             map.addMarker({
                 title: 'Ionic',

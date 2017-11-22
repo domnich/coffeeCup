@@ -27,8 +27,6 @@ private searchValue: string;
 
   ionViewDidLoad() {
       this.tabRef.select(0);
-   // console.log('ionViewDidLoad TabsPage');
-   //   this.event.publish("cafesData", []);
      this.getPosts();
   }
 
@@ -48,7 +46,6 @@ private searchValue: string;
     }
 
     onInput(event: any) {
-      console.log(  this.posts)
         this.posts = this.posts.filter((item) => {
             return (item['title'].toLowerCase().indexOf(this.searchValue.toLowerCase()) > -1);
         })

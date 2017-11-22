@@ -28,21 +28,16 @@ export class CafeListPage {
 
     ionViewDidLoad() {
         console.log('ionViewDidLoad CafeListPage');
-        // this.subscription = this.appEmitter.getKeyboardHeightEmitter().subscribe((number) => {
-        //
-        //     this.calculatePageOffset(number + 40);
-        //     this.calculatePageOffset(number + 40);
-        // });
 
-        var self = this;
         window.addEventListener('native.keyboardshow', keyboardShowHandler);
+        window.addEventListener('native.keyboardhide', keyboardHideHandler);
         function keyboardShowHandler(e) {
-
-          //  self.calculatePageOffset(e.keyboardHeight);
-            document.getElementById("testId").style.height = document.getElementById("testId").clientHeight - e.keyboardHeight - 20 + "px";
+            document.getElementById("cafes-list").style.height = document.getElementById("testId").clientHeight - e.keyboardHeight + "px";
         }
 
-
+        function keyboardHideHandler(e) {
+            document.getElementById("cafes-list").style.height = "100%";
+        }
 
         this.getPostsDataListener();
     }
@@ -62,7 +57,6 @@ export class CafeListPage {
 
     calculatePageOffset(n: number) {
         this.contentHeight = this.sanitizer.bypassSecurityTrustStyle("calc(100% - " + n + "px)");
-
     }
 
 }

@@ -1,10 +1,9 @@
-
-<ion-content id="testId">
-  <ion-card *ngFor="let post of posts" (click)="navigateToDetail(post.id)">
-    <ion-card-header>{{post.id}}  - {{post.title}}</ion-card-header>
-    <ion-card-content >
+<ion-content id="cafes-list">
+  <ul>
+    <li *ngFor="let post of posts" (click)="navigateToDetail(post.id)">
+      <div><strong>{{post.id}}  - {{post.title}}</strong></div>
       <p>{{post.body}}</p>
       <p>{{post.userId}}</p>
-    </ion-card-content>
-  </ion-card>
+    </li>
+  </ul>
 </ion-content>
