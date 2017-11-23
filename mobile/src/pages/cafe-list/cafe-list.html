@@ -1,4 +1,15 @@
 
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>tabs</ion-title>
+        <button ion-button (click)="goToTab(0)">Cafes List</button>
+        <button ion-button (click)="goToTab(1)">Map</button>
+    </ion-navbar>
+
+</ion-header>
+
+
 <ion-content id="cafes-list">
   <ul>
     <li *ngFor="let post of posts" (click)="navigateToDetail(post.id)">

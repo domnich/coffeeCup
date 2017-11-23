@@ -1,11 +1,9 @@
-import {Component, Input} from '@angular/core';
-import {DomSanitizer} from '@angular/platform-browser';
+import {Component,} from '@angular/core';
 import {IonicPage, NavController, NavParams, Events} from 'ionic-angular';
 import {Observable} from "rxjs/Observable";
-import { Subscription } from 'rxjs/Subscription';
 import {Post} from "../../models/post.interface";
 import {DataProvider} from "../../providers/data/data";
-import { AppEmitterProvider } from "../../providers/app-emitter/app-emitter";
+
 
 @IonicPage({
     name: "cafes",
@@ -17,12 +15,8 @@ import { AppEmitterProvider } from "../../providers/app-emitter/app-emitter";
 })
 export class CafeListPage {
     private posts: Observable<Array<Post>>;
-    public subscription: Subscription;
-    private contentHeight: any;
-    private test: any;
-    constructor(public navCtrl: NavController, public navParams: NavParams, private data: DataProvider, private event: Events, private appEmitter: AppEmitterProvider, private sanitizer: DomSanitizer) {
-        //this.getPosts();
 
+    constructor(public navCtrl: NavController, public navParams: NavParams, private data: DataProvider) {
 
     }
 
@@ -32,7 +26,7 @@ export class CafeListPage {
         window.addEventListener('native.keyboardshow', keyboardShowHandler);
         window.addEventListener('native.keyboardhide', keyboardHideHandler);
         function keyboardShowHandler(e) {
-            document.getElementById("cafes-list").style.height = document.getElementById("testId").clientHeight - e.keyboardHeight + "px";
+            document.getElementById("cafes-list").style.height = document.getElementById("cafes-list").clientHeight - e.keyboardHeight + "px";
         }
 
         function keyboardHideHandler(e) {
@@ -55,8 +49,9 @@ export class CafeListPage {
         this.navCtrl.push('CafeDetailPage', {postId})
     }
 
-    calculatePageOffset(n: number) {
-        this.contentHeight = this.sanitizer.bypassSecurityTrustStyle("calc(100% - " + n + "px)");
+
+    goToTab(tabId: number) {
+        this.navCtrl.parent.select(tabId);
     }
 
 }
