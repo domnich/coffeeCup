@@ -1,14 +1,11 @@
-<ion-header>
+<!-- <ion-header>
   <ion-navbar>
     <ion-title>tabs</ion-title>
     <button ion-button (click)="goToTab(0)">Cafes List</button>
     <button ion-button (click)="goToTab(1)">Map</button>
   </ion-navbar>
-  <search-bar></search-bar>
-</ion-header>
-<ion-content class="tabs-holder">
-  <ion-tabs #myTabs>
-    <ion-tab [root]="tab1Root" show="false"></ion-tab>
-    <ion-tab [root]="tab2Root" show="false"></ion-tab>
-  </ion-tabs>
-</ion-content>
+</ion-header> -->
+<ion-tabs #myTabs>
+  <ion-tab [root]="tab1Root" show="true"></ion-tab>
+  <ion-tab [root]="tab2Root" show="true"></ion-tab>
+</ion-tabs>

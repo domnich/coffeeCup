@@ -26,7 +26,7 @@ private searchValue: string;
   }
 
   ionViewDidLoad() {
-      this.tabRef.select(0);
+    //  this.tabRef.select(0);
      this.getPosts();
   }
 
