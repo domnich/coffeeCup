@@ -1,12 +1,13 @@
 
 <ion-header>
-
     <ion-navbar>
-        <ion-title>tabs</ion-title>
-        <button ion-button (click)="goToTab(0)">Cafes List</button>
-        <button ion-button (click)="goToTab(1)">Map</button>
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <button ion-button small (click)="goToTab(0)">Cafes List</button>
+        <button ion-button small (click)="goToTab(1)">Map</button>
+        <search-bar></search-bar>
     </ion-navbar>
-
 </ion-header>
 
 

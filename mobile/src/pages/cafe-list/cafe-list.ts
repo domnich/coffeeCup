@@ -23,15 +23,6 @@ export class CafeListPage {
     ionViewDidLoad() {
         console.log('ionViewDidLoad CafeListPage');
 
-        window.addEventListener('native.keyboardshow', keyboardShowHandler);
-        window.addEventListener('native.keyboardhide', keyboardHideHandler);
-        function keyboardShowHandler(e) {
-            document.getElementById("cafes-list").style.height = document.getElementById("cafes-list").clientHeight - e.keyboardHeight + "px";
-        }
-
-        function keyboardHideHandler(e) {
-            document.getElementById("cafes-list").style.height = "100%";
-        }
 
         this.getPostsDataListener();
     }
