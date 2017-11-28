@@ -2,8 +2,9 @@
     <ion-icon *ngIf="!isInFocus" name="search"></ion-icon>
     <ion-icon *ngIf="isInFocus" name="close"></ion-icon>
 </button>
-<ion-searchbar #searchbar
 
+{{isInFocus}}
+<ion-searchbar #searchbar
         [(ngModel)]="searchValue"
         [showCancelButton]="false"
         (ionInput)="onInput($event)"

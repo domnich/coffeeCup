@@ -1,5 +1,4 @@
-import {Component, ViewChild} from '@angular/core';
-import {AppEmitterProvider} from "../../providers/app-emitter/app-emitter";
+import {ChangeDetectorRef, Component, ViewChild} from '@angular/core';
 import {Platform, Searchbar} from "ionic-angular";
 
 @Component({
@@ -9,22 +8,29 @@ import {Platform, Searchbar} from "ionic-angular";
 export class SearchBarComponent {
     @ViewChild('searchbar') searchbar: Searchbar;
     isInFocus: boolean = false;
-    constructor(private appEmitter: AppEmitterProvider, private platform: Platform) {
+    public title: string = "World";
+    constructor(private platform: Platform, private cd: ChangeDetectorRef) {
         console.log('Hello SearchBarComponent Component');
         let self = this;
         window.addEventListener('native.keyboardshow', keyboardShowHandler);
         window.addEventListener('native.keyboardhide', keyboardHideHandler);
+
         function keyboardShowHandler(e) {
+            self.isInFocus = true;
+            self.cd.detectChanges();
             if(self.platform.is('ios')) {
                 document.getElementById("cafes-list").style.height = document.getElementById("cafes-list").clientHeight - e.keyboardHeight + "px";
             }
-            self.isInFocus = true;
+
         }
         function keyboardHideHandler(e) {
+            self.isInFocus = false;
+            self.cd.detectChanges();
             if(self.platform.is('ios')) {
                 document.getElementById("cafes-list").style.height = "100%";
             }
-            self.isInFocus = false;
+
+
         }
     }
 
@@ -37,5 +43,7 @@ export class SearchBarComponent {
         this.isInFocus = !this.isInFocus;
     }
 
-    onCancel(event) {}
+    onCancel(event) {
+        this.isInFocus = false;
+    }
 }

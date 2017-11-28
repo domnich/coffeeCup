@@ -1,7 +1,8 @@
 import {Component,} from '@angular/core';
-import {IonicPage, NavController, NavParams, Events} from 'ionic-angular';
+import {IonicPage, NavController, NavParams} from 'ionic-angular';
 import {Observable} from "rxjs/Observable";
 import {Post} from "../../models/post.interface";
+import { Cafe } from "../../models/cafe.interface";
 import {DataProvider} from "../../providers/data/data";
 
 
@@ -14,7 +15,7 @@ import {DataProvider} from "../../providers/data/data";
     templateUrl: 'cafe-list.html'
 })
 export class CafeListPage {
-    private posts: Observable<Array<Post>>;
+    private posts: Observable<Array<Cafe>>;
 
     constructor(public navCtrl: NavController, public navParams: NavParams, private data: DataProvider) {
 
@@ -31,6 +32,7 @@ export class CafeListPage {
         this.data.Settings
             .subscribe(response => {
                 if (response && response.length) {
+                    console.log(response)
                     this.posts = response;
                 }
             });

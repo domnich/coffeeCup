@@ -1,5 +1,5 @@
 import {Component, ViewChild} from '@angular/core';
-import {IonicPage, NavController, NavParams, Events, Tabs} from 'ionic-angular';
+import {IonicPage, NavController, NavParams, Tabs} from 'ionic-angular';
 import {CafeListTab, MapTab} from '../pages';
 import {Observable} from "rxjs/Observable";
 import {Post} from "../../models/post.interface";
@@ -20,7 +20,7 @@ export class TabsPage {
     text: string;
     private searchValue: string;
 
-    constructor(public navCtrl: NavController, public navParams: NavParams, private data: DataProvider, private event: Events) {
+    constructor(public navCtrl: NavController, public navParams: NavParams, private data: DataProvider) {
 
     }
 
