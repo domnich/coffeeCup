@@ -14,3 +14,16 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+
+::-webkit-scrollbar {width: 5px;}
+
+::-webkit-scrollbar-track { border-radius: 10px;}
+
+::-webkit-scrollbar-thumb { border-radius: 10px; background: rgb(169,169,169); }
+
+::-webkit-scrollbar-thumb:window-inactive {background: rgb(128,128,128); }
+
+//.keyboard-up{
+//  height: auto !important;
+//}

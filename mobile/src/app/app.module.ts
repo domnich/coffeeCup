@@ -8,6 +8,7 @@ import {MyApp} from './app.component';
 import {DataProvider} from '../providers/data/data';
 import {HttpModule} from "@angular/http";
 import { AppEmitterProvider } from '../providers/app-emitter/app-emitter';
+import {Keyboard} from "@ionic-native/keyboard";
 
 @NgModule({
     declarations: [
@@ -16,9 +17,12 @@ import { AppEmitterProvider } from '../providers/app-emitter/app-emitter';
     imports: [
         BrowserModule,
         HttpModule,
-        IonicModule.forRoot(MyApp, {tabsPlacement: 'top',
+        IonicModule.forRoot(MyApp, {
+            tabsPlacement: 'top',
             scrollAssist: false,
-            autoFocusAssist: false})
+            scrollPadding: false
+        }
+        )
     ],
     bootstrap: [IonicApp],
     entryComponents: [
@@ -26,6 +30,7 @@ import { AppEmitterProvider } from '../providers/app-emitter/app-emitter';
     ],
     providers: [
         StatusBar,
+        Keyboard,
         SplashScreen,
         {provide: ErrorHandler, useClass: IonicErrorHandler},
         DataProvider,

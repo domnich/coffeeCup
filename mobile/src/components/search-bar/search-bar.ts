@@ -18,17 +18,18 @@ export class SearchBarComponent {
         function keyboardShowHandler(e) {
             self.isInFocus = true;
             self.cd.detectChanges();
-            if(self.platform.is('ios')) {
-                document.getElementById("cafes-list").style.height = document.getElementById("cafes-list").clientHeight - e.keyboardHeight + "px";
-            }
+            // if(self.platform.is('ios')) {
+            //     document.getElementById("cafes-list").style.height = document.getElementById("cafes-list").clientHeight - e.keyboardHeight + "px";
+            // }
+           // document.getElementById("map").style.height = "568px";
 
         }
         function keyboardHideHandler(e) {
             self.isInFocus = false;
             self.cd.detectChanges();
-            if(self.platform.is('ios')) {
-                document.getElementById("cafes-list").style.height = "100%";
-            }
+            // if(self.platform.is('ios')) {
+            //     document.getElementById("cafes-list").style.height = "100%";
+            // }
 
 
         }
