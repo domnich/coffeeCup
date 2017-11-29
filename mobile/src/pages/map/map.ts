@@ -32,17 +32,37 @@ export class MapPage {
 
     loadMap() {
         let mapOptions: GoogleMapOptions = {
+            mapType: 'MAP_TYPE_ROADMAP',
+
             camera: {
                 target: {
                     lat: 43.0741904,
                     lng: -89.3809802
                 },
-                zoom: 18,
+                zoom: 15,
                 tilt: 30
+            },
+            controls: {
+                myLocationButton: true,
+                compass: false
+            },
+
+            preferences: {
+                building: false
             }
+
         };
 
         this.map = GoogleMaps.create('map', mapOptions);
+        this.map.one(GoogleMapsEvent.MAP_READY).then(() => {
+            console.log(this.map)
+            this.map.setClickable(false);
+
+            this.map.toDataURL().then((res) => {
+              alert(1);
+              alert(res)
+            });
+        });
     }
 
     goToTab(tabId: number) {

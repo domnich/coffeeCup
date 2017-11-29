@@ -21,7 +21,8 @@ export class SearchBarComponent {
             // if(self.platform.is('ios')) {
             //     document.getElementById("cafes-list").style.height = document.getElementById("cafes-list").clientHeight - e.keyboardHeight + "px";
             // }
-           // document.getElementById("map").style.height = "568px";
+            var x = document.getElementsByTagName("LI");
+            
 
         }
         function keyboardHideHandler(e) {
