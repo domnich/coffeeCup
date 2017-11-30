@@ -18,7 +18,7 @@ export class CafeListPage {
     private posts: Observable<Array<Cafe>>;
 
     constructor(public navCtrl: NavController, public navParams: NavParams, private data: DataProvider) {
-
+console.log(12312312)
     }
 
     ionViewDidLoad() {
@@ -28,8 +28,10 @@ export class CafeListPage {
         this.getPostsDataListener();
     }
 
+
+
     getPostsDataListener() {
-        this.data.Settings
+        this.data.cafesData
             .subscribe(response => {
                 if (response && response.length) {
                     console.log(response)
@@ -44,6 +46,7 @@ export class CafeListPage {
 
 
     goToTab(tabId: number) {
+
         this.navCtrl.parent.select(tabId);
     }
 

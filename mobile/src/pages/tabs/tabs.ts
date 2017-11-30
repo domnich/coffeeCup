@@ -33,7 +33,7 @@ export class TabsPage {
 
         this.data.getPosts();
 
-        this.data.Settings
+        this.data.cafesData
             .subscribe(response => {
                 if (response && response.length) {
                     this.posts = response;

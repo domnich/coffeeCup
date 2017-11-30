@@ -7,7 +7,7 @@ import {BehaviorSubject, Observable} from "rxjs";
 
 @Injectable()
 export class DataProvider {
-    private _settings = new BehaviorSubject({});
+    private _cafesData = new BehaviorSubject({});
     rootUrl: string = 'https://jsonplaceholder.typicode.com';
     posts: string = 'posts';
 
@@ -125,14 +125,14 @@ export class DataProvider {
 
         return this.http.get(`${this.rootUrl}/${this.posts}`)
             .map(res => cafes).take(1)
-            .subscribe(res => this._settings.next(res));
+            .subscribe(res => this._cafesData.next(res));
     }
 
     getPostById(id: number) {
         return this.http.get(`${this.rootUrl}/${this.posts}/${id}`).map(res => res.json()).take(1);
     }
 
-    public get Settings(): Observable<any> {
-        return this._settings.asObservable();
+    public get cafesData(): Observable<any> {
+        return this._cafesData.asObservable();
     }
 }
