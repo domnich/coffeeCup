@@ -12,6 +12,6 @@ export interface CafeAddress {
 }
 
 export interface CafeGeo {
-    lat: string,
-    lng: string
+    lat: number,
+    lng: number
 }

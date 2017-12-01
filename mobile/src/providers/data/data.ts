@@ -68,8 +68,8 @@ export class DataProvider {
                     "suite": "д. 12",
                     "city": "Харьков",
                     "geo": {
-                        "lat": "49.982834",
-                        "lng": "36.194458"
+                        "lat": 49.982834,
+                        "lng": 36.194458
                     }
                 }
             }, {
@@ -80,8 +80,8 @@ export class DataProvider {
                     "suite": "д. 12",
                     "city": "Харьков",
                     "geo": {
-                        "lat": "49.981951",
-                        "lng": "36.255913"
+                        "lat": 49.981951,
+                        "lng": 36.255913
                     }
                 }
             }, {
@@ -92,8 +92,8 @@ export class DataProvider {
                     "suite": "д. 12",
                     "city": "Харьков",
                     "geo": {
-                        "lat": "49.999388",
-                        "lng": "36.285095"
+                        "lat": 49.999388,
+                        "lng": 36.285095
                     }
                 }
             },{
@@ -104,8 +104,8 @@ export class DataProvider {
                     "suite": "д. 12",
                     "city": "Харьков",
                     "geo": {
-                        "lat": "49.998285",
-                        "lng": "36.223297"
+                        "lat": 49.998285,
+                        "lng": 36.223297
                     }
                 }
             },{
@@ -116,8 +116,8 @@ export class DataProvider {
                     "suite": "д. 12",
                     "city": "Харьков",
                     "geo": {
-                        "lat": "49.957219",
-                        "lng": "36.338654"
+                        "lat": 49.957219,
+                        "lng": 36.338654
                     }
                 }
             }];

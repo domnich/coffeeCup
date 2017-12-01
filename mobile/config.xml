@@ -79,10 +79,6 @@
     <engine name="android" spec="^6.2.3" />
     <engine name="ios" spec="^4.5.4" />
     <plugin name="cordova-plugin-device" spec="^1.1.7" />
-    <plugin name="cordova-plugin-googlemaps" spec="~2.1.1">
-        <variable name="API_KEY_FOR_ANDROID" value="AIzaSyACfUJ_EnKHzMWz0BNYb1sasxINSCBAElc" />
-        <variable name="API_KEY_FOR_IOS" value="AIzaSyAj_U0ssAo0Y8uDPd_jq9vPwQm2L9ufHUo" />
-    </plugin>
     <plugin name="cordova-plugin-ionic-webview" spec="^1.1.16" />
     <plugin name="cordova-plugin-splashscreen" spec="^4.1.0" />
     <plugin name="cordova-plugin-statusbar" spec="^2.3.0" />
