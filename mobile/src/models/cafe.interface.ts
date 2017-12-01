@@ -1,17 +1,25 @@
 export interface Cafe {
     id: number,
     name: string,
-    address: CafeAddress
+    address: CafeAddress,
+    photos: string[]
 }
 
 export interface CafeAddress {
-    street: string,
-    suite: string,
     city: string,
-    geo: CafeGeo
+    street: string,
+    phone: string,
+    cite: string,
+    workingTime: CafeWorkingTime,
+    geolocation: CafeGelocation
 }
 
-export interface CafeGeo {
+export interface CafeWorkingTime {
+  from: string,
+  to: string
+}
+
+export interface CafeGelocation {
     lat: number,
     lng: number
 }

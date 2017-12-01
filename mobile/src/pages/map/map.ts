@@ -15,7 +15,7 @@ export class MapPage {
     @ViewChild('map') mapElement: ElementRef;
     map: any;
     private infoWindows: Array<any>;
-private cafes: Observable<Array<Cafe>>;
+    private cafes: Observable<Array<Cafe>>;
     constructor(public navCtrl: NavController, public navParams: NavParams, public platform: Platform,  private data: DataProvider) {
 
     }
@@ -24,7 +24,6 @@ private cafes: Observable<Array<Cafe>>;
         console.log('ionViewDidLoad MapPage');
         this.getData();
         this.loadMap();
-
     }
 
     loadMap(){
@@ -53,13 +52,13 @@ private cafes: Observable<Array<Cafe>>;
 
     setMarker(cafe: Cafe){
         var marker = new google.maps.Marker({
-            position: new google.maps.LatLng(cafe.address.geo.lat, cafe.address.geo.lng),
+            position: new google.maps.LatLng(cafe.address.geolocation.lat, cafe.address.geolocation.lng),
             map: this.map,
             title: cafe.name
         });
 
 
-        var contentWindow = "<button id='clickableItem'>cafe.name</button> <br/>" + "<img src='http://via.placeholder.com/250x150' width='100%' height='100' /> <br/>" + cafe.address.street
+        var contentWindow = "<button id='clickableItem'>cafe.name</button> <br/>" + "<img src='"+ cafe.photos[0] +"' width='100%' height='100' /> <br/>" + cafe.address.street
         var infoWindow = new google.maps.InfoWindow({
             content: contentWindow
         });
