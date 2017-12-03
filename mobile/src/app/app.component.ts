@@ -4,9 +4,6 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import {Keyboard} from "@ionic-native/keyboard";
 
-
-
-
 @Component({
   templateUrl: 'app.html'
 })
@@ -19,7 +16,7 @@ export class MyApp {
         { title: 'Cafe List', component: "cafes" },
         { title: 'Home', component: "HomePage" },
         { title: 'Map', component: "MapPage" }
-    ]
+    ];
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, keyboard: Keyboard) {
     platform.ready().then(() => {
