@@ -8,10 +8,6 @@
         <search-bar></search-bar>
     </ion-navbar>
 </ion-header>
-<ion-content id="cafes-list">
-    <ion-card *ngFor="let cafe of posts" (click)="navigateToDetail(post.id)">
-        <ion-img width="100%" height="120" src="{{cafe.photos[0]}}"></ion-img>
-        <div class="card-title">{{cafe.name}}</div>
-        <div class="card-subtitle">{{cafe.address.street}}</div>
-    </ion-card>
+<ion-content scroll="false">
+    <wheel-selector></wheel-selector>
 </ion-content>

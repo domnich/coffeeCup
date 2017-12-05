@@ -9,14 +9,18 @@ import {DataProvider} from '../providers/data/data';
 import {HttpModule} from "@angular/http";
 import { AppEmitterProvider } from '../providers/app-emitter/app-emitter';
 import {Keyboard} from "@ionic-native/keyboard";
-import {CitySelectModule} from "../components/city-select/city-select.module";
+
+import {CitySelectComponent} from "../components/city-select/city-select";
+
+import {HomePageModule} from "../pages/home/home.module";
+import {WheelSelector} from "../../plugins/cordova-wheel-selector-plugin/examples/ionic2/dist/wheel-selector/index";
 
 @NgModule({
     declarations: [
         MyApp
     ],
     imports: [
-        CitySelectModule,
+        HomePageModule,
         BrowserModule,
         HttpModule,
         IonicModule.forRoot(MyApp, {
@@ -28,9 +32,12 @@ import {CitySelectModule} from "../components/city-select/city-select.module";
     ],
     bootstrap: [IonicApp],
     entryComponents: [
-        MyApp
+        MyApp,
+
     ],
     providers: [
+WheelSelector,
+        CitySelectComponent,
         StatusBar,
         Keyboard,
         SplashScreen,
