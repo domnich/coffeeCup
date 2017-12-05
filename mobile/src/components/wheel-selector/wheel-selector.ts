@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild, ngAfterViewInit } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import {Gesture} from 'ionic-angular/gestures/gesture';
 import * as $ from 'jquery';
 @Component({
@@ -10,76 +10,104 @@ export class WheelSelectorComponent {
   @ViewChild('wheel') wheel;
   @ViewChild('slideList') slideList;
   pressGesture: Gesture;
-  startCounter: number;
+  startCounter: number = 0;
+  slideCounter: number = 0;
   names:Array<string>;
-  list: ElementRef;
+  activeIndex: number = 0;
+  activeClass: string = 'active';
+  animSpeed: number = 500;
   constructor() {
     console.log('Hello WheelSelectorComponent Component');
-
-
-this.names = ['Эспрессо', 'Американо', 'Латте', 'Какао', 'Чай']
-
-    this.startCounter = 0;
-
+    this.names = ['Эспрессо', 'Американо', 'Латте', 'Какао', 'Чай'];
   }
 
   ngAfterViewInit() {
-      this.setSliderWidth();
+      this.activate();
   }
 
-  setSliderWidth() {
+  activate() {
       let width = 0,
-      this.list = $(this.wheel.nativeElement).find('.common-list');
-      this.list.find('>li').each(function() {
+          self = this;
+
+      $(this.slideList.nativeElement).find('>li').each(function(ind) {
+        if(ind === 0) {
+          self.startCounter = - $(this).width() / 2;
+          self.slideList.nativeElement.style.transform = 'translate('+ self.startCounter +'px, 0)';
+        }
         width += $(this).outerWidth() + parseInt($(this).css('margin-right'));
       });
       width = +width.toFixed(0);
-      this.list.css({
-        width: width
+      $(this.slideList.nativeElement).css({
+        width: width + 100
       });
 
 
-
-
+      this.addActiveClass();
       this.activateSlider();
   }
 
   activateSlider() {
-
-
-
         this.pressGesture = new Gesture(this.wheel.nativeElement);
                 this.pressGesture.listen();
 
-
         this.pressGesture.on('pan', e => {
-
             if(e.direction === 2) {
-                this.startCounter--;
+                this.slideCounter--;
             } else if(e.direction === 4) {
-                this.startCounter++;
+                this.slideCounter++;
             }
 
-            if(e.isFinal) {
-                this.findActiveItem();
-          //   this.slideList.nativeElement.style.transform = 'translateX(0px)';
-            // this.slideList.nativeElement.style.transition = 'transform 500ms';
-          //    this.startCounter = 0;
+            this.activeIndex = this.getActiveIndex();
+            this.addActiveClass();
 
+            if(e.isFinal) {
+                this.slideToActiveElement(this.getActiveIndex());
             } else {
-                this.slideList.nativeElement.style.transform = 'translate('+ this.startCounter*5 +'px, 0)';
+                let distanceNumber = this.startCounter + this.slideCounter * 4;
+                this.slideList.nativeElement.style.transform = 'translate('+ distanceNumber +'px, 0)';
                 this.slideList.nativeElement.style.transition = 'transform 0ms';
             }
         });
-
   }
 
-  findActiveItem() {
-    this.list.find('>li').each(function() {
-      console.log($(this).position().left)
+  slideToItem(ind) {
+    this.activeIndex = ind;
+    this.addActiveClass();
+    this.slideToActiveElement(ind);
+  }
+
+  addActiveClass() {
+    $(this.slideList.nativeElement).find('li').removeClass(this.activeClass);
+    $(this.slideList.nativeElement).find('li').eq(this.activeIndex).addClass(this.activeClass);
+  }
+
+  slideToActiveElement(index: number) {
+      let distance = 0;
+      $(this.slideList.nativeElement).find('>li').each(function(ind) {
+        if(ind < index) {
+          distance += $(this).outerWidth() + parseInt($(this).css('margin-right'));
+        } else if(ind === index) {
+            distance += $(this).width() / 2;
+        }
+      });
+      distance = distance.toFixed(0) * -1;
+      this.slideList.nativeElement.style.transform = 'translateX('+ distance +'px)';
+      this.slideList.nativeElement.style.transition = 'transform '+ this.animSpeed +'ms';
+      this.startCounter = distance;
+      this.slideCounter = 0;
+  }
+
+  getActiveIndex() {
+    let indexChanged = false,
+        activeIndex;
+
+    $(this.slideList.nativeElement).find('>li').each(function(ind) {
+      if($(this).position().left + $(this).width() >= 0 && !indexChanged) {
+          indexChanged = true;
+          activeIndex = ind;
+      }
     });
+    activeIndex = typeof activeIndex === 'number' ? activeIndex : $(this.slideList.nativeElement).find('>li').length - 1;
+    return activeIndex;
   }
-
-
-
 }

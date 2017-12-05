@@ -1,7 +1,7 @@
-<div #wheel   class="wheel-holder">
+<div #wheel class="wheel-holder">
   <div class="mask">
       <ul #slideList class="common-list">
-          <li *ngFor="let name of names">{{name}}</li>
+          <li (click)="slideToItem(i)" *ngFor="let name of names; let i = index">{{name}}</li>
       </ul>
   </div>
 </div>

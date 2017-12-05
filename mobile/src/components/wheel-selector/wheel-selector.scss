@@ -17,7 +17,8 @@ wheel-selector {
     border-left: 1px solid #000;
   }
   .common-list {
-
+    color: #4f697d;
+    font-size: 20px;
     list-style: none;
     margin: 0;
     padding: 0;
@@ -28,6 +29,10 @@ wheel-selector {
       height: 25px;
       line-height: 25px;
       float: left;
+      opacity: 0.5;
+      &.active {
+        opacity: 1;
+      }
     }
   }
 }
