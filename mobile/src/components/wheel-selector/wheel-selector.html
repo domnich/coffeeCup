@@ -1,11 +1,7 @@
 <div #wheel   class="wheel-holder">
   <div class="mask">
       <ul #slideList class="common-list">
-          <li>Эспрессо</li>
-          <li>Американо</li>
-          <li>Латте</li>
-          <li>Какао</li>
-          <li>Чай</li>
+          <li *ngFor="let name of names">{{name}}</li>
       </ul>
   </div>
 </div>

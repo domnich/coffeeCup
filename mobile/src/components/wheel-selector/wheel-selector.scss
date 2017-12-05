@@ -13,17 +13,18 @@ wheel-selector {
     width: 50%;
     position: relative;
     left: 50%;
-
+    position: relative;
+    border-left: 1px solid #000;
   }
   .common-list {
-width: 315px;
+
     list-style: none;
     margin: 0;
     padding: 0;
     text-align: center;
     float: left;
     li {
-      margin: 0 15px 0 0;
+      margin-right: 15px;
       height: 25px;
       line-height: 25px;
       float: left;
