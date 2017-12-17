@@ -19,14 +19,14 @@ export class TabsPage {
     posts: Observable<Array<Post>>;
     text: string;
     private searchValue: string;
-
     constructor(public navCtrl: NavController, public navParams: NavParams, private data: DataProvider) {
-
+        this.getPosts();
     }
 
     ionViewDidLoad() {
         this.tabRef.select(0);
-        this.getPosts();
+   
+       
     }
 
     getPosts() {
@@ -43,10 +43,6 @@ export class TabsPage {
 
     }
 
-    onInput(event: any) {
-        this.posts = this.posts.filter((item) => {
-            return (item['title'].toLowerCase().indexOf(this.searchValue.toLowerCase()) > -1);
-        })
-    }
+    
 
 }

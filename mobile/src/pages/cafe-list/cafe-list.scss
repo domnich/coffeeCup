@@ -1,6 +1,23 @@
 page-cafe-list {
-
-
+  .show-overlay {
+    .scroll-content {
+        overflow: hidden;
+      }
+      .mask {
+        display: block;
+      }
+  }
+  .mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #000;
+    opacity: .7;
+    z-index: 555;
+    display: none;
+  }
   ion-card {
     position: relative;
     text-align: center;
@@ -12,17 +29,17 @@ page-cafe-list {
   .card-title {
     position: absolute;
     top: 36%;
-    font-size: 2.0em;
+    font-size: 1.0em;
     width: 100%;
     font-weight: bold;
-    color: red;
+    color:#000;
   }
 
   .card-subtitle {
-    font-size: 1.0em;
+    font-size: 0.5em;
     position: absolute;
     top: 52%;
     width: 100%;
-    color: red;
+    color: #000;
   }
 }

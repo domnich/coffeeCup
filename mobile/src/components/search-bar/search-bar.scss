@@ -1,9 +1,35 @@
 search-bar {
-  .searchbar {
+
+  float: right;
+
+  .search-bar-area {
+    &.active{
+      transform: translateX(0);
+      transition: 0.5ms; 
+    }
     position: absolute;
     top: 0;
-    right: 0;
-    width: 100px;
+    left: 0;
+    width: 100%;
+    padding: 0 50px;
+    transition: 0.5ms;
+    transform: translateX(100%);
+    z-index: 20;
 
+.searchbar-ios {
+  background:#fff !important;
+  z-index: 555;
+  position: relative;
+  top: 26px;
+}
+
+    .searchbar-ios-cancel {
+      display: none !important;
+    }
   }
+  .search-button {
+    position: relative;
+    z-index: 30;
+  }
+
 }

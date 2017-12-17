@@ -82,7 +82,7 @@ export class WheelSelectorComponent {
   }
 
   slideToActiveElement(index: number) {
-      let distance = 0;
+      let distance:number = 0;
       $(this.slideList.nativeElement).find('>li').each(function(ind) {
         if(ind < index) {
           distance += $(this).outerWidth() + parseInt($(this).css('margin-right'));
@@ -90,8 +90,11 @@ export class WheelSelectorComponent {
             distance += $(this).width() / 2;
         }
       });
-      distance = distance.toFixed(0) * -1;
-      this.slideList.nativeElement.style.transform = 'translateX('+ distance +'px)';
+   //   distance = -1 * +distance.toFixed(0);
+
+   
+   distance = 0;
+   this.slideList.nativeElement.style.transform = 'translateX('+ distance +'px)';
       this.slideList.nativeElement.style.transition = 'transform '+ this.animSpeed +'ms';
       this.startCounter = distance;
       this.slideCounter = 0;

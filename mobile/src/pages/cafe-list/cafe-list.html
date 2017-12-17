@@ -5,10 +5,14 @@
         </button>
         <button ion-button small (click)="goToTab(0)">Cafes List</button>
         <button ion-button small (click)="goToTab(1)">Map</button>
-        <search-bar></search-bar>
+        <search-bar (isSearchBarActive)="onMaskToggle($event)"></search-bar>
     </ion-navbar>
 </ion-header>
-<ion-content no-bounce>
-    <wheel-selector></wheel-selector>
-
+<ion-content [class.show-overlay]="toggleMask" id="cafes-list">
+    <div class="mask">&nbsp;</div>
+    <ion-card *ngFor="let cafe of cafes" (click)="navigateToDetail(cafe.id)">
+        <ion-img width="100%" height="120" src="{{cafe.photos[0]}}"></ion-img>
+        <div class="card-title">{{cafe.name}}</div>
+        <div class="card-subtitle">{{cafe.address.street}}</div>
+    </ion-card>
 </ion-content>

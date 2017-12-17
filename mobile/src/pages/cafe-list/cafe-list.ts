@@ -3,8 +3,7 @@ import {IonicPage, NavController, NavParams} from 'ionic-angular';
 import {Observable} from "rxjs/Observable";
 import {Post} from "../../models/post.interface";
 import { Cafe } from "../../models/cafe.interface";
-import {DataProvider} from "../../providers/data/data";
-
+import { DataProvider } from "../../providers/data/data";
 
 @IonicPage({
     name: "cafes",
@@ -15,27 +14,21 @@ import {DataProvider} from "../../providers/data/data";
     templateUrl: 'cafe-list.html'
 })
 export class CafeListPage {
-    private posts: Observable<Array<Cafe>>;
-
+    public cafes: Observable<Array<Cafe>>;
+    public toggleMask: boolean = false;
     constructor(public navCtrl: NavController, public navParams: NavParams, private data: DataProvider) {
-console.log(12312312)
     }
 
     ionViewDidLoad() {
         console.log('ionViewDidLoad CafeListPage');
-
-
         this.getPostsDataListener();
     }
-
-
 
     getPostsDataListener() {
         this.data.cafesData
             .subscribe(response => {
                 if (response && response.length) {
-                    console.log(response)
-                    this.posts = response;
+                    this.cafes = response;
                 }
             });
     }
@@ -45,8 +38,11 @@ console.log(12312312)
     }
 
 
-    goToTab(tabId: number) {
+    onMaskToggle(val: boolean): void {
+        this.toggleMask = val;
+    }
 
+    goToTab(tabId: number) {
         this.navCtrl.parent.select(tabId);
     }
 

@@ -6,6 +6,7 @@ import {Keyboard} from "@ionic-native/keyboard";
 
 
 import {HomePage} from "../pages/home/home";
+import { AppEmitterProvider } from '../providers/app-emitter/app-emitter';
 
 @Component({
   templateUrl: 'app.html'
@@ -21,7 +22,7 @@ export class MyApp {
         { title: 'Map', component: "MapPage" }
     ];
 
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, keyboard: Keyboard, public modalCtrl: ModalController) {
+  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, keyboard: Keyboard, public modalCtrl: ModalController, private appEmiter: AppEmitterProvider) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.

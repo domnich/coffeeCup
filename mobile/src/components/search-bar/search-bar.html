@@ -1,12 +1,12 @@
-<button ion-button icon-only (click)="showSearchField($event)">
+<button ion-button icon-only (click)="showSearchField($event)" class="search-button">
     <ion-icon *ngIf="!isInFocus" name="search"></ion-icon>
     <ion-icon *ngIf="isInFocus" name="close"></ion-icon>
 </button>
-
-{{isInFocus}}
-<ion-searchbar #searchbar
+<div [class.active]="isInFocus" class="search-bar-area">
+    <ion-searchbar #searchbar
         [(ngModel)]="searchValue"
-        [showCancelButton]="false"
+        [showCancelButton]="true"
         (ionInput)="onInput($event)"
         (ionCancel)="onCancel($event)">
-</ion-searchbar>
+    </ion-searchbar>
+</div>
