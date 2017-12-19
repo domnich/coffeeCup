@@ -1,7 +1,6 @@
 import {NgModule} from '@angular/core';
 import {IonicPageModule} from 'ionic-angular';
 import {MapPage} from './map';
-import {GoogleMaps} from "@ionic-native/google-maps";
 import {SearchBarModule} from "../../components/search-bar/search-bar.module";
 
 
@@ -10,7 +9,7 @@ import {SearchBarModule} from "../../components/search-bar/search-bar.module";
         MapPage,
     ],
     providers: [
-        GoogleMaps
+        
     ],
     imports: [
         SearchBarModule,

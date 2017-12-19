@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Component, ViewChild, Output, EventEmitter} from '@angular/core';
+import { Component, ViewChild, Output, EventEmitter} from '@angular/core';
 import {Platform, Searchbar} from "ionic-angular";
 import { DataProvider } from '../../providers/data/data';
 import { Observable } from 'rxjs/Observable';
@@ -18,9 +18,8 @@ export class SearchBarComponent {
     public cafes: Observable<Array<Cafe>>;
     public filteredCafes: Observable<Array<Cafe>>;
     private preventSearchHide: boolean = false;
-    constructor(private platform: Platform, private cd: ChangeDetectorRef, private data: DataProvider, private keyboard: Keyboard) {
+    constructor(private platform: Platform, private data: DataProvider, private keyboard: Keyboard) {
         console.log('Hello SearchBarComponent Component');
-       
         this.keyboard.onKeyboardHide().subscribe((e) => {
             if(this.preventSearchHide) {
                 this.preventSearchHide = false;
@@ -28,30 +27,6 @@ export class SearchBarComponent {
                 this.hideSearchField(e);
             }
         });
-
-        this.keyboard.onKeyboardShow().subscribe(() => {
-          //  this.isInFocus = true;
-        });
-
-        // window.addEventListener('native.keyboardshow', keyboardShowHandler);
-        // window.addEventListener('native.keyboardhide', keyboardHideHandler);
-
-        // function keyboardShowHandler(e) {
-        //     self.isInFocus = true;
-        //     self.cd.detectChanges();
-        //     // if(self.platform.is('ios')) {
-        //     //     document.getElementById("cafes-list").style.height = document.getElementById("cafes-list").clientHeight - e.keyboardHeight + "px";
-        //     // }
-        //     // var x = document.getElementsByTagName("LI");
-        // }
-        // function keyboardHideHandler(e) {
-        //     self.isInFocus = false;
-        //     self.cd.detectChanges();
-        //     // if(self.platform.is('ios')) {
-        //     //     document.getElementById("cafes-list").style.height = "100%";
-        //     // }
-        // }
-
         this.data.cafesData
             .subscribe(response => {
                 if (response && response.length) {
@@ -69,15 +44,17 @@ export class SearchBarComponent {
 
     hideSearchField(event) {
         this.isInFocus = false;
+        this.searchbar.inputBlurred();
         this.isSearchBarActive.emit(false);
+        this.searchbar.cancelSearchbar(event);
         this.keyboard.close();
     }
 
     showSearchField(event) {
         event.preventDefault();
+        this.preventSearchHide = false;
         if(this.isInFocus) {   
-            this.searchbar.cancelSearchbar(event);
-            this.isInFocus = false;
+            this.hideSearchField(event);
         } else {
             this.searchbar.setFocus();
             this.isInFocus = true;
@@ -86,6 +63,6 @@ export class SearchBarComponent {
     }
     
     ionClear(event) {
-        this.preventSearchHide = true;
+        this.preventSearchHide = this.platform.is('ios') ? true : false;
     }
 }

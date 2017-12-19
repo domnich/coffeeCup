@@ -1,22 +1,19 @@
 page-cafe-list {
   .show-overlay {
-    .scroll-content {
-        overflow: hidden;
-      }
+ 
       .mask {
         display: block;
       }
   }
   .mask {
     position: absolute;
-    top: 0;
+    top: 56px;
     left: 0;
     right: 0;
     bottom: 0;
     background: #000;
     opacity: .7;
     z-index: 555;
-    display: none;
   }
   ion-card {
     position: relative;

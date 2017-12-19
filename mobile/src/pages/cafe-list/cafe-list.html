@@ -8,10 +8,8 @@
         <search-bar (isSearchBarActive)="onMaskToggle($event)"></search-bar>
     </ion-navbar>
 </ion-header>
+<div *ngIf="toggleMask" class="mask">&nbsp;</div>
 <ion-content [class.show-overlay]="toggleMask" id="cafes-list">
-    <div class="mask">&nbsp;</div>
-    {{toggleMask}}
-    
     <ion-card *ngFor="let cafe of cafes" (click)="navigateToDetail(cafe.id)">
         <ion-img *ngIf="cafe.photos[0]" width="100%" height="120" src="{{cafe.photos[0]}}"></ion-img>
         <div class="card-title">{{cafe.name}}</div>
