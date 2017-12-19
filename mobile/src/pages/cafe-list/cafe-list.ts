@@ -1,4 +1,4 @@
-import {Component,} from '@angular/core';
+import {Component, ChangeDetectorRef} from '@angular/core';
 import {IonicPage, NavController, NavParams} from 'ionic-angular';
 import {Observable} from "rxjs/Observable";
 import {Post} from "../../models/post.interface";
@@ -16,7 +16,7 @@ import { DataProvider } from "../../providers/data/data";
 export class CafeListPage {
     public cafes: Observable<Array<Cafe>>;
     public toggleMask: boolean = false;
-    constructor(public navCtrl: NavController, public navParams: NavParams, private data: DataProvider) {
+    constructor(public navCtrl: NavController, public navParams: NavParams, private data: DataProvider, private cd: ChangeDetectorRef) {
     }
 
     ionViewDidLoad() {
@@ -40,6 +40,8 @@ export class CafeListPage {
 
     onMaskToggle(val: boolean): void {
         this.toggleMask = val;
+        console.log(val, '312');
+        this.cd.detectChanges();
     }
 
     goToTab(tabId: number) {

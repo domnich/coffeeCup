@@ -13,29 +13,29 @@ import { Keyboard } from '@ionic-native/keyboard';
 export class SearchBarComponent {
     @ViewChild('searchbar') searchbar: Searchbar;
     @Output() isSearchBarActive: EventEmitter<boolean> = new EventEmitter<boolean>();
-    isInFocus: boolean = false;
-    public title: string = "World";
+    private isInFocus: boolean = false;
     public searchValue: string;
     public cafes: Observable<Array<Cafe>>;
     public filteredCafes: Observable<Array<Cafe>>;
+    private preventSearchHide: boolean = false;
     constructor(private platform: Platform, private cd: ChangeDetectorRef, private data: DataProvider, private keyboard: Keyboard) {
         console.log('Hello SearchBarComponent Component');
-        let self = this;
+       
+        this.keyboard.onKeyboardHide().subscribe((e) => {
+            if(this.preventSearchHide) {
+                this.preventSearchHide = false;
+            } else {
+                this.hideSearchField(e);
+            }
+        });
 
-        // this.keyboard.onKeyboardShow().subscribe(() => {
-        //     this.isInFocus = true;
-        //     this.isSearchBarActive.emit(true);
-        // });
-        this.keyboard.onKeyboardHide().subscribe(() => {
-            this.isInFocus = false;
-            this.isSearchBarActive.emit(false);
+        this.keyboard.onKeyboardShow().subscribe(() => {
+          //  this.isInFocus = true;
         });
 
         // window.addEventListener('native.keyboardshow', keyboardShowHandler);
         // window.addEventListener('native.keyboardhide', keyboardHideHandler);
 
-
-        
         // function keyboardShowHandler(e) {
         //     self.isInFocus = true;
         //     self.cd.detectChanges();
@@ -67,19 +67,25 @@ export class SearchBarComponent {
         console.log(this.filteredCafes, 'this.filteredCafes');
     }
 
-    showSearchField(event) {
-        event.preventDefault();
-        if(this.isInFocus) {
-            this.searchbar.cancelSearchbar(event);
-        } else {
-            this.searchbar.setFocus();
-        }
-        this.isInFocus = !this.isInFocus;
-        this.isSearchBarActive.emit(true);
-        
+    hideSearchField(event) {
+        this.isInFocus = false;
+        this.isSearchBarActive.emit(false);
+        this.keyboard.close();
     }
 
-    onCancel(event) {
-        this.isInFocus = false;
+    showSearchField(event) {
+        event.preventDefault();
+        if(this.isInFocus) {   
+            this.searchbar.cancelSearchbar(event);
+            this.isInFocus = false;
+        } else {
+            this.searchbar.setFocus();
+            this.isInFocus = true;
+        }
+        this.isSearchBarActive.emit(this.isInFocus);
+    }
+    
+    ionClear(event) {
+        this.preventSearchHide = true;
     }
 }

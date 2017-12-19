@@ -4,16 +4,18 @@ search-bar {
 
   .search-bar-area {
     &.active{
-      transform: translateX(0);
-      transition: 0.5ms; 
+      top: 0;
+      left: 0;
+      // transform: translateX(0);
+      // transition: 0.5ms; 
     }
     position: absolute;
-    top: 0;
-    left: 0;
+    top: -9999px;
+    left: -9999px;
     width: 100%;
     padding: 0 50px;
-    transition: 0.5ms;
-    transform: translateX(100%);
+    // transition: 0.5ms;
+    // transform: translateX(100%);
     z-index: 20;
 
 .searchbar-ios {
