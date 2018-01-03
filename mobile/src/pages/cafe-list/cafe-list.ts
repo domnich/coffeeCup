@@ -4,6 +4,7 @@ import {Observable} from "rxjs/Observable";
 import {Post} from "../../models/post.interface";
 import { Cafe } from "../../models/cafe.interface";
 import { DataProvider } from "../../providers/data/data";
+import { DataService } from '../../providers/shared/shared.service';
 
 @IonicPage({
     name: "cafes",
@@ -16,12 +17,15 @@ import { DataProvider } from "../../providers/data/data";
 export class CafeListPage {
     public cafes: Observable<Array<Cafe>>;
     public toggleMask: boolean = false;
-    constructor(public navCtrl: NavController, public navParams: NavParams, private data: DataProvider, private cd: ChangeDetectorRef) {
+    constructor(public navCtrl: NavController, public navParams: NavParams, private data: DataProvider, private cd: ChangeDetectorRef, private shareData: DataService) {
     }
 
     ionViewDidLoad() {
         console.log('ionViewDidLoad CafeListPage');
         this.getPostsDataListener();
+        this.shareData.filteredCafesSubscriber.subscribe((cafes: Cafe[]) => {
+            console.log(cafes, 'CAFES')
+        });
     }
 
     getPostsDataListener() {
@@ -37,10 +41,12 @@ export class CafeListPage {
         this.navCtrl.push('CafeDetailPage', {postId})
     }
 
+    onSearchValueChanged(event) {
+        console.log(event, '777')
+    }
 
     onMaskToggle(val: boolean): void {
         this.toggleMask = val;
-        console.log(val, '312');
         this.cd.detectChanges();
     }
 

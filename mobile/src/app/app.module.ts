@@ -14,6 +14,7 @@ import {CitySelectComponent} from "../components/city-select/city-select";
 
 import {HomePageModule} from "../pages/home/home.module";
 import {WheelSelector} from "../../plugins/cordova-wheel-selector-plugin/examples/ionic2/dist/wheel-selector/index";
+import { DataService } from '../providers/shared/shared.service';
 
 @NgModule({
     declarations: [
@@ -36,7 +37,8 @@ import {WheelSelector} from "../../plugins/cordova-wheel-selector-plugin/example
 
     ],
     providers: [
-WheelSelector,
+        DataService,
+        WheelSelector,
         CitySelectComponent,
         StatusBar,
         Keyboard,

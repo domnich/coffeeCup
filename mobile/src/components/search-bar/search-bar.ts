@@ -4,6 +4,7 @@ import { DataProvider } from '../../providers/data/data';
 import { Observable } from 'rxjs/Observable';
 import { Cafe } from '../../models/cafe.interface';
 import { Keyboard } from '@ionic-native/keyboard';
+import { DataService } from '../../providers/shared/shared.service';
 
 
 @Component({
@@ -16,9 +17,9 @@ export class SearchBarComponent {
     private isInFocus: boolean = false;
     public searchValue: string;
     public cafes: Observable<Array<Cafe>>;
-    public filteredCafes: Observable<Array<Cafe>>;
+    public filteredCafes: any = [];
     private preventSearchHide: boolean = false;
-    constructor(private platform: Platform, private data: DataProvider, private keyboard: Keyboard) {
+    constructor(private platform: Platform, private data: DataProvider, private keyboard: Keyboard, private shareDate: DataService) {
         console.log('Hello SearchBarComponent Component');
         this.keyboard.onKeyboardHide().subscribe((e) => {
             if(this.preventSearchHide) {
@@ -38,8 +39,8 @@ export class SearchBarComponent {
     onInput(event: any) {
         this.filteredCafes = this.cafes.filter((item) => {
             return (item['name'].toLowerCase().indexOf(this.searchValue.toLowerCase()) > -1);
-        })
-        console.log(this.filteredCafes, 'this.filteredCafes');
+        });
+       this.shareDate.emitFilteredCafes(this.filteredCafes);
     }
 
     hideSearchField(event) {
