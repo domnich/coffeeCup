@@ -23,3 +23,8 @@ export interface CafeGelocation {
     lat: number,
     lng: number
 }
+
+export interface FilteredCafes {
+    data: Cafe[],
+    value: string
+  }

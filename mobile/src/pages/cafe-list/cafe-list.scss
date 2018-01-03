@@ -1,13 +1,16 @@
 page-cafe-list {
   .show-overlay {
- 
+      .scroll-content {
+        overflow-y: hidden !important;
+      }
+
       .mask {
         display: block;
       }
   }
   .mask {
-    position: absolute;
-    top: 56px;
+    position: fixed;
+    top: 0;
     left: 0;
     right: 0;
     bottom: 0;

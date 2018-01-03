@@ -14,7 +14,7 @@ import { DataService } from '../../providers/shared/shared.service';
 export class SearchBarComponent {
     @ViewChild('searchbar') searchbar: Searchbar;
     @Output() isSearchBarActive: EventEmitter<boolean> = new EventEmitter<boolean>();
-    private isInFocus: boolean = false;
+    public isInFocus: boolean = false;
     public searchValue: string;
     public cafes: Observable<Array<Cafe>>;
     public filteredCafes: any = [];
@@ -37,10 +37,13 @@ export class SearchBarComponent {
     }
 
     onInput(event: any) {
-        this.filteredCafes = this.cafes.filter((item) => {
+        this.filteredCafes = this.searchValue.length === 0 ? [] : this.cafes.filter((item) => {
             return (item['name'].toLowerCase().indexOf(this.searchValue.toLowerCase()) > -1);
         });
-       this.shareDate.emitFilteredCafes(this.filteredCafes);
+        this.shareDate.emitFilteredCafes({
+            data: this.filteredCafes, 
+            value: this.searchValue
+        });
     }
 
     hideSearchField(event) {
