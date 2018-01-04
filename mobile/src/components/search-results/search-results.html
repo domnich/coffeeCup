@@ -1,5 +1,7 @@
-<div class="search-results-holder" *ngIf="showResultsContainer">
-    <ion-content>
+<!-- <div class="search-results-holder" *ngIf="showResultsContainer"></div> -->
+
+<div class="search-results-holder" >
+    <ion-content #galleryContainer>
             <div *ngIf="cafes.length">
                     <ul>
                         <li *ngFor="let cafe of cafes">

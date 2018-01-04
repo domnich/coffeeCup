@@ -3,6 +3,9 @@ search-results {
         overflow-y: scroll !important;
         background: #33691E;
     }
+    ion-content {
+        height: 200px;
+    }
     .search-results-holder {
         position: absolute;
         top: 0;
