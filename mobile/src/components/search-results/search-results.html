@@ -1,11 +1,13 @@
 <div class="search-results-holder" *ngIf="showResultsContainer">
-    <div *ngIf="cafes.length">
-        <ul>
-            <li *ngFor="let cafe of cafes">
-                <div>{{cafe.name}}</div>
-                <div>{{cafe.address.street}}</div>
-            </li>
-        </ul>
-    </div>
-    <div *ngIf="!cafes.length">Ничего не найдено</div>
+    <ion-content>
+            <div *ngIf="cafes.length">
+                    <ul>
+                        <li *ngFor="let cafe of cafes">
+                            <div>{{cafe.name}}</div>
+                            <div>{{cafe.address.street}}</div>
+                        </li>
+                    </ul>
+                </div>
+                <div *ngIf="!cafes.length">Ничего не найдено</div>
+    </ion-content>
 </div>

@@ -1,4 +1,8 @@
 search-results {
+    .scroll-content {
+        overflow-y: scroll !important;
+        background: #33691E;
+    }
     .search-results-holder {
         position: absolute;
         top: 0;
@@ -6,6 +10,18 @@ search-results {
         right: 0;
         bottom: 0;
         z-index: 555;
-        background: #69F0AE;
+        background: #33691E;
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 15px;
+            overflow: hidden;
+            color: #fff;
+            li {
+                padding: 0 0 10px;
+                margin: 0 0 10px;
+                border-bottom: 1px solid #81C784;
+            }
+        }
     }
 }
