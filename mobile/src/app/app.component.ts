@@ -12,14 +12,13 @@ import { AppEmitterProvider } from '../providers/app-emitter/app-emitter';
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = "TabsPage";
+  rootPage:any = "PlacesPage";
 
   @ViewChild(Nav) nav: Nav;
 
     pages: any[] = [
-        { title: 'Cafe List', component: "cafes" },
-        { title: 'Home', component: "HomePage" },
-        { title: 'Map', component: "MapPage" }
+        { title: 'Места', component: "PlacesPage" },
+        { title: 'Подписка', component: "SubscriptionPage" }
     ];
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, keyboard: Keyboard, public modalCtrl: ModalController, private appEmiter: AppEmitterProvider) {

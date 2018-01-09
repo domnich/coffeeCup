@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, ViewChild, Input } from '@angular/core';
 import {Gesture} from 'ionic-angular/gestures/gesture';
 import * as $ from 'jquery';
 @Component({
@@ -9,26 +9,32 @@ import * as $ from 'jquery';
 export class WheelSelectorComponent {
   @ViewChild('wheel') wheel;
   @ViewChild('slideList') slideList;
+  @Input() names: Array<string>;
   pressGesture: Gesture;
   startCounter: number = 0;
   slideCounter: number = 0;
-  names:Array<string>;
+  namess:Array<string>;
   activeIndex: number = 0;
   activeClass: string = 'active';
   animSpeed: number = 500;
   constructor() {
     console.log('Hello WheelSelectorComponent Component');
-    this.names = ['Эспрессо', 'Американо', 'Латте', 'Какао', 'Чай'];
+    
+   
+    //this.namess = ['Эспрессо', 'Американо', 'Латте', 'Какао', 'Чай'];
   }
 
   ngAfterViewInit() {
+    setTimeout(() => {
       this.activate();
+    }, 3000);
+      
   }
 
   activate() {
       let width = 0,
           self = this;
-
+console.log($(this.slideList.nativeElement).find('>li'))
       $(this.slideList.nativeElement).find('>li').each(function(ind) {
         if(ind === 0) {
           self.startCounter = - $(this).width() / 2;
@@ -85,15 +91,15 @@ export class WheelSelectorComponent {
       let distance:number = 0;
       $(this.slideList.nativeElement).find('>li').each(function(ind) {
         if(ind < index) {
+
           distance += $(this).outerWidth() + parseInt($(this).css('margin-right'));
         } else if(ind === index) {
             distance += $(this).width() / 2;
         }
       });
-   //   distance = -1 * +distance.toFixed(0);
+      distance = -1 * +distance.toFixed(0);
 
-   
-   distance = 0;
+
    this.slideList.nativeElement.style.transform = 'translateX('+ distance +'px)';
       this.slideList.nativeElement.style.transition = 'transform '+ this.animSpeed +'ms';
       this.startCounter = distance;

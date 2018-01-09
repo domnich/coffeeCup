@@ -14,7 +14,7 @@ export class SearchResultsComponent {
 
   public showResultsContainer: boolean = true;
   public cafes: Cafe[] = [];
-  @ViewChild('galleryContainer') galleryContainer: ElementRef;
+  @ViewChild('galleryContainer') galleryContainer: Content;
   constructor(private element: ElementRef, private shareData: DataService) {
     console.log(this.galleryContainer, 'galleryContainer')
     this.shareData.filteredCafesSubscriber.subscribe((obj: FilteredCafes) => {

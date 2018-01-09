@@ -7,11 +7,10 @@ import {DataProvider} from "../../providers/data/data";
 
 @IonicPage()
 @Component({
-    selector: 'page-tabs',
-    templateUrl: 'tabs.html',
+    selector: 'places',
+    templateUrl: 'places.html',
 })
-export class TabsPage {
-
+export class PlacesPage {
     @ViewChild('tabs') tabRef: Tabs;
     tab1Root: any = CafeListTab;
     tab2Root: any = MapTab;
@@ -25,24 +24,17 @@ export class TabsPage {
 
     ionViewDidLoad() {
         this.tabRef.select(0);
-   
-       
     }
 
     getPosts() {
-
         this.data.getPosts();
-
         this.data.cafesData
             .subscribe(response => {
                 if (response && response.length) {
                     this.posts = response;
                 }
             });
-
-
     }
 
-    
 
 }

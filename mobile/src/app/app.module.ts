@@ -12,8 +12,6 @@ import {Keyboard} from "@ionic-native/keyboard";
 
 import {CitySelectComponent} from "../components/city-select/city-select";
 
-import {HomePageModule} from "../pages/home/home.module";
-import {WheelSelector} from "../../plugins/cordova-wheel-selector-plugin/examples/ionic2/dist/wheel-selector/index";
 import { DataService } from '../providers/shared/shared.service';
 
 @NgModule({
@@ -22,7 +20,6 @@ import { DataService } from '../providers/shared/shared.service';
     ],
     imports: [
         CommonModule,
-        HomePageModule,
         BrowserModule,
         HttpModule,
         IonicModule.forRoot(MyApp, {
@@ -39,7 +36,6 @@ import { DataService } from '../providers/shared/shared.service';
     ],
     providers: [
         DataService,
-        WheelSelector,
         CitySelectComponent,
         StatusBar,
         Keyboard,
