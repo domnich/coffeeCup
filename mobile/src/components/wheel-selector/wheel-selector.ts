@@ -17,6 +17,7 @@ export class WheelSelectorComponent {
   activeIndex: number = 0;
   activeClass: string = 'active';
   animSpeed: number = 500;
+  slider;
   constructor() {
     console.log('Hello WheelSelectorComponent Component');
     
@@ -34,8 +35,10 @@ export class WheelSelectorComponent {
   activate() {
       let width = 0,
           self = this;
-console.log($(this.slideList.nativeElement).find('>li'))
-      $(this.slideList.nativeElement).find('>li').each(function(ind) {
+
+      this.slider = $(this.slideList.nativeElement);
+
+      this.slider.find('>li').each(function(ind) {
         if(ind === 0) {
           self.startCounter = - $(this).width() / 2;
           self.slideList.nativeElement.style.transform = 'translate('+ self.startCounter +'px, 0)';
@@ -43,7 +46,7 @@ console.log($(this.slideList.nativeElement).find('>li'))
         width += $(this).outerWidth() + parseInt($(this).css('margin-right'));
       });
       width = +width.toFixed(0);
-      $(this.slideList.nativeElement).css({
+      this.slider.css({
         width: width + 100
       });
 
@@ -83,13 +86,13 @@ console.log($(this.slideList.nativeElement).find('>li'))
   }
 
   addActiveClass() {
-    $(this.slideList.nativeElement).find('li').removeClass(this.activeClass);
-    $(this.slideList.nativeElement).find('li').eq(this.activeIndex).addClass(this.activeClass);
+    this.slider.find('li').removeClass(this.activeClass);
+    this.slider.find('li').eq(this.activeIndex).addClass(this.activeClass);
   }
 
   slideToActiveElement(index: number) {
       let distance:number = 0;
-      $(this.slideList.nativeElement).find('>li').each(function(ind) {
+      this.slider.find('>li').each(function(ind) {
         if(ind < index) {
 
           distance += $(this).outerWidth() + parseInt($(this).css('margin-right'));
@@ -110,13 +113,13 @@ console.log($(this.slideList.nativeElement).find('>li'))
     let indexChanged = false,
         activeIndex;
 
-    $(this.slideList.nativeElement).find('>li').each(function(ind) {
+    this.slider.find('>li').each(function(ind) {
       if($(this).position().left + $(this).width() >= 0 && !indexChanged) {
           indexChanged = true;
           activeIndex = ind;
       }
     });
-    activeIndex = typeof activeIndex === 'number' ? activeIndex : $(this.slideList.nativeElement).find('>li').length - 1;
+    activeIndex = typeof activeIndex === 'number' ? activeIndex : this.slider.find('>li').length - 1;
     return activeIndex;
   }
 }
