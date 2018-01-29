@@ -10,6 +10,7 @@ export class WheelSelectorComponent {
   @ViewChild('wheel') wheel;
   @ViewChild('slideList') slideList;
   @Input() names: Array<string>;
+  @Input() center: boolean = false;
   pressGesture: Gesture;
   startCounter: number = 0;
   slideCounter: number = 0;
@@ -18,18 +19,18 @@ export class WheelSelectorComponent {
   activeClass: string = 'active';
   animSpeed: number = 500;
   slider;
+  mask;
   constructor() {
     console.log('Hello WheelSelectorComponent Component');
     
-   
     //this.namess = ['Эспрессо', 'Американо', 'Латте', 'Какао', 'Чай'];
   }
 
   ngAfterViewInit() {
-    setTimeout(() => {
-      this.activate();
-    }, 3000);
-      
+    this.activate();
+    if(this.center) {
+      this.slideToItem(1, true);
+    }
   }
 
   activate() {
@@ -37,6 +38,7 @@ export class WheelSelectorComponent {
           self = this;
 
       this.slider = $(this.slideList.nativeElement);
+      this.mask = $(this.wheel.nativeElement).find('.mask-line');
 
       this.slider.find('>li').each(function(ind) {
         if(ind === 0) {
@@ -72,17 +74,17 @@ export class WheelSelectorComponent {
             if(e.isFinal) {
                 this.slideToActiveElement(this.getActiveIndex());
             } else {
-                let distanceNumber = this.startCounter + this.slideCounter * 4;
+                let distanceNumber = this.startCounter + this.slideCounter * 3;
                 this.slideList.nativeElement.style.transform = 'translate('+ distanceNumber +'px, 0)';
                 this.slideList.nativeElement.style.transition = 'transform 0ms';
             }
         });
   }
 
-  slideToItem(ind) {
+  slideToItem(ind, fast?: boolean) {
     this.activeIndex = ind;
     this.addActiveClass();
-    this.slideToActiveElement(ind);
+    this.slideToActiveElement(ind, fast);
   }
 
   addActiveClass() {
@@ -90,7 +92,7 @@ export class WheelSelectorComponent {
     this.slider.find('li').eq(this.activeIndex).addClass(this.activeClass);
   }
 
-  slideToActiveElement(index: number) {
+  slideToActiveElement(index: number, fast?: boolean) {
       let distance:number = 0;
       this.slider.find('>li').each(function(ind) {
         if(ind < index) {
@@ -101,12 +103,21 @@ export class WheelSelectorComponent {
         }
       });
       distance = -1 * +distance.toFixed(0);
-
-
-   this.slideList.nativeElement.style.transform = 'translateX('+ distance +'px)';
-      this.slideList.nativeElement.style.transition = 'transform '+ this.animSpeed +'ms';
+      this.slideList.nativeElement.style.transform = 'translateX('+ distance +'px)';
+      if(fast) {
+        this.slideList.nativeElement.style.transition = 'transform '+ 0 +'ms';
+        this.animateMaks(index);
+      } else {
+        this.slideList.nativeElement.style.transition = 'transform '+ this.animSpeed +'ms';
+        this.animateMaks(index);
+      }
       this.startCounter = distance;
       this.slideCounter = 0;
+  }
+
+  animateMaks(index: number) {
+    let w: number = this.slider.find('li').eq(index).find('.txt').width();
+    this.mask.width(w);
   }
 
   getActiveIndex() {

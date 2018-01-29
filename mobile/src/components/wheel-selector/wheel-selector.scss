@@ -1,10 +1,23 @@
 wheel-selector {
-
   .wheel-holder {
     overflow: hidden;
     height: 325px;
     width: 100%;
-      background: #ccc;
+    position: relative;
+    background: #ccc;
+    .mask-line {
+      position: absolute;
+      right: 0;
+      left: 0;
+      top: 98px;
+      margin-right: auto;
+      margin-left: auto;
+      width: 70px;
+      height: 2px;
+      background: #4f697d;
+      -webkit-transition:width .5s ease;
+      transition: width .5s ease;
+    }
   }
   .mask {
     height: 25px;
@@ -14,25 +27,27 @@ wheel-selector {
     position: relative;
     left: 50%;
     position: relative;
-    border-left: 1px solid #000;
+    // border-left: 1px solid #000;
+    
   }
   .common-list {
     color: #4f697d;
-    font-size: 20px;
+    font-size: 40px;
     list-style: none;
     margin: 0;
     padding: 0;
     text-align: center;
     float: left;
     li {
-      margin-right: 15px;
-      height: 25px;
-      line-height: 25px;
+      height: 50px;
+      line-height: 50px;
       float: left;
       opacity: 0.5;
+      width: 70px;
       &.active {
         opacity: 1;
       }
     }
+
   }
 }
