@@ -18,7 +18,8 @@ export class MyApp {
 
     pages: any[] = [
         { title: 'Места', component: "PlacesPage" },
-        { title: 'Подписка', component: "SubscriptionPage" }
+        { title: 'Подписка', component: "SubscriptionPage" },
+        { title: 'Login', component: 'LoginPage' }
     ];
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, keyboard: Keyboard, public modalCtrl: ModalController, private appEmiter: AppEmitterProvider) {
