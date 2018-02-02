@@ -4,15 +4,16 @@ import {IonicApp, IonicErrorHandler, IonicModule} from 'ionic-angular';
 import {SplashScreen} from '@ionic-native/splash-screen';
 import {StatusBar} from '@ionic-native/status-bar';
 import { CommonModule } from "@angular/common";
+import { Facebook } from '@ionic-native/facebook';
+
 import {MyApp} from './app.component';
 import {DataProvider} from '../providers/data/data';
 import {HttpModule} from "@angular/http";
 import { AppEmitterProvider } from '../providers/app-emitter/app-emitter';
 import {Keyboard} from "@ionic-native/keyboard";
-
 import {CitySelectComponent} from "../components/city-select/city-select";
-
 import { DataService } from '../providers/shared/shared.service';
+
 
 @NgModule({
     declarations: [
@@ -42,7 +43,8 @@ import { DataService } from '../providers/shared/shared.service';
         SplashScreen,
         {provide: ErrorHandler, useClass: IonicErrorHandler},
         DataProvider,
-        AppEmitterProvider
+        AppEmitterProvider,
+        Facebook
     ]
 })
 export class AppModule {
