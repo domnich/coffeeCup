@@ -13,6 +13,7 @@ import { AppEmitterProvider } from '../providers/app-emitter/app-emitter';
 import {Keyboard} from "@ionic-native/keyboard";
 import {CitySelectComponent} from "../components/city-select/city-select";
 import { DataService } from '../providers/shared/shared.service';
+import { PlacesService } from '../pages/places/shared/places.service';
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import { DataService } from '../providers/shared/shared.service';
         {provide: ErrorHandler, useClass: IonicErrorHandler},
         DataProvider,
         AppEmitterProvider,
-        Facebook
+        Facebook,
+        PlacesService
     ]
 })
 export class AppModule {

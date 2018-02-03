@@ -1,9 +1,10 @@
-import {Component, ChangeDetectorRef} from '@angular/core';
+import {Component, ChangeDetectorRef, OnDestroy } from '@angular/core';
 import {IonicPage, NavController, NavParams} from 'ionic-angular';
 import {Observable} from "rxjs/Observable";
-import {Post} from "../../models/post.interface";
+import { Post } from "../../models/post.interface";
 import { Cafe } from "../../models/cafe.interface";
-import { DataProvider } from "../../providers/data/data";
+import { PlacesService } from '../places/shared/places.service';
+import { Cancellable } from '../../app/services/cancellable';
 
 @IonicPage({
     name: "cafes",
@@ -13,24 +14,34 @@ import { DataProvider } from "../../providers/data/data";
     selector: 'page-cafe-list',
     templateUrl: 'cafe-list.html'
 })
-export class CafeListPage {
-    public cafes: Observable<Array<Cafe>>;
+export class CafeListPage extends Cancellable implements OnDestroy {
+    public places: Observable<Array<Cafe>>;
     public toggleMask: boolean = false;
-    constructor(public navCtrl: NavController, public navParams: NavParams, private data: DataProvider, private cd: ChangeDetectorRef) {
+    constructor(
+        public navCtrl: NavController, 
+        public navParams: NavParams,
+        private cd: ChangeDetectorRef,
+        private placesSerive: PlacesService
+    ) {
+        super();
     }
 
     ionViewDidLoad() {
         console.log('ionViewDidLoad CafeListPage');
-        this.getPostsDataListener();
+        this.getPlacesDataListener();
     }
 
-    getPostsDataListener() {
-        this.data.cafesData
-            .subscribe(response => {
-                if (response && response.length) {
-                    this.cafes = response;
+    ngOnDestroy() {
+        this.cancelSubscriptions();
+    }
+
+    getPlacesDataListener() {
+        this.addSubscriptionToStack(this.placesSerive.placesData
+            .subscribe(res => {
+                if (res && res.length) {
+                    this.places = res;
                 }
-            });
+            }));
     }
 
     navigateToDetail(postId: number) {

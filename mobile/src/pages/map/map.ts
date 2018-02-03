@@ -1,8 +1,10 @@
-import {Component, ElementRef, ViewChild} from '@angular/core';
+import {Component, ElementRef, ViewChild, OnDestroy } from '@angular/core';
 import {IonicPage, NavController, NavParams, Platform} from 'ionic-angular';
 import {DataProvider} from "../../providers/data/data";
 import {Observable} from "rxjs/Observable";
 import { Cafe } from "../../models/cafe.interface";
+import { PlacesService } from '../places/shared/places.service';
+import { Cancellable } from '../../app/services/cancellable';
 
 declare var google: any;
 
@@ -11,19 +13,29 @@ declare var google: any;
     selector: 'page-map',
     templateUrl: 'map.html',
 })
-export class MapPage {
+export class MapPage extends Cancellable implements OnDestroy {
     @ViewChild('map') mapElement: ElementRef;
     map: any;
     private infoWindows: Array<any>;
-    private cafes: Observable<Array<Cafe>>;
-    constructor(public navCtrl: NavController, public navParams: NavParams, public platform: Platform,  private data: DataProvider) {
-
+    private places: Observable<Array<Cafe>>;
+    constructor(
+        public navCtrl: NavController, 
+        public navParams: NavParams, 
+        public platform: Platform,  
+        private data: DataProvider,
+        private placesService: PlacesService
+    ) {
+        super();
     }
 
     ionViewDidLoad() {
         console.log('ionViewDidLoad MapPage');
         this.getData();
         this.loadMap();
+    }
+
+    ngOnDestroy() {
+        this.cancelSubscriptions();
     }
 
     loadMap(){
@@ -45,20 +57,21 @@ export class MapPage {
 
     generateMakers() {
         this.infoWindows = [];
-        this.cafes.forEach((cafe: any) => {
-            this.setMarker(cafe);
+        this.places.forEach((place: any) => {
+            this.setMarker(place);
         });
     }
 
-    setMarker(cafe: Cafe){
+    setMarker(place: any){
         var marker = new google.maps.Marker({
-            position: new google.maps.LatLng(cafe.address.geolocation.lat, cafe.address.geolocation.lng),
+            position: new google.maps.LatLng(place.latitude, place.longitude),
             map: this.map,
-            title: cafe.name
+            title: place.name
         });
 
 
-        var contentWindow = "<button id='clickableItem'>cafe.name</button> <br/>" + "<img src='"+ cafe.photos[0] +"' width='100%' height='100' /> <br/>" + cafe.address.street
+       // var contentWindow = "<button id='clickableItem'>place.name</button> <br/>" + "<img src='"+ place.photos[0] +"' width='100%' height='100' /> <br/>" + place.description;
+        var contentWindow = "<button id='clickableItem'>" + place.name + "</button> <br/>" + " <br/>" + place.description
         var infoWindow = new google.maps.InfoWindow({
             content: contentWindow
         });
@@ -69,7 +82,7 @@ export class MapPage {
             var clickableItem = document.getElementById('clickableItem');
 
             clickableItem.addEventListener('click' , () => {
-                console.log(cafe, 111)
+                console.log(place, 111)
             });
         });
 
@@ -83,7 +96,7 @@ export class MapPage {
         marker.addListener('click', event => {
             this.closeAllInfoWindows();
             infoWindow.open(this.map, marker);
-            console.log(cafe, 222);
+            console.log(place, 222);
         });
 
     }
@@ -127,12 +140,12 @@ export class MapPage {
     // }
 
     getData() {
-      this.data.cafesData
-          .subscribe(response => {
-              if (response && response.length) {
-                  this.cafes = response;
-              }
-          });
+          this.addSubscriptionToStack(this.placesService.placesData
+            .subscribe(res => {
+                if (res && res.length) {
+                    this.places = res;
+                }
+            }));
     }
 
 

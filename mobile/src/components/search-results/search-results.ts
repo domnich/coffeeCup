@@ -16,17 +16,14 @@ export class SearchResultsComponent {
   public cafes: Cafe[] = [];
   @ViewChild('galleryContainer') galleryContainer: Content;
   constructor(private element: ElementRef, private shareData: DataService) {
-    console.log(this.galleryContainer, 'galleryContainer')
     this.shareData.filteredCafesSubscriber.subscribe((obj: FilteredCafes) => {
       this.showResultsContainer = !!(Object.keys(obj) && Object.keys(obj).length && (obj.data.length || obj.value.length));
       this.cafes = obj.data ? obj.data : [];
-      console.log(obj.data, 'obj.data');
       if(this.cafes.length) {
     
       }
            
     });
-    console.log(this, 'thissss')
 
 
   
@@ -35,9 +32,7 @@ export class SearchResultsComponent {
   }
 
   ngAfterViewInit() {
-    console.log('TADA111M');
     this.galleryContainer.ionScroll.subscribe((event) => {
-          console.log(123);
         $('.searchbar-input').focus();
       })
    

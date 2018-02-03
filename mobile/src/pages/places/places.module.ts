@@ -11,6 +11,6 @@ import { SearchBarModule } from "../../components/search-bar/search-bar.module";
   imports: [
     SearchBarModule,
     IonicPageModule.forChild(PlacesPage),
-  ],
+  ]
 })
 export class PlacesPageModule {}

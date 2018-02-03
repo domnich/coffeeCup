@@ -1,0 +1,1 @@
+export const API_URL: string = 'http://ygugnin.com/v1';

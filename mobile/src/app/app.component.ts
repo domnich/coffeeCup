@@ -8,9 +8,7 @@ import {Keyboard} from "@ionic-native/keyboard";
 import {HomePage} from "../pages/home/home";
 import { AppEmitterProvider } from '../providers/app-emitter/app-emitter';
 
-
-declare var cordova;
-declare var VkSdk;
+//declare var VkSdk;
 
 @Component({
   templateUrl: 'app.html'
@@ -31,17 +29,15 @@ export class MyApp {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
           //statusBar.styleDefault();
-         // VkSdk.init('6356607');
-console.log(cordova.plugins.VkSdk, 'cordcordovacordovacordovaova');
-console.log(VkSdk, 'VkSdkVkSdkVkSdk')
+  
 
-VkSdk.init('6356607', function(res) {
-  console.log(res, 'RESSSSS');
-}, function(error) {
-  console.log(error, "ERRRRRR");
-})
 
-alert(cordova);
+// VkSdk.init('6356607', function(res) {
+//   console.log(res, 'RESSSSS');
+// }, function(error) {
+//   console.log(error, "ERRRRRR");
+// });
+
 
 
         splashScreen.hide();

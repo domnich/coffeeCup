@@ -11,9 +11,9 @@
 <ion-content [class.show-overlay]="toggleMask" id="cafes-list">
     <div *ngIf="toggleMask" class="mask">&nbsp;</div>
     <search-results></search-results>
-    <ion-card *ngFor="let cafe of cafes" (click)="navigateToDetail(cafe.id)">
-        <ion-img *ngIf="cafe.photos[0]" width="100%" height="120" src="{{cafe.photos[0]}}"></ion-img>
-        <div class="card-title">{{cafe.name}}</div>
-        <div class="card-subtitle">{{cafe.address.street}}</div>
+    <ion-card *ngFor="let place of places" (click)="navigateToDetail(place.id)">
+        <!-- <ion-img *ngIf="place?.photos" width="100%" height="120" src="{{place.photos[0]}}"></ion-img> -->
+        <div class="card-title">{{place.name}}</div>
+        <div *ngIf="place.description" class="card-subtitle">{{place?.description}}</div>
     </ion-card>
 </ion-content>
