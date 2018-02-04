@@ -62,6 +62,7 @@ export class WheelSelectorComponent {
                 this.pressGesture.listen();
 
         this.pressGesture.on('pan', e => {
+          console.log(e.center.x, 'EEEEE')
             if(e.direction === 2) {
                 this.slideCounter--;
             } else if(e.direction === 4) {
@@ -74,7 +75,7 @@ export class WheelSelectorComponent {
             if(e.isFinal) {
                 this.slideToActiveElement(this.getActiveIndex());
             } else {
-                let distanceNumber = this.startCounter + this.slideCounter * 3;
+                let distanceNumber = this.startCounter + this.slideCounter * 3.5;
                 this.slideList.nativeElement.style.transform = 'translate('+ distanceNumber +'px, 0)';
                 this.slideList.nativeElement.style.transition = 'transform 0ms';
             }
