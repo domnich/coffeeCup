@@ -17,6 +17,7 @@ import { Cancellable } from '../../app/services/cancellable';
 export class CafeListPage extends Cancellable implements OnDestroy {
     public places: Observable<Array<Cafe>>;
     public toggleMask: boolean = false;
+
     constructor(
         public navCtrl: NavController, 
         public navParams: NavParams,
@@ -29,6 +30,7 @@ export class CafeListPage extends Cancellable implements OnDestroy {
     ionViewDidLoad() {
         console.log('ionViewDidLoad CafeListPage');
         this.getPlacesDataListener();
+
     }
 
     ngOnDestroy() {

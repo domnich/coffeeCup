@@ -26,5 +26,6 @@ export interface CafeGelocation {
 
 export interface FilteredCafes {
     data: Cafe[],
-    value: string
+    value: string,
+    height: number
   }

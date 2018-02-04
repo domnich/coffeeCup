@@ -1,17 +1,20 @@
-import { Component, ViewChild, Output, EventEmitter} from '@angular/core';
+import { Component, ViewChild, Output, EventEmitter, OnDestroy } from '@angular/core';
 import {Platform, Searchbar} from "ionic-angular";
 import { DataProvider } from '../../providers/data/data';
 import { Observable } from 'rxjs/Observable';
 import { Cafe } from '../../models/cafe.interface';
 import { Keyboard } from '@ionic-native/keyboard';
 import { DataService } from '../../providers/shared/shared.service';
+import * as $ from 'jquery';
+import { Cancellable } from '../../app/services/cancellable';
+import { PlacesService } from '../../pages/places/shared/places.service';
 
 
 @Component({
     selector: 'search-bar',
     templateUrl: 'search-bar.html'
 })
-export class SearchBarComponent {
+export class SearchBarComponent extends Cancellable implements OnDestroy {
     @ViewChild('searchbar') searchbar: Searchbar;
     @Output() isSearchBarActive: EventEmitter<boolean> = new EventEmitter<boolean>();
     public isInFocus: boolean = false;
@@ -19,8 +22,19 @@ export class SearchBarComponent {
     public cafes: Observable<Array<Cafe>>;
     public filteredCafes: any = [];
     private preventSearchHide: boolean = false;
-    constructor(private platform: Platform, private data: DataProvider, private keyboard: Keyboard, private shareDate: DataService) {
+    private keyBoardHeight: number;
+    constructor(private platform: Platform, private data: DataProvider, private keyboard: Keyboard, private shareDate: DataService, private placesService: PlacesService) {
+        super();
         console.log('Hello SearchBarComponent Component');
+        this.attachEvents();
+        this.loadData();
+    }
+
+    attachEvents() {
+        this.keyboard.onKeyboardShow().subscribe((e) => {
+
+            this.keyBoardHeight = e.keyboardHeight;
+        });
         this.keyboard.onKeyboardHide().subscribe((e) => {
             if(this.preventSearchHide) {
                 this.preventSearchHide = false;
@@ -28,21 +42,32 @@ export class SearchBarComponent {
                 this.hideSearchField(e);
             }
         });
-        this.data.cafesData
-            .subscribe(response => {
-                if (response && response.length) {
-                   this.cafes = response;
+    }
+
+    loadData() {
+        this.addSubscriptionToStack(this.placesService.placesData
+            .subscribe(res => {
+                if (res && res.length) {
+                    let t1 = res.concat(res);
+                    let t2 = t1.concat(res);
+                    let t3 = t2.concat(t1);
+                    this.cafes = t3;
+                    console.log(this.cafes);
                 }
-            });
+            }));
     }
 
     onInput(event: any) {
+        console.log(this.cafes, 'CAFES');
         this.filteredCafes = this.searchValue.length === 0 ? [] : this.cafes.filter((item) => {
             return (item['name'].toLowerCase().indexOf(this.searchValue.toLowerCase()) > -1);
         });
+
+        console.log($('#place-header').outerHeight(true) , this.keyBoardHeight, this.platform.height())
         this.shareDate.emitFilteredCafes({
             data: this.filteredCafes, 
-            value: this.searchValue
+            value: this.searchValue,
+            height: this.platform.height() - ($('#place-header').outerHeight(true) + this.keyBoardHeight)
         });
     }
 
@@ -68,5 +93,9 @@ export class SearchBarComponent {
     
     ionClear(event) {
         this.preventSearchHide = this.platform.is('ios') ? true : false;
+    }
+
+    ngOnDestroy() {
+        this.cancelSubscriptions();
     }
 }

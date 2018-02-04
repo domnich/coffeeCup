@@ -1,10 +1,15 @@
 search-results {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     .scroll-content {
         overflow-y: scroll !important;
         background: #33691E;
     }
     ion-content {
-        height: 200px;
+        
     }
     .search-results-holder {
         position: absolute;
@@ -14,6 +19,10 @@ search-results {
         bottom: 0;
         z-index: 555;
         background: #33691E;
+        &.out-of-here {
+            left: -9999px;
+            top: -9999px;
+        }
         ul {
             list-style: none;
             margin: 0;

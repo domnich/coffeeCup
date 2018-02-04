@@ -1,4 +1,4 @@
-<ion-header>
+<ion-header id="place-header">
     <ion-navbar>
         <button ion-button menuToggle>
             <ion-icon name="menu"></ion-icon>
@@ -10,7 +10,7 @@
 </ion-header>
 <ion-content [class.show-overlay]="toggleMask" id="cafes-list">
     <div *ngIf="toggleMask" class="mask">&nbsp;</div>
-    <search-results></search-results>
+    <search-results [val]="toggleMask"></search-results>
     <ion-card *ngFor="let place of places" (click)="navigateToDetail(place.id)">
         <!-- <ion-img *ngIf="place?.photos" width="100%" height="120" src="{{place.photos[0]}}"></ion-img> -->
         <div class="card-title">{{place.name}}</div>

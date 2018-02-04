@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, ElementRef, ViewChild, AfterViewInit, Input } from '@angular/core';
 import { Content } from 'ionic-angular';
 import * as $ from 'jquery';
 import { DataService } from '../../providers/shared/shared.service';
@@ -11,35 +11,28 @@ import {Observable} from "rxjs/Observable";
   templateUrl: 'search-results.html'
 })
 export class SearchResultsComponent {
-
-  public showResultsContainer: boolean = true;
+  @Input('val')
+  public val: boolean = false;
+  public height: number;
   public cafes: Cafe[] = [];
+  public startEntering: any;
+  public data: FilteredCafes;
+  public searchValue: string;
   @ViewChild('galleryContainer') galleryContainer: Content;
   constructor(private element: ElementRef, private shareData: DataService) {
     this.shareData.filteredCafesSubscriber.subscribe((obj: FilteredCafes) => {
-      this.showResultsContainer = !!(Object.keys(obj) && Object.keys(obj).length && (obj.data.length || obj.value.length));
-      this.cafes = obj.data ? obj.data : [];
-      if(this.cafes.length) {
-    
-      }
-           
+      this.data = obj;
+      this.height = isNaN(this.data.height) ? 200 : this.data.height;
+      this.cafes = this.data.data ? this.data.data : [];
+      this.searchValue = this.data.hasOwnProperty('value') ? this.data.value : '';
+      this.startEntering = this.data.hasOwnProperty('data') && this.searchValue;
     });
-
-
-  
-
-    
   }
 
   ngAfterViewInit() {
     this.galleryContainer.ionScroll.subscribe((event) => {
-        $('.searchbar-input').focus();
-      })
-   
-      // this.content.ionScroll.subscribe((event) => {
-      //     console.log(123);
-      //   $('.searchbar-input').focus();
-      // })
+      $('.searchbar-input').focus();
+    });
   }
  
 }

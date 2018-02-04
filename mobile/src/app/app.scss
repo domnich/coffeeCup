@@ -16,13 +16,13 @@
 // automatically applied to the <body> element in the app.
 
 
-::-webkit-scrollbar {width: 5px;}
+::-webkit-scrollbar {width: 5px !important;}
 
-::-webkit-scrollbar-track { border-radius: 10px;}
+::-webkit-scrollbar-track { border-radius: 10px !important;}
 
-::-webkit-scrollbar-thumb { border-radius: 10px; background: rgb(169,169,169); }
+::-webkit-scrollbar-thumb { border-radius: 10px !important; background: rgb(169,169,169) !important; }
 
-::-webkit-scrollbar-thumb:window-inactive {background: rgb(128,128,128); }
+::-webkit-scrollbar-thumb:window-inactive {background: rgb(128,128,128) !important; }
 
 //ion-menu {
 //  &[type='overlay'] {

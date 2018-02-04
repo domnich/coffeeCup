@@ -1,15 +1,16 @@
 <!-- <div class="search-results-holder" *ngIf="showResultsContainer"></div> -->
 
-<div class="search-results-holder" >
-    <ion-content #galleryContainer>
+<div  [class.out-of-here]="!val || val && !startEntering" [style.height.px]="height" class="search-results-holder" >
+  
+    <ion-content  #galleryContainer>
             <div *ngIf="cafes.length">
                     <ul>
                         <li *ngFor="let cafe of cafes">
                             <div>{{cafe.name}}</div>
-                            <div>{{cafe.address.street}}</div>
+                            <div>{{cafe?.description}}</div>
                         </li>
                     </ul>
                 </div>
-                <div *ngIf="!cafes.length">Ничего не найдено</div>
+                <div *ngIf="!cafes.length && searchValue">Ничего не найдено</div>
     </ion-content>
 </div>
