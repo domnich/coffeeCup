@@ -15,10 +15,8 @@ export class PlacesPage extends Cancellable implements OnDestroy {
     @ViewChild('tabs') tabRef: Tabs;
     tab1Root: any = CafeListTab;
     tab2Root: any = MapTab;
-
     places: Observable<Array<Post>>;
     text: string;
-    private searchValue: string;
     constructor(
         public navCtrl: NavController, 
         public navParams: NavParams,

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { Cafe, FilteredCafes } from '../../models/cafe.interface';
+import {  FilteredCafes } from '../../models/cafe.interface';
 
 
 @Injectable()

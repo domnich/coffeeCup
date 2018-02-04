@@ -1,16 +1,14 @@
-import { Component, ElementRef, ViewChild, AfterViewInit, Input } from '@angular/core';
+import { Component,  ViewChild, AfterViewInit, Input } from '@angular/core';
 import { Content } from 'ionic-angular';
 import * as $ from 'jquery';
 import { DataService } from '../../providers/shared/shared.service';
 import { Cafe, FilteredCafes } from "../../models/cafe.interface";
-import {Observable} from "rxjs/Observable";
-
 
 @Component({
   selector: 'search-results',
   templateUrl: 'search-results.html'
 })
-export class SearchResultsComponent {
+export class SearchResultsComponent implements AfterViewInit {
   @Input('val')
   public val: boolean = false;
   public height: number;
@@ -19,7 +17,9 @@ export class SearchResultsComponent {
   public data: FilteredCafes;
   public searchValue: string;
   @ViewChild('galleryContainer') galleryContainer: Content;
-  constructor(private element: ElementRef, private shareData: DataService) {
+  constructor(
+    private shareData: DataService
+  ) {
     this.shareData.filteredCafesSubscriber.subscribe((obj: FilteredCafes) => {
       this.data = obj;
       this.height = isNaN(this.data.height) ? 200 : this.data.height;

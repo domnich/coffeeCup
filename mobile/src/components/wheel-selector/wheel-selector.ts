@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild, Input } from '@angular/core';
+import { Component,  ViewChild, Input } from '@angular/core';
 import {Gesture} from 'ionic-angular/gestures/gesture';
 import * as $ from 'jquery';
 @Component({

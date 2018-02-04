@@ -1,7 +1,6 @@
 import {Component, ChangeDetectorRef, OnDestroy } from '@angular/core';
 import {IonicPage, NavController, NavParams} from 'ionic-angular';
 import {Observable} from "rxjs/Observable";
-import { Post } from "../../models/post.interface";
 import { Cafe } from "../../models/cafe.interface";
 import { PlacesService } from '../places/shared/places.service';
 import { Cancellable } from '../../app/services/cancellable';

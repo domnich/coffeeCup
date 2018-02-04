@@ -1,6 +1,5 @@
 import { Component, ViewChild, Output, EventEmitter, OnDestroy } from '@angular/core';
 import {Platform, Searchbar} from "ionic-angular";
-import { DataProvider } from '../../providers/data/data';
 import { Observable } from 'rxjs/Observable';
 import { Cafe } from '../../models/cafe.interface';
 import { Keyboard } from '@ionic-native/keyboard';
@@ -23,7 +22,7 @@ export class SearchBarComponent extends Cancellable implements OnDestroy {
     public filteredCafes: any = [];
     private preventSearchHide: boolean = false;
     private keyBoardHeight: number;
-    constructor(private platform: Platform, private data: DataProvider, private keyboard: Keyboard, private shareDate: DataService, private placesService: PlacesService) {
+    constructor(private platform: Platform, private keyboard: Keyboard, private shareDate: DataService, private placesService: PlacesService) {
         super();
         console.log('Hello SearchBarComponent Component');
         this.attachEvents();

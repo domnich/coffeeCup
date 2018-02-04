@@ -1,6 +1,6 @@
 import {Component, ElementRef, ViewChild, OnDestroy } from '@angular/core';
 import {IonicPage, NavController, NavParams, Platform} from 'ionic-angular';
-import {DataProvider} from "../../providers/data/data";
+
 import {Observable} from "rxjs/Observable";
 import { Cafe } from "../../models/cafe.interface";
 import { PlacesService } from '../places/shared/places.service';
@@ -21,8 +21,7 @@ export class MapPage extends Cancellable implements OnDestroy {
     constructor(
         public navCtrl: NavController, 
         public navParams: NavParams, 
-        public platform: Platform,  
-        private data: DataProvider,
+        public platform: Platform,
         private placesService: PlacesService
     ) {
         super();

@@ -17,10 +17,10 @@ export class DataProvider {
 
     getPosts() {
 
-        let coords = [{
-            latitude: 49.993500,
-            longitude: 36.230383
-        }];
+        // let coords = [{
+        //     latitude: 49.993500,
+        //     longitude: 36.230383
+        // }];
 
 
         // {
