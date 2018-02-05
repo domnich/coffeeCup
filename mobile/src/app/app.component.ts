@@ -6,6 +6,7 @@ import {Keyboard} from "@ionic-native/keyboard";
 
 
 import {HomePage} from "../pages/home/home";
+import { LocalStorage } from './services/localstorage';
 
 //declare var VkSdk;
 
@@ -23,19 +24,33 @@ export class MyApp {
         { title: 'Login', component: 'LoginPage' }
     ];
 
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, keyboard: Keyboard, public modalCtrl: ModalController) {
+  constructor(
+    platform: Platform, 
+    statusBar: StatusBar, 
+    splashScreen: SplashScreen, 
+    keyboard: Keyboard, 
+    private localStorage: LocalStorage,
+    public modalCtrl: ModalController) {
     platform.ready().then(() => {
+
+    // this.localStorage.setUserLocation({
+    //   latitude: '49.993500,', 
+    //   longitude: '36.230383'
+    // });
+
+      this.initializeRequestForGeolocation();
+
+    
+
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
           //statusBar.styleDefault();
   
-
-
-// VkSdk.init('6356607', function(res) {
-//   console.log(res, 'RESSSSS');
-// }, function(error) {
-//   console.log(error, "ERRRRRR");
-// });
+          // VkSdk.init('6356607', function(res) {
+          //   console.log(res, 'RESSSSS');
+          // }, function(error) {
+          //   console.log(error, "ERRRRRR");
+          // });
 
 
 
@@ -47,6 +62,14 @@ export class MyApp {
 
     });
   }
+
+    initializeRequestForGeolocation() {
+      this.localStorage.getUserLocation().then((geolocation) => {
+        if(geolocation === undefined || geolocation === null) {
+          console.log(321);
+        }
+      });
+    }
 
     openPage(page) {
         // Reset the content nav to have just this page

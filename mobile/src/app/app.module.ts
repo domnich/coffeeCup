@@ -5,6 +5,7 @@ import {SplashScreen} from '@ionic-native/splash-screen';
 import {StatusBar} from '@ionic-native/status-bar';
 import { CommonModule } from "@angular/common";
 import { Facebook } from '@ionic-native/facebook';
+import { IonicStorageModule } from '@ionic/storage';
 
 import {MyApp} from './app.component';
 import {DataProvider} from '../providers/data/data';
@@ -14,7 +15,7 @@ import {Keyboard} from "@ionic-native/keyboard";
 import {CitySelectComponent} from "../components/city-select/city-select";
 import { DataService } from '../providers/shared/shared.service';
 import { PlacesService } from '../pages/places/shared/places.service';
-
+import { LocalStorage } from '../app/services/localstorage';
 
 @NgModule({
     declarations: [
@@ -29,7 +30,8 @@ import { PlacesService } from '../pages/places/shared/places.service';
             scrollAssist: false,
             scrollPadding: false
         }
-        )
+        ),
+        IonicStorageModule.forRoot()
     ],
     bootstrap: [IonicApp],
     entryComponents: [
@@ -46,7 +48,8 @@ import { PlacesService } from '../pages/places/shared/places.service';
         DataProvider,
         AppEmitterProvider,
         Facebook,
-        PlacesService
+        PlacesService,
+        LocalStorage
     ]
 })
 export class AppModule {
