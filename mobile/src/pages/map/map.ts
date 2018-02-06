@@ -66,7 +66,8 @@ export class MapPage extends Cancellable implements OnDestroy {
             position: new google.maps.LatLng(place.latitude, place.longitude),
             map: this.map,
             title: place.name
-        });
+        }),
+        self = this;
 
 
        // var contentWindow = "<button id='clickableItem'>place.name</button> <br/>" + "<img src='"+ place.photos[0] +"' width='100%' height='100' /> <br/>" + place.description;
@@ -81,7 +82,7 @@ export class MapPage extends Cancellable implements OnDestroy {
             var clickableItem = document.getElementById('clickableItem');
 
             clickableItem.addEventListener('click' , () => {
-                console.log(place, 111)
+                self.navigateToDetail(place.id);
             });
         });
 
@@ -148,7 +149,9 @@ export class MapPage extends Cancellable implements OnDestroy {
     }
 
 
-
+    navigateToDetail(id: number) {
+        this.navCtrl.push('CafeDetailPage', {id})
+    }
 
 
 

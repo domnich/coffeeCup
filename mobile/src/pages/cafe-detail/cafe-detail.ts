@@ -13,8 +13,8 @@ import { PlacesService } from '../places/shared/places.service';
     templateUrl: 'cafe-detail.html',
 })
 export class CafeDetailPage {
-    id: number;
-    cafe: Observable<Cafe>;
+    private id: number;
+    public cafe: Cafe;
     constructor(
         public navCtrl: NavController, 
         public navParams: NavParams, 
@@ -25,7 +25,8 @@ export class CafeDetailPage {
         console.log('ionViewDidLoad CafeDetailPage');
         this.id = this.navParams.get('id');
         this.placesService.getPlaceById(this.id).subscribe((res) => {
-            console.log(res);
+            this.cafe = res;
+          // this.cafe = res;
         });
     }
 

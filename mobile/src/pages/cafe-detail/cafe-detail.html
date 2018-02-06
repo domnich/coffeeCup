@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar color="primary">
-    <ion-title>{{(post | async)?.title}}</ion-title>
+    <ion-title>{{cafe?.name}}</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -15,10 +15,10 @@
 
 <ion-content padding>
   <ion-card>
-    <ion-card-header>{{(post | async)?.id}}  - {{(post | async)?.title}}</ion-card-header>
+    <ion-card-header>{{cafe?.id}}  - {{cafe?.name}}</ion-card-header>
     <ion-card-content>
-      <p>{{(post | async)?.body}}</p>
-      <p>{{(post | async)?.userId}}</p>
+      <p>{{cafe?.latitude}}</p>
+      <p>{{cafe?.longitude}}</p>
     </ion-card-content>
   </ion-card>
 </ion-content>

@@ -1,5 +1,5 @@
 import { Component,  ViewChild, AfterViewInit, Input } from '@angular/core';
-import { Content } from 'ionic-angular';
+import { Content, NavController } from 'ionic-angular';
 import * as $ from 'jquery';
 import { DataService } from '../../providers/shared/shared.service';
 import { Cafe, FilteredCafes } from "../../models/cafe.interface";
@@ -18,9 +18,10 @@ export class SearchResultsComponent implements AfterViewInit {
   public searchValue: string;
   @ViewChild('galleryContainer') galleryContainer: Content;
   constructor(
-    private shareData: DataService
+    private shareData: DataService,
+    private navCtrl: NavController
   ) {
-    this.shareData.filteredCafesSubscriber.subscribe((obj: FilteredCafes) => {
+    this.shareData.filteredCafesSubscriber.subscribe((obj: Cafe) => {
       this.data = obj;
       this.height = isNaN(this.data.height) ? 200 : this.data.height;
       this.cafes = this.data.data ? this.data.data : [];
@@ -34,5 +35,9 @@ export class SearchResultsComponent implements AfterViewInit {
       $('.searchbar-input').focus();
     });
   }
- 
+  
+  navigateToDetail(id: number) {
+    this.navCtrl.push('CafeDetailPage', {id})
+  }
+
 }

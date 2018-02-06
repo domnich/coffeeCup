@@ -7,3 +7,9 @@ export interface Cafe {
     name: string,
     work_hours: string | null
 }
+
+export interface FilteredCafes {
+    data: Array<Cafe>,
+    height: number,
+    value: string
+}

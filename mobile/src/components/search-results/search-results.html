@@ -5,7 +5,7 @@
     <ion-content  #galleryContainer>
             <div *ngIf="cafes.length">
                     <ul>
-                        <li *ngFor="let cafe of cafes">
+                        <li *ngFor="let cafe of cafes" (click)="navigateToDetail(cafe.id)">
                             <div>{{cafe.name}}</div>
                             <div>{{cafe?.description}}</div>
                         </li>

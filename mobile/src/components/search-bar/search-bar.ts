@@ -57,12 +57,9 @@ export class SearchBarComponent extends Cancellable implements OnDestroy {
     }
 
     onInput(event: any) {
-        console.log(this.cafes, 'CAFES');
         this.filteredCafes = this.searchValue.length === 0 ? [] : this.cafes.filter((item) => {
             return (item['name'].toLowerCase().indexOf(this.searchValue.toLowerCase()) > -1);
         });
-
-        console.log($('#place-header').outerHeight(true) , this.keyBoardHeight, this.platform.height())
         this.shareDate.emitFilteredCafes({
             data: this.filteredCafes, 
             value: this.searchValue,
