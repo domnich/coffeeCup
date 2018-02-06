@@ -1,11 +1,11 @@
 import {Component} from '@angular/core';
 import {IonicPage, NavController, NavParams} from 'ionic-angular';
-import {DataProvider} from "../../providers/data/data";
 import {Observable} from "rxjs/Observable";
-import {Post} from "../../models/post.interface"
+import { Cafe } from '../../models/cafe.interface';
+import { PlacesService } from '../places/shared/places.service';
 
 @IonicPage({
-    segment: 'cafes/:postId',
+    segment: 'cafes/:id',
     defaultHistory: ['cafes']
 })
 @Component({
@@ -13,16 +13,20 @@ import {Post} from "../../models/post.interface"
     templateUrl: 'cafe-detail.html',
 })
 export class CafeDetailPage {
-    post: Observable<Post>;
-    postId: number;
-
-    constructor(public navCtrl: NavController, public navParams: NavParams, private data: DataProvider) {
+    id: number;
+    cafe: Observable<Cafe>;
+    constructor(
+        public navCtrl: NavController, 
+        public navParams: NavParams, 
+        private placesService: PlacesService) {
     }
 
     ionViewDidLoad() {
         console.log('ionViewDidLoad CafeDetailPage');
-        this.postId = this.navParams.get('postId');
-        this.post = this.data.getPostById(this.postId);
+        this.id = this.navParams.get('id');
+        this.placesService.getPlaceById(this.id).subscribe((res) => {
+            console.log(res);
+        });
     }
 
 }

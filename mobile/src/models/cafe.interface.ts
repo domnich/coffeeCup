@@ -1,31 +1,9 @@
 export interface Cafe {
+    description: string | null,
     id: number,
+    image: string | null,
+    latitude: string,
+    longitude: string,
     name: string,
-    address: CafeAddress,
-    photos: string[]
+    work_hours: string | null
 }
-
-export interface CafeAddress {
-    city: string,
-    street: string,
-    phone: string,
-    cite: string,
-    workingTime: CafeWorkingTime,
-    geolocation: CafeGelocation
-}
-
-export interface CafeWorkingTime {
-  from: string,
-  to: string
-}
-
-export interface CafeGelocation {
-    lat: number,
-    lng: number
-}
-
-export interface FilteredCafes {
-    data: Cafe[],
-    value: string,
-    height: number
-  }

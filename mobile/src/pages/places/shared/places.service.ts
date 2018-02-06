@@ -11,7 +11,7 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 @Injectable()
 export class PlacesService {
-  private _placesData = new BehaviorSubject({});
+  public _placesData = new BehaviorSubject({});
   constructor(
     private http: Http
   ) {
@@ -26,6 +26,18 @@ export class PlacesService {
     .catch(this.catchError)
     .subscribe(res => this._placesData.next(res));
     
+  }
+
+  getPlaceById(id: number) {
+    const url = `${ API_URL }/house/${ id }`
+    return this.http.get(url)
+          .do(this.logResponse)
+          .map(this.extractData)
+          .catch(this.catchError);
+  }
+
+  public loadData(arr: Array<any>) {
+    this._placesData.next(arr);
   }
 
   public get placesData(): Observable<any> {

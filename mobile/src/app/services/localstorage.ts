@@ -7,6 +7,19 @@ export class LocalStorage {
     private storage:Storage
   ) {}
 
+  saveCafesToStorage(cafes: Array<any>) {
+    let obj = {
+      khariv: cafes
+    };
+    this.storage.set('cafes', this.stringifyObj(obj));
+  }
+
+  getCafesFromStorage() {
+    return this.storage.get('cafes').then( cafes => {
+      return this.parseResponse(cafes);
+    });
+  }
+
   setUserLocation(geolocation: {latitude: string, longitude: string}) {
     this.storage.set('geolocation', this.stringifyObj(geolocation));
   }

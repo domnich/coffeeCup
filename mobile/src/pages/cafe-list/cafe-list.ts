@@ -45,8 +45,8 @@ export class CafeListPage extends Cancellable implements OnDestroy {
             }));
     }
 
-    navigateToDetail(postId: number) {
-        this.navCtrl.push('CafeDetailPage', {postId})
+    navigateToDetail(id: number) {
+        this.navCtrl.push('CafeDetailPage', {id})
     }
 
     onSearchValueChanged(event) {
