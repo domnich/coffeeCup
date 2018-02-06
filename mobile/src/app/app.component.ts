@@ -3,8 +3,8 @@ import {Platform, Nav, ModalController} from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import {Keyboard} from "@ionic-native/keyboard";
-
-
+import { Geolocation } from '@ionic-native/geolocation';
+import { Diagnostic } from '@ionic-native/diagnostic';
 import {HomePage} from "../pages/home/home";
 import { LocalStorage } from './services/localstorage';
 
@@ -30,13 +30,44 @@ export class MyApp {
     splashScreen: SplashScreen, 
     keyboard: Keyboard, 
     private localStorage: LocalStorage,
-    public modalCtrl: ModalController) {
+    public modalCtrl: ModalController,
+    private geolocation: Geolocation,
+    private diagnostic: Diagnostic) {
     platform.ready().then(() => {
 
     // this.localStorage.setUserLocation({
     //   latitude: '49.993500,', 
     //   longitude: '36.230383'
     // });
+
+setTimeout(() => {
+
+
+
+
+this.diagnostic.isLocationAuthorized().then((res) => {console.log(res)}, (err) => {console.log(err)})
+
+
+  let successCallback = (isAvailable) => { 
+
+    console.log(isAvailable,'isAvailable  not_determined')
+ this.geolocation.getCurrentPosition().then((resp) => {
+      console.log(resp.coords, 'resprespresp');
+     }).catch((error) => {
+       console.log('Error getting location', error);
+     });
+
+   };
+  let errorCallback = (e) => console.error(e);
+  
+  this.diagnostic.requestLocationAuthorization().then(successCallback).catch(errorCallback);
+
+
+
+
+
+   
+}, 4000);
 
       this.initializeRequestForGeolocation();
 

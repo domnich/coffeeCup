@@ -21,7 +21,9 @@
         "@angular/platform-browser": "4.4.4",
         "@angular/platform-browser-dynamic": "4.4.4",
         "@ionic-native/core": "4.3.2",
+        "@ionic-native/diagnostic": "^4.5.3",
         "@ionic-native/facebook": "^4.5.3",
+        "@ionic-native/geolocation": "^4.5.3",
         "@ionic-native/keyboard": "^4.4.2",
         "@ionic-native/splash-screen": "4.3.2",
         "@ionic-native/status-bar": "^4.3.2",
@@ -32,12 +34,14 @@
         "cordova-ios": "^4.5.4",
         "cordova-plugin-device": "^1.1.7",
         "cordova-plugin-facebook4": "^1.9.1",
+        "cordova-plugin-geolocation": "^4.0.1",
         "cordova-plugin-ionic-webview": "^1.1.16",
         "cordova-plugin-splashscreen": "^4.1.0",
         "cordova-plugin-statusbar": "^2.4.1",
         "cordova-plugin-whitelist": "^1.3.3",
         "cordova-sqlite-storage": "^2.2.0",
         "cordova-wheel-selector-plugin": "^1.0.9",
+        "cordova.plugins.diagnostic": "^3.9.2",
         "hammerjs": "^2.0.8",
         "ionic-angular": "3.8.0",
         "ionic-plugin-keyboard": "^2.2.1",
@@ -65,10 +69,11 @@
                 "APP_ID": "142316016447382",
                 "APP_NAME": "com.coffeecup.app"
             },
-            "com.akveo.cordova-vk": {
-                "VK_APP_ID": "vk6356607"
+            "cordova-sqlite-storage": {},
+            "cordova-plugin-geolocation": {
+                "GEOLOCATION_USAGE_DESCRIPTION": "To locate you"
             },
-            "cordova-sqlite-storage": {}
+            "cordova.plugins.diagnostic": {}
         },
         "platforms": [
             "android",

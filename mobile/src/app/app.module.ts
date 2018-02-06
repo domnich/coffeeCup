@@ -6,6 +6,8 @@ import {StatusBar} from '@ionic-native/status-bar';
 import { CommonModule } from "@angular/common";
 import { Facebook } from '@ionic-native/facebook';
 import { IonicStorageModule } from '@ionic/storage';
+import { Geolocation } from '@ionic-native/geolocation';
+import { Diagnostic } from '@ionic-native/diagnostic';
 
 import {MyApp} from './app.component';
 import {DataProvider} from '../providers/data/data';
@@ -49,8 +51,11 @@ import { LocalStorage } from '../app/services/localstorage';
         AppEmitterProvider,
         Facebook,
         PlacesService,
-        LocalStorage
+        LocalStorage,
+        Geolocation,
+        Diagnostic
     ]
 })
 export class AppModule {
+
 }
