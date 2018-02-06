@@ -21,7 +21,7 @@ export class SearchResultsComponent implements AfterViewInit {
     private shareData: DataService,
     private navCtrl: NavController
   ) {
-    this.shareData.filteredCafesSubscriber.subscribe((obj: Cafe) => {
+    this.shareData.filteredCafesSubscriber.subscribe((obj: FilteredCafes) => {
       this.data = obj;
       this.height = isNaN(this.data.height) ? 200 : this.data.height;
       this.cafes = this.data.data ? this.data.data : [];

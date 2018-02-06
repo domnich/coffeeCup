@@ -15,5 +15,6 @@
         <!-- <ion-img *ngIf="place?.photos" width="100%" height="120" src="{{place.photos[0]}}"></ion-img> -->
         <div class="card-title">{{place.name}}</div>
         <div *ngIf="place.description" class="card-subtitle">{{place?.description}}</div>
+        <div *ngIf="place.distanceString" class="card-subtitle">{{place?.distanceString}}</div>
     </ion-card>
 </ion-content>

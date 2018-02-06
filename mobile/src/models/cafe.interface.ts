@@ -5,7 +5,9 @@ export interface Cafe {
     latitude: string,
     longitude: string,
     name: string,
-    work_hours: string | null
+    work_hours: string | null,
+    distance?: number,
+    distanceString?: string
 }
 
 export interface FilteredCafes {
