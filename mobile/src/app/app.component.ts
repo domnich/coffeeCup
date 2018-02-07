@@ -7,6 +7,7 @@ import { Geolocation } from '@ionic-native/geolocation';
 import { Diagnostic } from '@ionic-native/diagnostic';
 import {HomePage} from "../pages/home/home";
 import { LocalStorage } from './services/localstorage';
+import { DataService } from '../providers/shared/shared.service';
 
 //declare var VkSdk;
 
@@ -32,7 +33,9 @@ export class MyApp {
     private localStorage: LocalStorage,
     public modalCtrl: ModalController,
     private geolocation: Geolocation,
-    private diagnostic: Diagnostic) {
+    private diagnostic: Diagnostic,
+    private shareDate: DataService
+  ) {
     platform.ready().then(() => {
 
     // this.localStorage.setUserLocation({
@@ -40,77 +43,9 @@ export class MyApp {
     //   longitude: '36.230383'
     // });
 
-
-
-console.log('TADAM');
-
-    this.diagnostic.getLocationAuthorizationStatus().then((res) => {
-      console.log(res, 'getLocationAuthorizationStatus')
-      if(res === this.diagnostic.motionStatus.NOT_DETERMINED || res === this.diagnostic.motionStatus.DENIED) {
-        console.log('IM HERE')
-        this.diagnostic.requestLocationAuthorization().then((status) => {
-
-          console.log(status, 'statusstatusstatusstatus');
-
-          if(status === this.diagnostic.motionStatus.NOT_DETERMINED || status === 'authorized_when_in_use') {
-            this.geolocation.getCurrentPosition().then((resp) => {
-              console.log(resp.coords, 'resprespresp');
-            }).catch((error) => {
-              console.log('Error getting location', error);
-            });
-          }
-        }, (err) => {
-          console.log(err, "ERURURURUR")
-        }).catch((err) => {
-          console.log(err, 'ITS ERROR')
-        });
-
-      } else if(res === 'authorized_when_in_use') {
-        this.geolocation.getCurrentPosition().then((resp) => {
-          console.log(resp.coords, 'resprespresp');
-        }).catch((error) => {
-          console.log('Error getting location', error);
-        });
-      }
-    })
-
-// this.diagnostic.isLocationAuthorized().then((res) => {
-//   console.log(res, 'ITS RESPONSE')
-//   if(res) {
-//     this.diagnostic.switchToLocationSettings();
-//     this.geolocation.getCurrentPosition().then((resp) => {
-//       console.log(resp.coords, 'resprespresp');
-//      }).catch((error) => {
-//        console.log('Error getting location', error);
-//      });
-//   }
-// }, (err) => {console.log(err, 'ITS ERROR')})
-
-//   let successCallback = (isAvailable) => { 
-
-//     console.log(isAvailable,'isAvailable  not_determined')
-//  this.geolocation.getCurrentPosition().then((resp) => {
-//       console.log(resp.coords, 'resprespresp');
-//      }).catch((error) => {
-//        console.log('Error getting location', error);
-//      });
-
-//    };
-
-
-//   let errorCallback = (e) => console.error(e);
-  
-  
-
-
-
-
-
-
-
-    
-
-    
+      if (platform.is('ios') || platform.is('android')) {
+        this.tryToGetUserCoordinates();
+      }  
 
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
@@ -133,11 +68,39 @@ console.log('TADAM');
     });
   }
 
+  tryToGetUserCoordinates() {
+    this.diagnostic.getLocationAuthorizationStatus().then((res) => {
+      console.log(res, 'getLocationAuthorizationStatus')
+      if(res === this.diagnostic.motionStatus.NOT_DETERMINED || res === this.diagnostic.motionStatus.DENIED) {
+        console.log('IM HERE')
+        this.diagnostic.requestLocationAuthorization().then((status) => {
+
+          console.log(status, 'statusstatusstatusstatus');
+
+          if(status === this.diagnostic.motionStatus.NOT_DETERMINED || status === 'authorized_when_in_use') {
+            this.initializeRequestForGeolocation();
+          }
+        }, (err) => {
+          console.log(err, "ERURURURUR");
+        }).catch((err) => {
+          console.log(err, 'ITS ERROR');
+        });
+
+      } else if(res === 'authorized_when_in_use') {
+        this.initializeRequestForGeolocation();
+      }
+    });
+  }
+
     initializeRequestForGeolocation() {
-      this.localStorage.getUserLocation().then((geolocation) => {
-        if(geolocation === undefined || geolocation === null) {
-          console.log(321);
-        }
+      this.geolocation.getCurrentPosition().then((resp) => {
+        console.log(resp.coords);
+        this.shareDate.emitUserCoordinates({
+          latitude: resp.coords.latitude,
+          longitude: resp.coords.longitude
+        });
+      }).catch((error) => {
+        console.log('Error getting location', error);
       });
     }
 

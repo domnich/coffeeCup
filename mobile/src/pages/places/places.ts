@@ -7,6 +7,8 @@ import { PlacesService } from './shared/places.service';
 import { Cancellable } from '../../app/services/cancellable';
 import { LocalStorage } from '../../app/services/localstorage';
 import { getDistanceFromLatLonInKm, compareDistance } from '../../app/helpers';
+import { DataService } from '../../providers/shared/shared.service';
+import { KHARKIV_COORDS } from '../../app/constants';
 
 @IonicPage()
 @Component({
@@ -22,15 +24,17 @@ export class PlacesPage extends Cancellable implements OnDestroy {
     updateFromServer: boolean;
     getDistance = getDistanceFromLatLonInKm;
     compareDistance = compareDistance;
+    private userCoords;
     constructor(
         public navCtrl: NavController, 
         public navParams: NavParams,
         private placesService: PlacesService,
-        private localStorage: LocalStorage
+        private localStorage: LocalStorage,
+        private shareData: DataService
     ) {
         super();
         this.getPlaces();
-
+        
         this.addSubscriptionToStack(this.placesService.placesData.subscribe(res => {
             if (res && res.length) {
                 if(this.updateFromServer) {
@@ -39,6 +43,10 @@ export class PlacesPage extends Cancellable implements OnDestroy {
                 this.places = res;
             }
         })); 
+
+        this.addSubscriptionToStack(this.shareData.userCoordinatesSubscriber.subscribe((res) => {
+            this.userCoords = res;
+        }));
     }
 
     ionViewDidLoad() {
@@ -170,6 +178,7 @@ export class PlacesPage extends Cancellable implements OnDestroy {
                 ];
 
 
+                this.filterDataAccordingToUserCoordinates(test);
                 let userCoords = {
                     "latitude": "49.9935",
                     "longitude": "36.230383000000074",
@@ -190,9 +199,7 @@ export class PlacesPage extends Cancellable implements OnDestroy {
                             item['distanceString']  = distanceArray[0] + ' километрa ' + distanceArray[1] + ' метрa';
                         }
                     }
-                });    
-
-                console.log(test);
+                });
 
                 this.placesService.loadData(test);
                 //  this.placesService.loadData(res.khariv);
@@ -202,18 +209,16 @@ export class PlacesPage extends Cancellable implements OnDestroy {
         });       
     }
 
+    filterDataAccordingToUserCoordinates(arr: any) {
+        console.log(arr, "ARA")
+    }
+
     saveToStorage(arr: Array<any>) {
         this.localStorage.saveCafesToStorage(arr);
     }
 
     loadData() {
-        let obj = {
-            'startLat': 49.991899,
-            'endLat': 49.987322,
-            'startLng': 36.227468,
-            'endLng': 36.236950
-        }
-        const request = this.placesService.getPlaces(obj);
+        const request = this.placesService.getPlaces(KHARKIV_COORDS);
         this.addRequestToStack(request);
     }
 }
