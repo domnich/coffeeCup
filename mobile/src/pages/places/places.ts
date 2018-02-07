@@ -51,6 +51,7 @@ export class PlacesPage extends Cancellable implements OnDestroy {
     }
 
     getPlaces() {
+        console.log('GET PLACES');
         this.localStorage.getCafesFromStorage().then((res) => {
             if(res === null) {
                 this.updateFromServer = true;

@@ -40,36 +40,75 @@ export class MyApp {
     //   longitude: '36.230383'
     // });
 
-setTimeout(() => {
 
 
+console.log('TADAM');
+
+    this.diagnostic.getLocationAuthorizationStatus().then((res) => {
+      console.log(res, 'getLocationAuthorizationStatus')
+      if(res === this.diagnostic.motionStatus.NOT_DETERMINED || res === this.diagnostic.motionStatus.DENIED) {
+        console.log('IM HERE')
+        this.diagnostic.requestLocationAuthorization().then((status) => {
+
+          console.log(status, 'statusstatusstatusstatus');
+
+          if(status === this.diagnostic.motionStatus.NOT_DETERMINED || status === 'authorized_when_in_use') {
+            this.geolocation.getCurrentPosition().then((resp) => {
+              console.log(resp.coords, 'resprespresp');
+            }).catch((error) => {
+              console.log('Error getting location', error);
+            });
+          }
+        }, (err) => {
+          console.log(err, "ERURURURUR")
+        }).catch((err) => {
+          console.log(err, 'ITS ERROR')
+        });
+
+      } else if(res === 'authorized_when_in_use') {
+        this.geolocation.getCurrentPosition().then((resp) => {
+          console.log(resp.coords, 'resprespresp');
+        }).catch((error) => {
+          console.log('Error getting location', error);
+        });
+      }
+    })
+
+// this.diagnostic.isLocationAuthorized().then((res) => {
+//   console.log(res, 'ITS RESPONSE')
+//   if(res) {
+//     this.diagnostic.switchToLocationSettings();
+//     this.geolocation.getCurrentPosition().then((resp) => {
+//       console.log(resp.coords, 'resprespresp');
+//      }).catch((error) => {
+//        console.log('Error getting location', error);
+//      });
+//   }
+// }, (err) => {console.log(err, 'ITS ERROR')})
+
+//   let successCallback = (isAvailable) => { 
+
+//     console.log(isAvailable,'isAvailable  not_determined')
+//  this.geolocation.getCurrentPosition().then((resp) => {
+//       console.log(resp.coords, 'resprespresp');
+//      }).catch((error) => {
+//        console.log('Error getting location', error);
+//      });
+
+//    };
 
 
-this.diagnostic.isLocationAuthorized().then((res) => {console.log(res)}, (err) => {console.log(err)})
-
-
-  let successCallback = (isAvailable) => { 
-
-    console.log(isAvailable,'isAvailable  not_determined')
- this.geolocation.getCurrentPosition().then((resp) => {
-      console.log(resp.coords, 'resprespresp');
-     }).catch((error) => {
-       console.log('Error getting location', error);
-     });
-
-   };
-  let errorCallback = (e) => console.error(e);
+//   let errorCallback = (e) => console.error(e);
   
-  this.diagnostic.requestLocationAuthorization().then(successCallback).catch(errorCallback);
+  
 
 
 
 
 
-   
-}, 4000);
 
-      this.initializeRequestForGeolocation();
+
+    
 
     
 
