@@ -1,8 +1,8 @@
 <div #wheel class="wheel-holder">
   <div class="mask">
       <ul #slideList class="common-list">
-          <li (click)="slideToItem(i)" *ngFor="let name of names; let i = index">
-              <span class="txt">{{name}}</span>
+          <li (click)="slideToItem(i)" *ngFor="let item of items; let i = index"  [attr.ready]="last ? false : true">
+              <span class="txt">{{item.name}}</span>
           </li>
       </ul>
   </div>

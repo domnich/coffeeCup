@@ -9,12 +9,16 @@ import * as $ from 'jquery';
 export class WheelSelectorComponent {
   @ViewChild('wheel') wheel;
   @ViewChild('slideList') slideList;
-  @Input() names: Array<string>;
+  @Input() items: Array<any>;
   @Input() center: boolean = false;
+  @Input()
+  set ready(isReady: boolean) {
+    if (isReady) this.someCallbackMethod();
+  }
   pressGesture: Gesture;
   startCounter: number = 0;
   slideCounter: number = 0;
-  namess:Array<string>;
+
   activeIndex: number = 0;
   activeClass: string = 'active';
   animSpeed: number = 500;
@@ -22,7 +26,7 @@ export class WheelSelectorComponent {
   mask;
   constructor() {
     console.log('Hello WheelSelectorComponent Component');
-    
+    console.log(this)
     //this.namess = ['Эспрессо', 'Американо', 'Латте', 'Какао', 'Чай'];
   }
 
@@ -31,6 +35,10 @@ export class WheelSelectorComponent {
     if(this.center) {
       this.slideToItem(1, true);
     }
+  }
+
+  someCallbackMethod() {
+    alert(3);
   }
 
   activate() {

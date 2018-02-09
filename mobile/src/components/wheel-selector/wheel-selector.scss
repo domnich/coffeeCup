@@ -1,7 +1,7 @@
 wheel-selector {
   .wheel-holder {
     overflow: hidden;
-    height: 325px;
+    height:125px;
     width: 100%;
     position: relative;
     background: #ccc;
@@ -43,7 +43,8 @@ wheel-selector {
       line-height: 50px;
       float: left;
       opacity: 0.5;
-      width: 70px;
+      min-width: 70px;
+      margin: 0 20px 0 0;
       &.active {
         opacity: 1;
       }
