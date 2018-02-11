@@ -1,11 +1,25 @@
 import { Injectable } from '@angular/core';
-import {Storage} from '@ionic/storage';
+import { Storage } from '@ionic/storage';
+import { FacebookLoginResponse } from '@ionic-native/facebook';
 
 @Injectable()
 export class LocalStorage {
   constructor(
     private storage:Storage
   ) {}
+
+  saveAuthorizationObject(obj: {type: string, data: FacebookLoginResponse | any}) {
+    console.log(obj, 'SAVE FB AUTH OBJ TO STORAGE');
+    console.log(this.stringifyObj(obj), 123456);
+    
+    this.storage.set('auth', this.stringifyObj(obj));
+  }
+
+  getAuthorizationObject() {
+    return this.storage.get('auth').then( auth => {
+      return this.parseResponse(auth);
+    });
+  }
 
   saveCafesToStorage(cafes: Array<any>) {
     let obj = {

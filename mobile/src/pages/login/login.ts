@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook';
+import { LocalStorage } from '../../app/services/localstorage';
+import { LOGIN_TYPES } from './shared/login-types';
 
 declare var VkSdk;
 
@@ -10,11 +12,11 @@ declare var VkSdk;
   templateUrl: 'login.html',
 })
 export class LoginPage {
-
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
-    private fb: Facebook
+    private fb: Facebook,
+    private localStorage: LocalStorage
   ) {
     
   }
@@ -26,7 +28,11 @@ export class LoginPage {
   facebookLogin() {
     this.fb.login(['public_profile', 'user_friends', 'email'])
     .then((res: FacebookLoginResponse) => {
-      console.log('Logged into Facebook!', res);
+      let obj = {
+        type: LOGIN_TYPES.FACEBOOK,
+        data: res
+      };
+      this.localStorage.saveAuthorizationObject(obj);
     })
     .catch(e => console.log('Error logging into Facebook', e));
   }

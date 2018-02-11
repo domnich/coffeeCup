@@ -18,10 +18,13 @@ import {CitySelectComponent} from "../components/city-select/city-select";
 import { DataService } from '../providers/shared/shared.service';
 import { PlacesService } from '../pages/places/shared/places.service';
 import { LocalStorage } from '../app/services/localstorage';
+import { Auth } from '../app/services/auth';
+import { UserProfileComponent } from '../components/user-profile/user-profile';
 
 @NgModule({
     declarations: [
-        MyApp
+        MyApp,
+        UserProfileComponent
     ],
     imports: [
         CommonModule,
@@ -37,8 +40,7 @@ import { LocalStorage } from '../app/services/localstorage';
     ],
     bootstrap: [IonicApp],
     entryComponents: [
-        MyApp,
-
+        MyApp
     ],
     providers: [
         DataService,
@@ -53,7 +55,12 @@ import { LocalStorage } from '../app/services/localstorage';
         PlacesService,
         LocalStorage,
         Geolocation,
-        Diagnostic
+        Diagnostic,
+        Auth
+        
+    ],
+    exports: [
+        UserProfileComponent
     ]
 })
 export class AppModule {
