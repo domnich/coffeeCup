@@ -12,7 +12,7 @@ import { Auth } from './services/auth';
 import { LOGIN_TYPES } from '../pages/login/shared/login-types';
 import { Facebook } from '@ionic-native/facebook';
 
-//declare var VkSdk;
+declare var SocialVk;
 
 @Component({
   templateUrl: 'app.html'
@@ -50,6 +50,23 @@ export class MyApp {
 
       if (platform.is('ios') || platform.is('android')) {
         this.tryToGetUserCoordinates();
+       console.log(1)
+        setTimeout(() => {
+          console.log(2)
+          SocialVk.init('6356607', function(res) {
+            console.log(res, 312777);
+
+            SocialVk.login(['photos', 'offline'], function(res) {
+                console.log(res, "RESSESESE");
+              }, function(error) {
+                console.log(error, "ERRRORRRR");
+              });
+
+          }, function(err) {
+            console.log(err);
+          });
+        }, 3000)
+        
       }
 
       this.checkUserAuthorization();
