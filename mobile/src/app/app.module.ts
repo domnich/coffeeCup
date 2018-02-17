@@ -8,6 +8,7 @@ import { Facebook } from '@ionic-native/facebook';
 import { IonicStorageModule } from '@ionic/storage';
 import { Geolocation } from '@ionic-native/geolocation';
 import { Diagnostic } from '@ionic-native/diagnostic';
+import { GooglePlus } from '@ionic-native/google-plus';
 
 import {MyApp} from './app.component';
 import {DataProvider} from '../providers/data/data';
@@ -56,7 +57,8 @@ import { UserProfileComponent } from '../components/user-profile/user-profile';
         LocalStorage,
         Geolocation,
         Diagnostic,
-        Auth
+        Auth,
+        GooglePlus
         
     ],
     exports: [

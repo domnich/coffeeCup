@@ -86,13 +86,13 @@
     <plugin name="cordova-plugin-geolocation" spec="^4.0.1">
         <variable name="GEOLOCATION_USAGE_DESCRIPTION" value="To locate you" />
     </plugin>
+    <plugin name="cordova-plugin-googleplus" spec="^5.2.1">
+        <variable name="REVERSED_CLIENT_ID" value="com.googleusercontent.apps.371598804642-16bp74hdaudtaij6rk6gvk832g118i60" />
+    </plugin>
     <plugin name="cordova-plugin-ionic-webview" spec="^1.1.16" />
     <plugin name="cordova-plugin-splashscreen" spec="^4.1.0" />
     <plugin name="cordova-plugin-statusbar" spec="^2.4.1" />
     <plugin name="cordova-plugin-whitelist" spec="^1.3.3" />
-    <plugin name="cordova-social-vk" spec="~1.0.5">
-        <variable name="VK_APP_ID" value="6356607" />
-    </plugin>
     <plugin name="cordova-sqlite-storage" spec="^2.2.1" />
     <plugin name="cordova-wheel-selector-plugin" spec="^1.0.9" />
     <plugin name="cordova.plugins.diagnostic" spec="^3.9.2" />
