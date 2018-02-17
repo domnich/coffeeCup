@@ -56,11 +56,7 @@ export class MyApp {
           SocialVk.init('6356607', function(res) {
             console.log(res, 312777);
 
-            SocialVk.login(['photos', 'offline'], function(res) {
-                console.log(res, "RESSESESE");
-              }, function(error) {
-                console.log(error, "ERRRORRRR");
-              });
+           
 
           }, function(err) {
             console.log(err);

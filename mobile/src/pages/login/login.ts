@@ -3,8 +3,10 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook';
 import { LocalStorage } from '../../app/services/localstorage';
 import { LOGIN_TYPES } from './shared/login-types';
+import { Auth } from '../../app/services/auth';
 
-//declare var VkSdk;
+
+declare var SocialVk;
 
 @IonicPage()
 @Component({
@@ -16,6 +18,7 @@ export class LoginPage {
     public navCtrl: NavController, 
     public navParams: NavParams,
     private fb: Facebook,
+    private auth: Auth,
     private localStorage: LocalStorage
   ) {
     
@@ -32,22 +35,23 @@ export class LoginPage {
         type: LOGIN_TYPES.FACEBOOK,
         data: res
       };
+
+this.auth.loginUsingFacebook(res).subscribe((response) => {
+  console.log(response);
+})
+
       this.localStorage.saveAuthorizationObject(obj);
     })
     .catch(e => console.log('Error logging into Facebook', e));
   }
 
   vkontakteLogin() {
-
-    // VkSdk.initiateLogin(['photos', 'offline'], function(res) {
-    //   console.log(res, "RESSESESE");
-    // }, function(error) {
-    //   console.log(error, "ERRRORRRR");
-    // });
-
-    // document.addEventListener('vkSdk.newToken', function(token) {
-    //   console.log('New token is ' + token);
-    // });
+alert(123);
+    SocialVk.login(['photos', 'offline'], function(res) {
+      console.log(res, "RESSESESE");
+    }, function(error) {
+      console.log(error, "ERRRORRRR");
+    });
 
   }
 }

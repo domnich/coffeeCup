@@ -1,7 +1,6 @@
 # coffeecup
 
-ionic build --prod --release
-cordova build ios --prod --release
+
 
 
 удалить плагин cordova-social-vk из packages.json, config.xml
