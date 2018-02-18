@@ -85,7 +85,7 @@
         <variable name="GEOLOCATION_USAGE_DESCRIPTION" value="To locate you" />
     </plugin>
     <plugin name="cordova-plugin-googleplus" spec="^5.2.1">
-        <variable name="REVERSED_CLIENT_ID" value="com.googleusercontent.apps.371598804642-16bp74hdaudtaij6rk6gvk832g118i60" />
+        <variable name="REVERSED_CLIENT_ID" value="com.googleusercontent.apps.242141053973-ttitqndd6bhlsieucppknpb0qvos28s2" />
     </plugin>
     <plugin name="cordova-plugin-ionic-webview" spec="^1.1.16" />
     <plugin name="cordova-plugin-splashscreen" spec="^4.1.0" />

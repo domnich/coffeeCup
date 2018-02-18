@@ -3,15 +3,15 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>371598804642-16bp74hdaudtaij6rk6gvk832g118i60.apps.googleusercontent.com</string>
+	<string>242141053973-ttitqndd6bhlsieucppknpb0qvos28s2.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.371598804642-16bp74hdaudtaij6rk6gvk832g118i60</string>
+	<string>com.googleusercontent.apps.242141053973-ttitqndd6bhlsieucppknpb0qvos28s2</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.coffeecup.app</string>
 	<key>PROJECT_ID</key>
-	<string>coffecup-1509806508479</string>
+	<string>coffeecup-195612</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -23,6 +23,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:371598804642:ios:5c6a7340f26ef1d7</string>
+	<string>1:242141053973:ios:5c6a7340f26ef1d7</string>
 </dict>
 </plist>

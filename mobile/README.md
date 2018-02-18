@@ -12,51 +12,12 @@ cordova build ios --prod --release
 
 
 
-{
-  "project_info": {
-    "project_number": "371598804642",
-    "project_id": "coffecup-1509806508479"
-  },
-  "client": [
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:371598804642:android:5c6a7340f26ef1d7",
-        "android_client_info": {
-          "package_name": "com.coffeecup.app"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "371598804642-is9luiuut0tismuk6khj0f3a42vst7hn.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.coffeecup.app",
-            "certificate_hash": "8a414fc03543524e0f68805fbd8524d90350f038"
-          }
-        },
-        {
-          "client_id": "371598804642-fuvj52p8btb404lqroem9ioh62b8tkvt.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyC0MWx0T0sG_rGA2XLL3sLH6BnhPQdVmYg"
-        }
-      ],
-      "services": {
-        "analytics_service": {
-          "status": 1
-        },
-        "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
-        },
-        "ads_service": {
-          "status": 1
-        }
-      }
-    }
-  ],
-  "configuration_version": "1"
-}
+
+
+Valid from: Fri Sep 15 18:29:37 EEST 2017 until: Sun Sep 08 18:29:37 EEST 2047
+Certificate fingerprints:
+	 MD5:  4B:32:EA:C6:0A:78:9E:15:D1:26:FB:89:8E:68:B1:66
+	 SHA1: 8A:41:4F:C0:35:43:52:4E:0F:68:80:5F:BD:85:24:D9:03:50:F0:38
+	 SHA256: 58:C9:43:38:CE:28:AD:7A:E1:FB:36:56:86:B9:DF:04:A7:8F:4F:1E:54:E2:6E:D7:5E:E2:9D:4B:7D:A6:7D:0F
+	 Signature algorithm name: SHA1withRSA
+	 Version: 1
