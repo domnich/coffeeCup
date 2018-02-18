@@ -54,6 +54,7 @@
     },
     "devDependencies": {
         "@ionic/app-scripts": "3.0.1",
+        "gulp": "^3.9.1",
         "typescript": "2.3.4"
     },
     "description": "An Ionic project",
