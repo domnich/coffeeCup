@@ -30,6 +30,7 @@
         "@ionic-native/status-bar": "^4.3.2",
         "@ionic-native/wheel-selector": "^4.4.2",
         "@ionic/storage": "^2.0.1",
+        "cordova-android": "^7.0.0",
         "cordova-ios": "^4.5.4",
         "cordova-plugin-device": "^1.1.7",
         "cordova-plugin-facebook4": "^1.9.1",
@@ -80,7 +81,8 @@
             }
         },
         "platforms": [
-            "ios"
+            "ios",
+            "android"
         ]
     }
 }
