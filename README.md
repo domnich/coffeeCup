@@ -9,6 +9,10 @@ cordova platform add ios, android
 руками добавить папку cordova-social-vk
 cordova plugin add cordova-social-vk  --variable VK_APP_ID=6356607
 
+ <plugin name="cordova-social-vk" spec="~1.0.5">
+        <variable name="VK_APP_ID" value="6356607" />
+    </plugin>
+
 
 # Only install all plugins
 ionic state restore --plugins
