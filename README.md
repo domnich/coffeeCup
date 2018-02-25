@@ -9,6 +9,9 @@ cordova platform add ios, android
 руками добавить папку cordova-social-vk
 cordova plugin add cordova-social-vk  --variable VK_APP_ID=6356607
 
+изменить папку вк в плагинах, потом убить папку в иос плагинах и перебилдить
+
+
  <plugin name="cordova-social-vk" spec="~1.0.5">
         <variable name="VK_APP_ID" value="6356607" />
     </plugin>
