@@ -32,3 +32,7 @@ ionic cordova plugin add cordova-plugin-facebook4 --variable APP_ID="14231601644
         <variable name="APP_ID" value="142316016447382" />
         <variable name="APP_NAME" value="com.coffeecup.app" />
     </plugin>
+
+
+Keychan error IOS 
+http://prntscr.com/ijhy49
