@@ -30,7 +30,6 @@
         "@ionic-native/status-bar": "^4.3.2",
         "@ionic-native/wheel-selector": "^4.4.2",
         "@ionic/storage": "^2.0.1",
-        "cordova-android": "^6.4.0",
         "cordova-ios": "^4.5.4",
         "cordova-plugin-device": "^1.1.7",
         "cordova-plugin-facebook4": "^1.9.1",
@@ -67,21 +66,20 @@
             "ionic-plugin-keyboard": {},
             "cordova-plugin-statusbar": {},
             "cordova-wheel-selector-plugin": {},
-            "cordova-plugin-facebook4": {
-                "APP_ID": "142316016447382",
-                "APP_NAME": "com.coffeecup.app"
-            },
             "cordova-sqlite-storage": {},
             "cordova-plugin-geolocation": {
                 "GEOLOCATION_USAGE_DESCRIPTION": "To locate you"
             },
             "cordova.plugins.diagnostic": {},
             "cordova-plugin-googleplus": {
-                "REVERSED_CLIENT_ID": "com.googleusercontent.apps.242141053973-ttitqndd6bhlsieucppknpb0qvos28s2"
+                "REVERSED_CLIENT_ID": "242141053973-unp2dtn1tmroab90oev9c072eg03ae2v.apps.googleusercontent.com"
+            },
+            "cordova-plugin-facebook4": {
+                "APP_ID": "142316016447382",
+                "APP_NAME": "com.coffeecup.app"
             }
         },
         "platforms": [
-            "android",
             "ios"
         ]
     }

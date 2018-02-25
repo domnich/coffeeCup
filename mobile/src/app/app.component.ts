@@ -11,9 +11,6 @@ import { DataService } from '../providers/shared/shared.service';
 import { Auth } from './services/auth';
 import { LOGIN_TYPES } from '../pages/login/shared/login-types';
 import { Facebook } from '@ionic-native/facebook';
-import { GooglePlus } from '@ionic-native/google-plus';
-
-
 
 @Component({
   templateUrl: 'app.html'
@@ -40,8 +37,7 @@ export class MyApp {
     private diagnostic: Diagnostic,
     private shareDate: DataService,
     private auth: Auth,
-    private fb: Facebook,
-    private googlePlus: GooglePlus
+    private fb: Facebook
   ) {
     platform.ready().then(() => {
 
@@ -53,15 +49,6 @@ export class MyApp {
       if (platform.is('ios') || platform.is('android')) {
         this.tryToGetUserCoordinates();
    
-        setTimeout(() => {
-          console.log('AM HEREREREREREREREREREWERWERW');
-          this.googlePlus.login({
-            'webClientId': '371598804642-is9luiuut0tismuk6khj0f3a42vst7hn.apps.googleusercontent.com',
-            'offline': true 
-          })
-  .then(res => console.log(res))
-  .catch(err => console.error(err));
-        }, 3000);
       }
 
       this.checkUserAuthorization();
