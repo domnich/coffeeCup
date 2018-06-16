@@ -43,3 +43,35 @@ ionic cordova plugin add cordova-plugin-facebook4 --variable APP_ID="14231601644
 
 Keychan error IOS 
 http://prntscr.com/ijhy49
+
+
+
+GOOGLE LOGIN
+1) https://github.com/EddyVerbruggen/cordova-plugin-googleplus#4-installation-phonegap-cli--cordova-cli
+
+Для иоса берем и устанавливаем
+$ cordova plugin add cordova-plugin-googleplus --save --variable REVERSED_CLIENT_ID=myreversedclientid --variable WEB_APPLICATION_CLIENT_ID=mywebapplicationclientid
+
+айдишники берем из GoogleService-Info.plist
+
+2) Для андроида 
+
+package.json
+
+            "cordova-plugin-googleplus": {
+                "REVERSED_CLIENT_ID": "242141053973-unp2dtn1tmroab90oev9c072eg03ae2v.apps.googleusercontent.com"
+            },
+
+
+config.xml - NO NEED CHANGES!! JUST FOR HISTORY!!
+
+    <plugin name="cordova-plugin-googleplus" spec="^5.2.1">
+        <variable name="REVERSED_CLIENT_ID" value="coffeecup-195612.apps.googleusercontent.com" />
+    </plugin>
+
+
+cordova plugin add https://github.com/EddyVerbruggen/cordova-plugin-googleplus --save --variable REVERSED_CLIENT_ID=242141053973-unp2dtn1tmroab90oev9c072eg03ae2v.apps.googleusercontent.com --variable WEB_APPLICATION_CLIENT_ID=242141053973-ttitqndd6bhlsieucppknpb0qvos28s2.apps.googleusercontent.com
+
+////
+
+  
