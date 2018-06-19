@@ -12,6 +12,9 @@ import { Auth } from './services/auth';
 import { LOGIN_TYPES } from '../pages/login/shared/login-types';
 import { Facebook } from '@ionic-native/facebook';
 
+
+declare var SocialVk: any;
+
 @Component({
   templateUrl: 'app.html'
 })
@@ -50,18 +53,21 @@ export class MyApp {
         this.tryToGetUserCoordinates();
    
       }
+alert(312);
 
       this.checkUserAuthorization();
 
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
           //statusBar.styleDefault();
-  
-          // VkSdk.init('6356607', function(res) {
-          //   console.log(res, 'RESSSSS');
-          // }, function(error) {
-          //   console.log(error, "ERRRRRR");
-          // });
+
+          console.log(SocialVk, 'SocialVk23423423SocialVk');
+
+          SocialVk.init('6356607', function(res) {
+            console.log(res, 'RESSSSS');
+          }, function(error) {
+            console.log(error, "ERRRRRR");
+          });
 
 
 

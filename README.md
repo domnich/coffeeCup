@@ -17,6 +17,24 @@ cordova plugin add cordova-social-vk  --variable VK_APP_ID=6356607
     </plugin>
 
 
+
+Билд под андроид ВК
+1) добавить в Grandle Scripts в build.grandle 2 свойства:
+    cdvCompileSdkVersion=27
+    cdvBuildToolsVersion="27.0.1"
+2) поиском найти
+
+I commented the lines below in the build.gradle file:
+//debugCompile project(path: 'CordovaLib', configuration: 'debug') 
+//releaseCompile project(path: 'CordovaLib', configuration: 'release')
+and added:
+compile project(':CordovaLib')
+
+https://stackoverflow.com/questions/47023068/unable-to-run-ionic-app-after-update-to-android-studio-3-0/47257535
+
+после этого проект собирается
+
+
 # Only install all plugins
 ionic state restore --plugins
 # or
