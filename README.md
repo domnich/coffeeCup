@@ -43,6 +43,9 @@ http://prntscr.com/jwokln
 
 
 
+Билд вк под иос
+почему то вдруг стал работать просто НО было установлено и cordova-vk и cordova-social-vk
+
 
 
 # Only install all plugins

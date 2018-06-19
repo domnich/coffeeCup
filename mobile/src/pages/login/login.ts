@@ -56,6 +56,16 @@ alert(123);
     });
 
   }
+
+
+  vkLogout() {
+    SocialVk.logout( function(res) {
+      console.log(res, "RESSESESE logout");
+    }, function(error) {
+      console.log(error, "ERRRORRRR logout");
+    });
+  }
+
   googleLogin() {
     this.googlePlus.login({
    // 'webClientId': '242141053973-unp2dtn1tmroab90oev9c072eg03ae2v.apps.googleusercontent.com', // Android
