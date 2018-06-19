@@ -35,6 +35,16 @@ https://stackoverflow.com/questions/47023068/unable-to-run-ionic-app-after-updat
 после этого проект собирается
 
 
+Сертификат для вк
+keytool -list -v -keystore ~/.android/debug.keystore -alias androiddebugkey -storepass android -keypass android
+https://stackoverflow.com/questions/30070264/get-sha1-fingerprint-certificate-in-android-studio-for-google-maps
+
+http://prntscr.com/jwokln
+
+
+
+
+
 # Only install all plugins
 ionic state restore --plugins
 # or
