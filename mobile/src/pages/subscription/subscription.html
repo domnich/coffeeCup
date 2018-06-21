@@ -12,6 +12,29 @@
 
 
 <ion-content class="no-scroll">
-  <wheel-selector [center]="false" [items]="items"></wheel-selector>
-  <wheel-selector [center]="false" [items]="sizes"></wheel-selector>
+    <div class="bar bar-header bar-light">
+      <button class="button" (click)="changeType(0)">
+          Чёрный Кофе
+      </button>
+      <button class="button" (click)="changeType(1)">
+          Кофе + Молоко
+      </button>
+   </div>
+   <div>
+     <p *ngIf="type === 0">
+       Любой чёрный кофе на ваш выбор: эспрессо, американо, ристретто. Все размеры, с собой или в заведении. В некоторых кафе - альтернативный метод заваривания кофе.
+     </p>
+    <p *ngIf="type === 1">Люьбой тип кофе на ваш выбор. С молоком или без. Капучино, латте, раф, горячий шоколад, какао и даже чай. Все размеры, с собой или в заведении. Также включает любой кофе из под писки «Чёрный Кофе»</p>
+  </div>
+  <wheel-selector [center]="true" [items]="items" (onItemSelected)="onItemSelectedCallback($event)"></wheel-selector>
+
+  <p>{{totalPrice}} грн.</p>
+  <p>{{pricePerCup}} грн. за чашку</p>
+   <!-- <wheel-selector [center]="false" [items]="items"></wheel-selector>
+  <wheel-selector [center]="false" [items]="sizes"></wheel-selector> -->
 </ion-content>
+<ion-footer>
+    <ion-toolbar>
+        <button (click)="buySubscription()">Купить</button>   
+    </ion-toolbar>
+</ion-footer>

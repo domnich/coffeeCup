@@ -12,9 +12,7 @@ import { Auth } from './services/auth';
 import { LOGIN_TYPES } from '../pages/login/shared/login-types';
 import { Facebook } from '@ionic-native/facebook';
 
-
-declare var SocialVk: any;
-
+//declare var SocialVk: any;
 @Component({
   templateUrl: 'app.html'
 })
@@ -22,7 +20,7 @@ export class MyApp {
   rootPage:any = "PlacesPage";
 
   @ViewChild(Nav) nav: Nav;
-
+  
     pages: any[] = [
         { title: 'Места', component: "PlacesPage" },
         { title: 'Подписка', component: "SubscriptionPage" },
@@ -53,7 +51,7 @@ export class MyApp {
         this.tryToGetUserCoordinates();
    
       }
-alert(312);
+
 
       this.checkUserAuthorization();
 
@@ -61,13 +59,13 @@ alert(312);
       // Here you can do any higher level native things you might need.
           //statusBar.styleDefault();
 
-          console.log(SocialVk, 'SocialVk23423423SocialVk');
+          
 
-          SocialVk.init('6356607', function(res) {
-            console.log(res, 'RESSSSS');
-          }, function(error) {
-            console.log(error, "ERRRRRR");
-          });
+       //   SocialVk.init('6356607', function(res) {
+      //     console.log(res, 'RESSSSS');
+      //   }, function(error) {
+      //     console.log(error, "ERRRRRR");
+      //   });
 
 
 

@@ -1,4 +1,4 @@
-import { Component,  ViewChild, Input } from '@angular/core';
+import { Component,  ViewChild, Input, Output, EventEmitter } from '@angular/core';
 import {Gesture} from 'ionic-angular/gestures/gesture';
 import * as $ from 'jquery';
 @Component({
@@ -15,18 +15,17 @@ export class WheelSelectorComponent {
   set ready(isReady: boolean) {
     if (isReady) this.someCallbackMethod();
   }
+  @Output() public onItemSelected: EventEmitter<any> = new EventEmitter(null);
   pressGesture: Gesture;
   startCounter: number = 0;
   slideCounter: number = 0;
-
   activeIndex: number = 0;
   activeClass: string = 'active';
   animSpeed: number = 500;
   slider;
   mask;
   constructor() {
-    console.log('Hello WheelSelectorComponent Component');
-    console.log(this)
+    
     //this.namess = ['Эспрессо', 'Американо', 'Латте', 'Какао', 'Чай'];
   }
 
@@ -66,28 +65,27 @@ export class WheelSelectorComponent {
   }
 
   activateSlider() {
-        this.pressGesture = new Gesture(this.wheel.nativeElement);
-                this.pressGesture.listen();
+    this.pressGesture = new Gesture(this.wheel.nativeElement);
+    this.pressGesture.listen();
 
-        this.pressGesture.on('pan', e => {
-          console.log(e.center.x, 'EEEEE')
-            if(e.direction === 2) {
-                this.slideCounter--;
-            } else if(e.direction === 4) {
-                this.slideCounter++;
-            }
+    this.pressGesture.on('pan', e => {
+        if(e.direction === 2) {
+            this.slideCounter--;
+        } else if(e.direction === 4) {
+            this.slideCounter++;
+        }
 
-            this.activeIndex = this.getActiveIndex();
-            this.addActiveClass();
+        this.activeIndex = this.getActiveIndex();
+        this.addActiveClass();
 
-            if(e.isFinal) {
-                this.slideToActiveElement(this.getActiveIndex());
-            } else {
-                let distanceNumber = this.startCounter + this.slideCounter * 3.5;
-                this.slideList.nativeElement.style.transform = 'translate('+ distanceNumber +'px, 0)';
-                this.slideList.nativeElement.style.transition = 'transform 0ms';
-            }
-        });
+        if(e.isFinal) {
+            this.slideToActiveElement(this.getActiveIndex());
+        } else {
+            let distanceNumber = this.startCounter + this.slideCounter * 3.5;
+            this.slideList.nativeElement.style.transform = 'translate('+ distanceNumber +'px, 0)';
+            this.slideList.nativeElement.style.transition = 'transform 0ms';
+        }
+    });
   }
 
   slideToItem(ind, fast?: boolean) {
@@ -105,7 +103,6 @@ export class WheelSelectorComponent {
       let distance:number = 0;
       this.slider.find('>li').each(function(ind) {
         if(ind < index) {
-
           distance += $(this).outerWidth() + parseInt($(this).css('margin-right'));
         } else if(ind === index) {
             distance += $(this).width() / 2;
@@ -122,6 +119,14 @@ export class WheelSelectorComponent {
       }
       this.startCounter = distance;
       this.slideCounter = 0;
+
+      this.onItemSelectedCallback(index);
+  }
+
+  onItemSelectedCallback(ind) {
+    setTimeout(() => {
+      this.onItemSelected.emit(ind);
+    }, this.animSpeed);
   }
 
   animateMaks(index: number) {

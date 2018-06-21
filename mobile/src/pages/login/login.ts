@@ -7,7 +7,7 @@ import { Auth } from '../../app/services/auth';
 import { GooglePlus } from '@ionic-native/google-plus';
 
 
-declare var SocialVk;
+//declare var SocialVk;
 
 @IonicPage()
 @Component({
@@ -48,22 +48,22 @@ this.auth.loginUsingFacebook(res).subscribe((response) => {
   }
 
   vkontakteLogin() {
-alert(123);
-    SocialVk.login(['photos', 'offline'], function(res) {
-      console.log(res, "RESSESESE");
-    }, function(error) {
-      console.log(error, "ERRRORRRR");
-    });
+
+    // SocialVk.login(['photos', 'offline'], function(res) {
+    //   console.log(res, "RESSESESE");
+    // }, function(error) {
+    //   console.log(error, "ERRRORRRR");
+    // });
 
   }
 
 
   vkLogout() {
-    SocialVk.logout( function(res) {
-      console.log(res, "RESSESESE logout");
-    }, function(error) {
-      console.log(error, "ERRRORRRR logout");
-    });
+    // SocialVk.logout( function(res) {
+    //   console.log(res, "RESSESESE logout");
+    // }, function(error) {
+    //   console.log(error, "ERRRORRRR logout");
+    // });
   }
 
   googleLogin() {
