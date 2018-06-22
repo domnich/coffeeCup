@@ -9,6 +9,7 @@ import { IonicStorageModule } from '@ionic/storage';
 import { Geolocation } from '@ionic-native/geolocation';
 import { Diagnostic } from '@ionic-native/diagnostic';
 import { GooglePlus } from '@ionic-native/google-plus';
+import { OpenNativeSettings } from '@ionic-native/open-native-settings';
 
 import {MyApp} from './app.component';
 import {DataProvider} from '../providers/data/data';
@@ -21,6 +22,7 @@ import { PlacesService } from '../pages/places/shared/places.service';
 import { LocalStorage } from '../app/services/localstorage';
 import { Auth } from '../app/services/auth';
 import { UserProfileComponent } from '../components/user-profile/user-profile';
+import { GeolocationService } from './services/geolocation.service';
 
 @NgModule({
     declarations: [
@@ -58,7 +60,9 @@ import { UserProfileComponent } from '../components/user-profile/user-profile';
         Geolocation,
         Diagnostic,
         Auth,
-        GooglePlus
+        GooglePlus,
+        GeolocationService,
+        OpenNativeSettings
         
     ],
     exports: [

@@ -3,14 +3,12 @@ import {Platform, Nav, ModalController} from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Keyboard } from "@ionic-native/keyboard";
-import { Geolocation } from '@ionic-native/geolocation';
-import { Diagnostic } from '@ionic-native/diagnostic';
 import { HomePage } from "../pages/home/home";
-import { LocalStorage } from './services/localstorage';
 import { DataService } from '../providers/shared/shared.service';
 import { Auth } from './services/auth';
 import { LOGIN_TYPES } from '../pages/login/shared/login-types';
 import { Facebook } from '@ionic-native/facebook';
+import { GeolocationService } from './services/geolocation.service';
 
 //declare var SocialVk: any;
 @Component({
@@ -31,27 +29,18 @@ export class MyApp {
     platform: Platform, 
     statusBar: StatusBar, 
     splashScreen: SplashScreen, 
-    keyboard: Keyboard, 
-    private localStorage: LocalStorage,
+    keyboard: Keyboard,
     public modalCtrl: ModalController,
-    private geolocation: Geolocation,
-    private diagnostic: Diagnostic,
     private shareDate: DataService,
     private auth: Auth,
-    private fb: Facebook
+    private fb: Facebook,
+    private geolocationService: GeolocationService
   ) {
     platform.ready().then(() => {
 
-    // this.localStorage.setUserLocation({
-    //   latitude: '49.993500,', 
-    //   longitude: '36.230383'
-    // });
-
-      if (platform.is('ios') || platform.is('android')) {
-        this.tryToGetUserCoordinates();
-   
+      if (platform.is('ios') || platform.is('android')) {        
+        this.geolocationService.getUserCoordinates();
       }
-
 
       this.checkUserAuthorization();
 
@@ -95,47 +84,11 @@ export class MyApp {
     });
   }
 
-  tryToGetUserCoordinates() {
-    this.diagnostic.getLocationAuthorizationStatus().then((res) => {
-      console.log(res, 'getLocationAuthorizationStatus')
-      if(res === this.diagnostic.motionStatus.NOT_DETERMINED || res === this.diagnostic.motionStatus.DENIED) {
-        console.log('IM HERE')
-        this.diagnostic.requestLocationAuthorization().then((status) => {
-
-          console.log(status, 'statusstatusstatusstatus');
-
-          if(status === this.diagnostic.motionStatus.NOT_DETERMINED || status === 'authorized_when_in_use') {
-            this.initializeRequestForGeolocation();
-          }
-        }, (err) => {
-          console.log(err, "ERURURURUR");
-        }).catch((err) => {
-          console.log(err, 'ITS ERROR');
-        });
-
-      } else if(res === 'authorized_when_in_use') {
-        this.initializeRequestForGeolocation();
-      }
-    });
+  openPage(page) {
+    // Reset the content nav to have just this page
+    // we wouldn't want the back button to show in this scenario
+    this.nav.setRoot(page.component);
   }
-
-    initializeRequestForGeolocation() {
-      this.geolocation.getCurrentPosition().then((resp) => {
-        console.log(resp.coords);
-        this.shareDate.emitUserCoordinates({
-          latitude: resp.coords.latitude,
-          longitude: resp.coords.longitude
-        });
-      }).catch((error) => {
-        console.log('Error getting location', error);
-      });
-    }
-
-    openPage(page) {
-        // Reset the content nav to have just this page
-        // we wouldn't want the back button to show in this scenario
-        this.nav.setRoot(page.component);
-    }
 
     openCitySelectorModal() {
         let cityModal = this.modalCtrl.create(HomePage);
