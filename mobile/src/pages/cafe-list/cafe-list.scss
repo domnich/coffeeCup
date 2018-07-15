@@ -42,5 +42,8 @@ page-cafe-list {
     top: 52%;
     width: 100%;
     color: #000;
+    &.distance {
+      top: 70%;
+    }
   }
 }

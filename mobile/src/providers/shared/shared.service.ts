@@ -11,6 +11,7 @@ export class DataService {
   filteredCafesSubscriber = this.filteredCafesSource.asObservable();
   userCoordinatesSubscriber = this.userCoordinatesSource.asObservable();
   userProfileSubscriber = this.userProfileSource.asObservable();
+  _updateUserLocation: any;
   constructor() { }
   emitFilteredCafes(obj: FilteredCafes) {
     this.filteredCafesSource.next(obj);
@@ -21,4 +22,13 @@ export class DataService {
   emitUserProfile(obj: any) {
     this.userProfileSource.next(obj);
   }
+
+  set updateUserLocation(value: any) {
+    this._updateUserLocation = value;
+  }
+
+  get updateUserLocation(): any {
+    return this._updateUserLocation;
+  }
+
 }

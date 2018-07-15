@@ -22,29 +22,18 @@ export class GeolocationService {
     this.diagnostic.getLocationAuthorizationStatus().then((res) => {
       console.log(res, 'getLocationAuthorizationStatus');
 
-
-
       // IOS
       //1. если еще не спрашивали not_determined
       //2. если при первом разрешить  использ. локацию requestLocationAuthorization, был denied, то getLocationAuthorizationStatus в след раз выдаст denied.
       //3. если был not_determined (т.е. первый запуск) и потом разрешили , то статус в requestLocationAuthorization будет - authorized_when_in_use
       // 4. если мы разрешили использовать локацию, при  запуске приложения будет authorized_when_in_use и получаем геолокаию
 
-      console.log(res === 'not_determined' || res === 'denied');
-
       if(res === 'not_determined' || res === 'denied') {
-       
         if (res === 'denied') {
           this.askToOpenSettingsPage();
-        
-        
-
         } else {
           this.askGeoPermissions();
         }
-
-        
-
       } else if(res === 'authorized_when_in_use') {
         this.requestGeolocation();
       }
@@ -68,7 +57,12 @@ export class GeolocationService {
           handler: () => {
             console.log('TADAM');
             // Что то не открывает на иосе
-            this.openNativeSettings.open('location');
+            this.openNativeSettings.open('location').then(res => {
+              console.log('im here!!!!!')
+              this.shareDate.updateUserLocation = true;
+              console.log(this.shareDate.updateUserLocation, '==111234===');
+              // на app.resume запросить флаг и если тру, то сделать повторный запрос на геолокацию
+            });
           }
         }
       ]
