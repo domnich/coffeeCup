@@ -9,7 +9,6 @@ import { Auth } from './services/auth';
 import { LOGIN_TYPES } from '../pages/login/shared/login-types';
 import { Facebook } from '@ionic-native/facebook';
 import { GeolocationService } from './services/geolocation.service';
-
 //declare var SocialVk: any;
 @Component({
   templateUrl: 'app.html'
@@ -22,6 +21,7 @@ export class MyApp {
     pages: any[] = [
         { title: 'Места', component: "PlacesPage" },
         { title: 'Подписка', component: "SubscriptionPage" },
+        { title: 'История чашек', component: 'CupHistoryPage' },
         { title: 'Login', component: 'LoginPage' }
     ];
 

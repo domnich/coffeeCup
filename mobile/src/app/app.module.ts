@@ -11,12 +11,12 @@ import { Diagnostic } from '@ionic-native/diagnostic';
 import { GooglePlus } from '@ionic-native/google-plus';
 import { OpenNativeSettings } from '@ionic-native/open-native-settings';
 
-import {MyApp} from './app.component';
-import {DataProvider} from '../providers/data/data';
-import {HttpModule} from "@angular/http";
+import { MyApp } from './app.component';
+import { DataProvider } from '../providers/data/data';
+import { HttpModule } from "@angular/http";
 import { AppEmitterProvider } from '../providers/app-emitter/app-emitter';
-import {Keyboard} from "@ionic-native/keyboard";
-import {CitySelectComponent} from "../components/city-select/city-select";
+import { Keyboard} from "@ionic-native/keyboard";
+import { CitySelectComponent } from "../components/city-select/city-select";
 import { DataService } from '../providers/shared/shared.service';
 import { PlacesService } from '../pages/places/shared/places.service';
 import { LocalStorage } from '../app/services/localstorage';
