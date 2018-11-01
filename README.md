@@ -19,7 +19,7 @@ cordova plugin add cordova-social-vk  --variable VK_APP_ID=6356607
 
 
 Билд под андроид ВК
-1) добавить в Grandle Scripts в build.grandle 2 свойства:
+1) добавить в Grandle Scripts в build.grandle 2 свойства (в platforms/android/build.grandle , не через андроид студию):
     cdvCompileSdkVersion=27
     cdvBuildToolsVersion="27.0.1"
 2) поиском найти
@@ -32,7 +32,12 @@ compile project(':CordovaLib')
 
 https://stackoverflow.com/questions/47023068/unable-to-run-ionic-app-after-update-to-android-studio-3-0/47257535
 
+3) Failed to resolve: play-services-tasks
+в platforms/android/build.grandle , не через андроид студию
+https://stackoverflow.com/questions/50940565/failed-to-resolve-play-services-tasks
+
 после этого проект собирается
+
 
 
 Сертификат для вк

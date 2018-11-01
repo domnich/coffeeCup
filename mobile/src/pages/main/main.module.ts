@@ -1,15 +1,17 @@
 import { CafeListPageModule } from './../cafe-list/cafe-list.module';
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
-import { AboutPage } from './about';
+import { MainPage } from './main';
 
 @NgModule({
   declarations: [
-    AboutPage,
+    MainPage,
   ],
   imports: [
-    IonicPageModule.forChild(AboutPage),
-    CafeListPageModule
+    IonicPageModule.forChild(MainPage)
+  ],
+  entryComponents: [
+    MainPage
   ],
 })
-export class AboutPageModule {}
+export class MainPageModule {}

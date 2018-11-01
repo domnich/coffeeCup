@@ -14,7 +14,7 @@ import { GeolocationService } from './services/geolocation.service';
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = "PlacesPage";
+  rootPage:any = 'main-page';
 
   @ViewChild(Nav) nav: Nav;
   
