@@ -48,8 +48,8 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
           //statusBar.styleDefault();
 
-          statusBar.overlaysWebView(true);
-          statusBar.backgroundColorByHexString('#c56200');
+        //  statusBar.overlaysWebView(true);
+        statusBar.backgroundColorByHexString('#c56200');
         //  SocialVk.init('6356607', function(res) {
         //   console.log(res, 'RESSSSS');
         // }, function(error) {

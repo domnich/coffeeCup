@@ -78,6 +78,10 @@ this.auth.loginUsingFacebook(res).subscribe((response) => {
     .catch(err => console.error(err));
   }
 
+  mailLogin() {
+    this.navCtrl.push('page-signup');
+  }
+
 }
 
 

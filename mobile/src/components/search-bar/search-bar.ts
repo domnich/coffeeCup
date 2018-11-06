@@ -41,6 +41,7 @@ export class SearchBarComponent extends Cancellable implements OnDestroy {
                 this.hideSearchField(e);
             }
         });
+
     }
 
     loadData() {

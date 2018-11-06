@@ -1,0 +1,67 @@
+page-signup {
+    .scroll-content {
+        padding-top: 0 !important;
+    }
+    ion-header .toolbar .toolbar-background {
+        background: none !important;
+        border-color: 0 !important;
+    }
+    .header-md::after, .tabs-md[tabsPlacement="top"] > .tabbar::after, 
+    .footer-md::before, .tabs-md[tabsPlacement="bottom"] > .tabbar::before {
+        background: none !important;
+    }
+    .login-area {
+        background-image: url('../assets/imgs/bg-login.png');
+        background-position: 50% 0;
+        background-size: cover;
+    }
+    
+    form {
+        .item,
+        .item-md {
+            padding-left: 0;
+            font-weight: 300;
+            font-size: 14px !important;
+            background: transparent !important;
+        }
+        .fake {
+            position: absolute;
+            top: -9999px;
+            left: -9999px;
+        }
+        .conf-pass {
+            .icon {
+                visibility: hidden;
+            }
+        }
+        .btn-holder {
+            padding-top: 10px;
+        }
+    }
+
+    ion-icon.icon {
+        color: #e8e3d0;
+    }
+
+    .confirm-password-area {
+        ion-icon.icon {
+            visibility: hidden;
+        }
+    }
+
+    input {
+        color: #e8e3d0 !important;
+    }
+
+    .text-input::-moz-placeholder {
+        color: #e8e3d0;
+      }
+      
+      .text-input:-ms-input-placeholder {
+        color: #e8e3d0;;
+      }
+      
+      .text-input::-webkit-input-placeholder {
+        color: #e8e3d0;;
+      }
+}
