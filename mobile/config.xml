@@ -99,9 +99,6 @@
         <variable name="REVERSED_CLIENT_ID" value="242141053973-unp2dtn1tmroab90oev9c072eg03ae2v.apps.googleusercontent.com" />
         <variable name="WEB_APPLICATION_CLIENT_ID" value="242141053973-ttitqndd6bhlsieucppknpb0qvos28s2.apps.googleusercontent.com" />
     </plugin>
-    <plugin name="cordova-social-vk" spec="~1.0.5">
-        <variable name="VK_APP_ID" value="6356607" />
-    </plugin>
     <plugin name="cordova.plugins.diagnostic" spec="^3.9.2" />
     <plugin name="cordova-open-native-settings" spec="^1.5.1" />
     <engine name="android" spec="7.1.0" />

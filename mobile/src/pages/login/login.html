@@ -2,18 +2,45 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Facebook login</ion-title>
+    <ion-title>Профиль</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
-  <button ion-button (click)="facebookLogin()">Facebook Login</button>
-<br>
-<button ion-button (click)="vkontakteLogin()">Vontakte Login</button>
-<br>
-<button ion-button (click)="vkLogout()">Vontakte Logout</button>
-<br>
-<button ion-button (click)="googleLogin()">Google Login</button>
+<ion-content padding class="login-area">
+
+    <div class="login-btns-area">
+      <div class="holder">
+          <button class="btn-facebook" ion-button (click)="facebookLogin()">
+              <ion-icon ios="logo-facebook" md="logo-facebook"></ion-icon>
+              Войти через аккаунт Facebook 
+          </button>
+      </div>
+      <div class="holder">
+         
+          <button class="btn-google" ion-button (click)="googleLogin()">
+              <!-- <span class="google-icon">&nbsp;</span> -->
+              <ion-icon ios="logo-google" md="logo-google"></ion-icon>
+              Войти через аккаунт Google 
+            </button>
+
+       
+
+         
+      </div>
+ 
+        <div class="holder">
+            <button class="btn-email" ion-button (click)="googleLogin()">
+                <ion-icon ios="ios-mail" md="md-mail"></ion-icon>
+              Зарегистрироваться через почту</button>
+        </div>
+        
+          <div class="has-account">
+              <p>Уже есть аккаунт? <a href="#">Войти</a></p>
+          </div>
+
+      </div>
+
+  
 </ion-content>

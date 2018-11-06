@@ -7,7 +7,7 @@ import { Auth } from '../../app/services/auth';
 import { GooglePlus } from '@ionic-native/google-plus';
 
 
-//declare var SocialVk;
+// declare var SocialVk;
 
 @IonicPage()
 @Component({
@@ -41,6 +41,7 @@ export class LoginPage {
 this.auth.loginUsingFacebook(res).subscribe((response) => {
   console.log(response);
 })
+
 
       this.localStorage.saveAuthorizationObject(obj);
     })

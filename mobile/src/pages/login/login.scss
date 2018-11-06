@@ -1,3 +1,58 @@
 page-login {
-
+    .login-area {
+        background-image: url('../assets/imgs/bg-login.png');
+        background-position: 50% 0;
+        background-size: cover;
+    }
+    .login-btns-area {
+        position: absolute;
+        width: calc(100% - 28px);
+        bottom: 16px;
+        left: 16px;
+        .holder {
+            display: flex;
+            flex-direction: row;
+            padding: 0 0 5px;
+            button {
+                flex: 1;
+            }
+        }
+    }
+    .holder {
+        button {
+            height: 50px !important;;
+            font-size: 14px !important;;
+            font-weight: 300 !important;;
+            text-transform: none !important;
+            ion-icon {
+                font-size: 2em;
+                position: relative;
+                left: -15px;
+                top: -1px;
+            }
+        }
+    }
+    .btn-email {
+        background: #4B4F58;
+    }
+    .btn-google {
+        background: #E9E6D5;
+        color: #6F6F6F;
+    }
+    .btn-facebook {
+        background: #3B5999;
+    }
+    .has-account {
+        text-align: center;
+        color: #fff;
+        font-size: 14px;
+        font-weight: 300;
+        padding: 10px 0;
+        p {
+            margin: 0;
+        }
+        a {
+            color: #fff;
+        }
+    }
 }

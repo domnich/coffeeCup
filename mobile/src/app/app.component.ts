@@ -9,7 +9,7 @@ import { Auth } from './services/auth';
 import { LOGIN_TYPES } from '../pages/login/shared/login-types';
 import { Facebook } from '@ionic-native/facebook';
 import { GeolocationService } from './services/geolocation.service';
-//declare var SocialVk: any;
+// declare var SocialVk: any;
 @Component({
   templateUrl: 'app.html'
 })
@@ -48,13 +48,13 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
           //statusBar.styleDefault();
 
-          
-
-       //   SocialVk.init('6356607', function(res) {
-      //     console.log(res, 'RESSSSS');
-      //   }, function(error) {
-      //     console.log(error, "ERRRRRR");
-      //   });
+          statusBar.overlaysWebView(true);
+          statusBar.backgroundColorByHexString('#c56200');
+        //  SocialVk.init('6356607', function(res) {
+        //   console.log(res, 'RESSSSS');
+        // }, function(error) {
+        //   console.log(error, "ERRRRRR");
+        // });
 
 
 

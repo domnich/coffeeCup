@@ -18,6 +18,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class MainPage {
   placesTab = 'PlacesPage';
   subscriptionTab = 'SubscriptionPage';
+  loginTab = 'LoginPage';
+  
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
