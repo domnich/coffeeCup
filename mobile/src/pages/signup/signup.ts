@@ -32,6 +32,7 @@ export class SignupPage {
     confirmPassword: ''
   };
   public passwordsDoesnotMatch: boolean = false;
+  public isSubmit: boolean = false;
   constructor(public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder) {
     this.createForm();
   }
@@ -53,11 +54,11 @@ export class SignupPage {
       
       if (password.value && confirmPassword.value && password.value !== confirmPassword.value) {
         this.passwordsDoesnotMatch = true;
+        return  { nomatch: true };
       } else {
         this.passwordsDoesnotMatch = false;
+        return  { };
       }
-
-      return  { nomatch: true };
     }});
 
 
@@ -65,6 +66,7 @@ export class SignupPage {
   }
 
   signUp() {
-    alert('TODO');
+    this.isSubmit = true;
+    console.log(this.form.valid, 'fff');
   }
 }

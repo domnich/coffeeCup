@@ -68,7 +68,19 @@ page-signup {
                 font-weight: 400;
             }
         }
-        
+        .has-account {
+            text-align: center;
+            color: #fff;
+            font-size: 14px;
+            font-weight: 300;
+            padding: 10px 0;
+            p {
+                margin: 0;
+            }
+            a {
+                color: #fff;
+            }
+        }
     }
 
     ion-icon.icon {
