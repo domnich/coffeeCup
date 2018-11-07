@@ -11,8 +11,8 @@
   </ion-navbar>
 
 </ion-header>
-<ion-content padding class="login-area">
-  <form [formGroup]="form" novalidate>
+<ion-content [contentHeight] padding class="login-area">
+    <form  [formGroup]="form" novalidate>
     <ion-list>
         <ion-item> 
             <ion-input type="text" [(ngModel)]="user.username" name="username" formControlName="username" class="text-input" placeholder="Имя"></ion-input>

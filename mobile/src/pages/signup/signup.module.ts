@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { SignupPage } from './signup';
+import { ContentHeightModule } from '../../directives/content-height/content-height.module';
+
 
 @NgModule({
   declarations: [
@@ -8,6 +10,7 @@ import { SignupPage } from './signup';
   ],
   imports: [
     IonicPageModule.forChild(SignupPage),
+    ContentHeightModule
   ],
 })
 export class SignupPageModule {}
