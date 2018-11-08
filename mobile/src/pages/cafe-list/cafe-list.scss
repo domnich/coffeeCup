@@ -61,7 +61,7 @@ page-cafe-list {
     }
 
     .distance {
-      top: 18px;
+      top: 16px;
     }
 
     .open-hours {
@@ -82,9 +82,7 @@ page-cafe-list {
         font-size: 12px;
         line-height: 15px; 
         max-width: 60%;
-        &.distance {
-          top: 70%;
-        }
+      
       }
     }
   }
