@@ -18,32 +18,75 @@ page-cafe-list {
     opacity: .7;
     z-index: 555;
   }
-  ion-card {
+ 
+  .card {
+    margin: 0;
+    border-radius: 0;
+    width: 100%;
     position: relative;
     text-align: center;
-    height: 100px !important;
+    height: 175px !important;
     img {
-      height: 180px;
+      height: 175px;
+    }
+    .item-description {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      min-height: 62px;
+      background-color: rgba(0, 0, 0, 0.6);
+      text-align: left;
+    }
+    .open-hours,
+    .distance {
+      color: #e8e3d0;
+      font-weight: 300;
+      font-size: 12px;
+      position: absolute;
+      right: 10px;
+      line-height: 15px;
+      .icon {
+        font-size: 12px !important;
+      }
+    }
+
+    .separator {
+      position: absolute;
+      width: 1px;
+      height: 72%;
+      right: 30%;
+      top: 10px;
+      background: #e8e3d0;
+    }
+
+    .distance {
+      top: 18px;
+    }
+
+    .open-hours {
+      bottom: 10px;
+    }
+
+    .item-main-info {
+      padding: 12px 10px 10px 10px;
+      color: #e8e3d0;
+      font-weight: 300;
+      .card-title {
+        font-size: 21px;
+       line-height: 24px;
+        max-width: 60%;
+      }
+    
+      .card-subtitle {
+        font-size: 12px;
+        line-height: 15px; 
+        max-width: 60%;
+        &.distance {
+          top: 70%;
+        }
+      }
     }
   }
-
-  .card-title {
-    position: absolute;
-    top: 36%;
-    font-size: 1.0em;
-    width: 100%;
-    font-weight: bold;
-    color:#000;
-  }
-
-  .card-subtitle {
-    font-size: 0.5em;
-    position: absolute;
-    top: 52%;
-    width: 100%;
-    color: #000;
-    &.distance {
-      top: 70%;
-    }
-  }
+  
 }

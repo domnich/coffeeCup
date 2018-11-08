@@ -40,7 +40,20 @@ export class CafeListPage extends Cancellable implements OnDestroy {
         this.addSubscriptionToStack(this.placesSerive.placesData
             .subscribe(res => {
                 if (res && res.length) {
+                    res.forEach((item) => {
+                        if (item.id === 1 || item.id === 4 || item.id === 7 || item.id === 10 || item.id === 13) {
+                            item.src = 'assets/imgs/coffee_1.png';
+                        } else if (item.id === 2 || item.id === 5 || item.id === 8 || item.id === 11 || item.id === 14) {
+                            item.src = 'assets/imgs/coffee_2.png';
+                        } else {
+                            item.src = 'assets/imgs/coffee_3.png';
+                        }
+                        if (!item.description) {
+                            item.description = 'Some test address';
+                        }
+                    });
                     this.places = res;
+                    console.log(this.places, 'this.places')
                 }
             }));
     }
