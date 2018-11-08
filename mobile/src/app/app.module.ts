@@ -34,9 +34,17 @@ import { GeolocationService } from './services/geolocation.service';
         BrowserModule,
         HttpModule,
         IonicModule.forRoot(MyApp, {
+            backButtonText: 'to back',
             // tabsPlacement: 'top',
             scrollAssist: false,
-            scrollPadding: false
+            scrollPadding: false,
+
+            
+            iconMode: 'ios',
+            modalEnter: 'modal-slide-in',
+            modalLeave: 'modal-slide-out',
+            
+            pageTransition: 'ios'
         }
         ),
         IonicStorageModule.forRoot()

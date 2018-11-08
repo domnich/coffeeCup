@@ -111,3 +111,9 @@ cordova plugin add https://github.com/EddyVerbruggen/cordova-plugin-googleplus -
 ////
 
   
+// Cordova build iOS error: archive not found at path 'path/to/myApp.xcarchive"
+https://stackoverflow.com/questions/52281848/cordova-build-ios-error-archive-not-found-at-path-path-to-myapp-xcarchive
+
+# Ionic CLI
+ionic cordova run ios -- --buildFlag="-UseModernBuildSystem=0"
+ionic cordova build ios -- --buildFlag="-UseModernBuildSystem=0"

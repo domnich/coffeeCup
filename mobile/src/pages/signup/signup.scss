@@ -4,16 +4,16 @@ page-signup {
     }
     ion-header .toolbar .toolbar-background {
         background: none !important;
-        border-color: 0 !important;
+        border: 0 !important;
     }
     .header-md::after, .tabs-md[tabsPlacement="top"] > .tabbar::after, 
     .footer-md::before, .tabs-md[tabsPlacement="bottom"] > .tabbar::before {
         background: none !important;
     }
     .login-area {
-        background-image: url('../assets/imgs/bg-login.png');
-        background-position: 50% 0;
-        background-size: cover;
+        // background-image: url('../assets/imgs/bg-login.png');
+        // background-position: 50% 0;
+        // background-size: cover;
     }
 
     form {
@@ -102,10 +102,10 @@ page-signup {
       }
       
       .text-input:-ms-input-placeholder {
-        color: #e8e3d0;;
+        color: #e8e3d0;
       }
       
       .text-input::-webkit-input-placeholder {
-        color: #e8e3d0;;
+        color: #e8e3d0;
       }
 }

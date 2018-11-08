@@ -17,6 +17,6 @@ export class ContentHeightDirective {
       let child = this.el.nativeElement.children[1],
           height = child.clientHeight;
       child.style.height = height + 'px';
-    });
+    }, 500);
   }
 }
