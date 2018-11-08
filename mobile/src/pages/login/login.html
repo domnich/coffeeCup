@@ -27,13 +27,13 @@
       </div>
  
         <div class="holder">
-            <button class="btn-email" ion-button (click)="mailLogin()">
+            <button class="btn-email" ion-button (click)="mailLogin('registration')">
                 <ion-icon ios="ios-mail" md="md-mail"></ion-icon>
               Зарегистрироваться через почту</button>
         </div>
         
           <div class="has-account">
-              <p>Уже есть аккаунт? <a href="#">Войти</a></p>
+              <p>Уже есть аккаунт? <button  (click)="mailLogin('login')">Войти</button></p>
           </div>
 
       </div>

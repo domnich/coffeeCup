@@ -1,3 +1,4 @@
+import { SIGNUP_TYPES } from './shared/signup-types';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
@@ -33,12 +34,28 @@ export class SignupPage {
   };
   public passwordsDoesnotMatch: boolean = false;
   public isSubmit: boolean = false;
-  constructor(public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder) {
+  public isRegistration: boolean = false;
+  public isLogin: boolean = false;
+  public isForgotPassword: boolean = false;
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams, 
+    private formBuilder: FormBuilder) {
     this.createForm();
   }
 
+  ionViewCanLeave() {
+    if (this.isForgotPassword) {
+      this.isForgotPassword = false;
+      this.isLogin = true;
+      return false;
+    }
+  }
+
   ionViewDidLoad() {
-    console.log('ionViewDidLoad SignupPage');
+    this.isRegistration = this.navParams.get('type') === SIGNUP_TYPES.REGISTRATION;
+    this.isLogin = this.navParams.get('type') === SIGNUP_TYPES.LOGIN;
+console.log(this.isRegistration, this.isLogin)
   }
 
   createForm() {
@@ -68,5 +85,17 @@ export class SignupPage {
   signUp() {
     this.isSubmit = true;
     console.log(this.form.valid, 'fff');
+  }
+
+  login() {
+    this.isRegistration = false;
+    this.isForgotPassword = false;
+    this.isLogin = true;
+  }
+
+  forgotPassword() {
+    this.isRegistration = false;
+    this.isForgotPassword = true;
+    this.isLogin = false;
   }
 }
