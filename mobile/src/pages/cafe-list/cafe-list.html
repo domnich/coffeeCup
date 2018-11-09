@@ -1,12 +1,14 @@
 <ion-header id="place-header">
     <ion-navbar>
-        <button ion-button menuToggle>
-            <ion-icon name="menu"></ion-icon>
-        </button>
-        <button ion-button small (click)="goToTab(0)">Cafes List</button>
-        <button ion-button small (click)="goToTab(1)">Map</button>
+<!-- 
+        <button ion-button small (click)="goToTab(0)">Список</button>
+        <button ion-button small (click)="goToTab(1)">Карта</button> -->
         <search-bar (isSearchBarActive)="onMaskToggle($event)"></search-bar>
     </ion-navbar>
+    <div class="header-controls">
+        <button ion-button small (click)="goToTab(0)">Список</button>
+        <button ion-button small (click)="goToTab(1)">Карта</button>
+    </div>
 </ion-header>
 <ion-content [class.show-overlay]="toggleMask" id="cafes-list">
     <div *ngIf="toggleMask" class="mask">&nbsp;</div>
@@ -19,7 +21,6 @@
                 <div class="card-title">{{place.name}}</div>
                 <div *ngIf="place.description" class="card-subtitle">{{place?.description}}</div>
             </div>
-            <span class="separator"></span>
             <span class="open-hours">
                 <ion-icon name="md-time"></ion-icon>
                 8:00 - 21: 00

@@ -1,4 +1,10 @@
 page-cafe-list {
+
+  .toolbar {
+    padding: 0 !important;
+    min-height: 44px !important;
+  }
+
   .show-overlay {
       .scroll-content {
         overflow-y: hidden;
@@ -51,14 +57,6 @@ page-cafe-list {
       }
     }
 
-    .separator {
-      position: absolute;
-      width: 1px;
-      height: 72%;
-      right: 30%;
-      top: 10px;
-      background: #e8e3d0;
-    }
 
     .distance {
       top: 16px;
