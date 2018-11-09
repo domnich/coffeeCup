@@ -82,7 +82,9 @@ this.auth.loginUsingFacebook(res).subscribe((response) => {
     this.navCtrl.push('page-signup', {type: type});
   }
 
-  
+  goToInfo() {
+    this.navCtrl.push('page-info');
+  }  
 
 }
 

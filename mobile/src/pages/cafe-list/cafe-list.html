@@ -1,14 +1,16 @@
 <ion-header id="place-header">
-    <ion-navbar>
-<!-- 
-        <button ion-button small (click)="goToTab(0)">Список</button>
-        <button ion-button small (click)="goToTab(1)">Карта</button> -->
-        <search-bar (isSearchBarActive)="onMaskToggle($event)"></search-bar>
-    </ion-navbar>
-    <div class="header-controls">
-        <button ion-button small (click)="goToTab(0)">Список</button>
-        <button ion-button small (click)="goToTab(1)">Карта</button>
-    </div>
+        <ion-navbar>
+                <ion-title>Заведения</ion-title>
+                <search-bar (isSearchBarActive)="onMaskToggle($event)"></search-bar>
+                <div class="header-controls">
+                        <button ion-button small (click)="goToTab(0)">Список</button>
+                        <button ion-button small (click)="goToTab(1)">Карта</button>
+                    </div>
+                    
+        </ion-navbar>
+
+
+   
 </ion-header>
 <ion-content [class.show-overlay]="toggleMask" id="cafes-list">
     <div *ngIf="toggleMask" class="mask">&nbsp;</div>
