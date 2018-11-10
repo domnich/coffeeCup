@@ -381,15 +381,22 @@ export class MapPage extends Cancellable implements OnDestroy {
     }
 
     prepareContentWindowStyles(id: string) {
-        var contentWindowHolder = document.getElementById(id).parentElement.parentElement.parentElement.parentElement,
-            contentWindowChild = contentWindowHolder.firstChild,
-            nodeToRemove = contentWindowChild.childNodes[0];
+      const windth = document.getElementById(id).parentElement.parentElement.parentElement.parentElement.offsetWidth,
+            boxOffset = (windth - 270) / 2,
+            holder = document.getElementById(id).parentElement.parentElement.parentElement;
+console.log(holder, boxOffset);
+       holder.style.marginLeft = boxOffset + 'px';
+ 
+
+        // var contentWindowHolder = document.getElementById(id).parentElement.parentElement.parentElement.parentElement,
+        //     contentWindowChild = contentWindowHolder.firstChild,
+        //     nodeToRemove = contentWindowChild.childNodes[0];
    
-        contentWindowChild.removeChild(nodeToRemove);
-        nodeToRemove = contentWindowChild.childNodes[0];
-        contentWindowChild.removeChild(nodeToRemove);
-        nodeToRemove = contentWindowChild.childNodes[1];
-        contentWindowChild.removeChild(nodeToRemove);    
+        // contentWindowChild.removeChild(nodeToRemove);
+        // nodeToRemove = contentWindowChild.childNodes[0];
+        // contentWindowChild.removeChild(nodeToRemove);
+        // nodeToRemove = contentWindowChild.childNodes[1];
+        // contentWindowChild.removeChild(nodeToRemove);    
     }
 
     closeAllInfoWindows() {
