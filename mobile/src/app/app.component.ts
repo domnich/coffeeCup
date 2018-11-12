@@ -49,7 +49,7 @@ export class MyApp {
           //statusBar.styleDefault();
 
         //  statusBar.overlaysWebView(true);
-        statusBar.backgroundColorByHexString('#c56200');
+        statusBar.backgroundColorByHexString('#007c91');
         //  SocialVk.init('6356607', function(res) {
         //   console.log(res, 'RESSSSS');
         // }, function(error) {
