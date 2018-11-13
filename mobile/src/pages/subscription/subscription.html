@@ -1,25 +1,34 @@
 <ion-header>
 
   <ion-navbar>
-      <button ion-button menuToggle>
-          <ion-icon name="menu"></ion-icon>
-      </button>
-    <ion-title>subscription</ion-title>
+    <ion-title>Подписка на кофе</ion-title>
   </ion-navbar>
-<h1>Подписка на кофе!</h1>
-<p>Срок действия подписки - 100 дней!</p>
+
+
+  <div class="sub-header">
+    <p>Срок действия подписки - 100 дней!</p>
+    <div class="controls">
+        <button class="button" (click)="changeType(0)">
+            Чёрный Кофе
+        </button>
+        <button class="button" (click)="changeType(1)">
+            Кофе + Молоко
+        </button>
+    </div>
+  </div>
+
 </ion-header>
 
 
 <ion-content class="no-scroll">
-    <div class="bar bar-header bar-light">
+    <!-- <div class="bar bar-header bar-light">
       <button class="button" (click)="changeType(0)">
           Чёрный Кофе
       </button>
       <button class="button" (click)="changeType(1)">
           Кофе + Молоко
       </button>
-   </div>
+   </div> -->
    <div>
      <p *ngIf="type === 0">
        Любой чёрный кофе на ваш выбор: эспрессо, американо, ристретто. Все размеры, с собой или в заведении. В некоторых кафе - альтернативный метод заваривания кофе.

@@ -6,8 +6,8 @@
             <div *ngIf="cafes.length">
                     <ul>
                         <li *ngFor="let cafe of cafes" (click)="navigateToDetail(cafe.id)">
-                            <div>{{cafe.name}}</div>
-                            <div>{{cafe?.description}}</div>
+                            <div class="name">{{cafe.name}}</div>
+                            <div class="sub-name">{{cafe?.description}}</div>
                         </li>
                     </ul>
                 </div>

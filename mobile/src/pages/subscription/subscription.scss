@@ -1,3 +1,22 @@
 page-subscription {
+    .sub-header {
+        background: #00acc1;
+        overflow: hidden;
+        padding: 0 16px;
+        color: #fff;
+        p {
+            margin: 0;
+        }
+        .controls {
+            display: flex;
+            button {
+                flex: 1;
+                background: none !important;
+                color: #fff;
+                font-size: 14px;
+                height: 38px;
+            }
+        }
 
+    }
 }
