@@ -35,7 +35,7 @@ import { GeolocationService } from './services/geolocation.service';
         HttpModule,
         IonicModule.forRoot(MyApp, {
             tabsHideOnSubPages: true,
-            backButtonText: 'to back',
+            backButtonText: '',
             // tabsPlacement: 'top',
             scrollAssist: false,
             scrollPadding: false,
