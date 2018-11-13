@@ -51,8 +51,8 @@
         </button>
       </div>
       <div class="has-account">
-            <p *ngIf="isRegistration">Уже есть аккаунт? <button (click)="login()">Войти</button></p>
-            <p *ngIf="isLogin"><button (click)="forgotPassword()">Забыли пароль?</button></p>
+            <p *ngIf="isRegistration">Уже есть аккаунт? <button class="btn-link" (click)="login()">Войти</button></p>
+            <p *ngIf="isLogin"><button class="btn-link" (click)="forgotPassword()">Забыли пароль?</button></p>
         </div>
   </form>
 </ion-content>

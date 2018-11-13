@@ -1,3 +1,15 @@
 page-info {
-
+    .scroll-content {
+        background: #E9E6D5;
+        .list {
+            .item {
+                background: none;
+                border: 0;
+                color: #988E75;
+                .item-inner {
+                    border: 0;
+                }
+            }
+        }
+    }
 }
