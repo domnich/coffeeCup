@@ -66,25 +66,17 @@ export class PlacesPage extends Cancellable implements OnDestroy {
 
     getPlaces() {
         this.localStorage.getCafesFromStorage().then((res) => {
-
-
-console.log(res, 'ressss');
-
-
+            console.log(res, 'ressss');
             if(res === null) {
                 this.updateFromServer = true;
                 this.loadData();
             } else {
-
-
-
                 this.updateFromServer = false;
                 this.places = res.khariv;
                 
                if (this.userCoords) {
                 this.filterDataAccordingToUserCoordinates();
                }
-
                this.placesService.loadData(this.places);
             }
         }, (err) => {
@@ -95,7 +87,7 @@ console.log(res, 'ressss');
     filterDataAccordingToUserCoordinates() {
         this.places.forEach((item) => {
             item['distance'] = this.getDistance(this.userCoords.latitude, this.userCoords.longitude, item.latitude, item.longitude); 
-        })    
+        });
 
         this.places.sort(this.compareDistance);
         this.places.forEach((item) => {

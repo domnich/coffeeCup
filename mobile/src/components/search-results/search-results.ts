@@ -39,7 +39,8 @@ export class SearchResultsComponent extends Cancellable implements AfterViewInit
   }
   
   navigateToDetail(id: number) {
-    this.navCtrl.push('CafeDetailPage', {id})
+    const update = '12334';
+    this.navCtrl.push('CafeDetailPage', {id, update})
   }
 
   ngOnDestroy() {

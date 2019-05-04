@@ -57,4 +57,22 @@ export class LocalStorage {
       console.log('all keys are cleared');
     });
   }
+
+  getCafeById(id: number) {
+    return this.storage.get('cafeInfo').then((res) => {
+      let cafes = this.parseResponse(res);
+      return cafes[id] || null;
+    });
+  }
+
+  saveCafeToStorage(cafe) {
+    this.storage.get('cafeInfo').then((res) => {
+        let list = {};
+        if (res) {
+          list = this.parseResponse(res);
+        }
+        list[cafe.id] = cafe;
+        this.storage.set('cafeInfo', this.stringifyObj(list));
+    });
+  }
 }

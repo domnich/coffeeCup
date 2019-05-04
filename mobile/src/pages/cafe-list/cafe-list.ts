@@ -59,7 +59,8 @@ export class CafeListPage extends Cancellable implements OnDestroy {
     }
 
     navigateToDetail(id: number) {
-        this.navCtrl.push('CafeDetailPage', {id})
+        const update = '12334';
+        this.navCtrl.push('CafeDetailPage', {id, update});
     }
 
     onSearchValueChanged(event) {

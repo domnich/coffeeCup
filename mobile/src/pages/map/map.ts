@@ -448,7 +448,8 @@ console.log(holder, boxOffset);
 
 
     navigateToDetail(id: number) {
-        this.navCtrl.push('CafeDetailPage', {id})
+        const update = '12334';
+        this.navCtrl.push('CafeDetailPage', {id, update})
     }
 
 

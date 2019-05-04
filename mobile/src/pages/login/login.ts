@@ -48,6 +48,11 @@ this.auth.loginUsingFacebook(res).subscribe((response) => {
     .catch(e => console.log('Error logging into Facebook', e));
   }
 
+  clear() {
+    this.localStorage.clearStorage();
+
+  }
+
   vkontakteLogin() {
 
     // SocialVk.login(['photos', 'offline'], function(res) {
