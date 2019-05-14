@@ -88,7 +88,11 @@ this.auth.loginUsingFacebook(res).subscribe((response) => {
   }
 
   goToInfo() {
-    this.navCtrl.push('page-info');
+    console.log('11111 CLICK 2222');
+    this.navCtrl.push('page-info', null, {
+      duration: 200,
+      easing: 'cubic-bezier(0.36,0.66,0.9,1)'
+    });
   }  
 
 }

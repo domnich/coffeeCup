@@ -85,15 +85,16 @@ console.log(this.isRegistration, this.isLogin)
   }
 
   signUp() {
-    this.isSubmit = true;
-    if (this.form.valid) {
-      this.signService.createUser({
-        email: this.user.email,
-        password: this.user.password
-      }).subscribe(res => {
-        console.log(res, 'resss');
-      });
-    }
+    this.navCtrl.push('page-verification');
+    // this.isSubmit = true;
+    // if (this.form.valid) {
+    //   this.signService.createUser({
+    //     email: this.user.email,
+    //     password: this.user.password
+    //   }).subscribe(res => {
+    //     console.log(res, 'resss');
+    //   });
+    // }
   }
 
   login() {
