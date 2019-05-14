@@ -23,6 +23,8 @@ import { LocalStorage } from '../app/services/localstorage';
 import { Auth } from '../app/services/auth';
 import { UserProfileComponent } from '../components/user-profile/user-profile';
 import { GeolocationService } from './services/geolocation.service';
+import { SignServiceProvider } from '../providers/sign-service/sign-service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
     declarations: [
@@ -48,7 +50,8 @@ import { GeolocationService } from './services/geolocation.service';
             pageTransition: 'ios'
         }
         ),
-        IonicStorageModule.forRoot()
+        IonicStorageModule.forRoot(),
+        HttpClientModule
     ],
     bootstrap: [IonicApp],
     entryComponents: [
@@ -71,7 +74,8 @@ import { GeolocationService } from './services/geolocation.service';
         Auth,
         GooglePlus,
         GeolocationService,
-        OpenNativeSettings
+        OpenNativeSettings,
+    SignServiceProvider
         
     ],
     exports: [

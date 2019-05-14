@@ -2,6 +2,7 @@ import { SIGNUP_TYPES } from './shared/signup-types';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
+import { SignServiceProvider } from '../../providers/sign-service/sign-service';
 
 /**
  * Generated class for the SignupPage page.
@@ -40,7 +41,8 @@ export class SignupPage {
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams, 
-    private formBuilder: FormBuilder) {
+    private formBuilder: FormBuilder,
+    private signService: SignServiceProvider) {
     this.createForm();
   }
 
@@ -84,7 +86,14 @@ console.log(this.isRegistration, this.isLogin)
 
   signUp() {
     this.isSubmit = true;
-    console.log(this.form.valid, 'fff');
+    if (this.form.valid) {
+      this.signService.createUser({
+        email: this.user.email,
+        password: this.user.password
+      }).subscribe(res => {
+        console.log(res, 'resss');
+      });
+    }
   }
 
   login() {
