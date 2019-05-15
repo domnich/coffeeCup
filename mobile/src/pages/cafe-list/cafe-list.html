@@ -15,7 +15,7 @@
 <ion-content [class.show-overlay]="toggleMask" id="cafes-list">
     <div *ngIf="toggleMask" class="mask">&nbsp;</div>
     <search-results [val]="toggleMask"></search-results>
-    <ion-card *ngFor="let place of places" (click)="navigateToDetail(place.id)">
+    <ion-card *ngFor="let place of places">
         <!-- <ion-img  width="100%" height="175" [src]="place.src"></ion-img> -->
         <img  width="100%" height="175" [src]="place.src">
         <div class="item-description">
@@ -33,5 +33,6 @@
             </span>
             <!-- <div *ngIf="place.distanceString" class="card-subtitle distance">{{place?.distanceString}} 111</div> -->
         </div>
+        <span (click)="navigateToDetail(place.id)" class="item-mask">&nbsp;</span>
     </ion-card>
 </ion-content>

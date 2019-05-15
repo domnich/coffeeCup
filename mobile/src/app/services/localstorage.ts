@@ -61,7 +61,8 @@ export class LocalStorage {
   getCafeById(id: number) {
     return this.storage.get('cafeInfo').then((res) => {
       let cafes = this.parseResponse(res);
-      return cafes[id] || null;
+      console.log(cafes, 'cafes');
+      return cafes && cafes[id] || null;
     });
   }
 
